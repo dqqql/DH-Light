@@ -65,6 +65,20 @@
     </ul>
     </div>
     <div class="bottom-ui-container">
+        {{#if isDaggerheart}}
+        <div class="daggerheart-nameplate">
+            <div class="daggerheart-name-row">
+                <div class="daggerheart-name">{{name}}</div>
+                {{#if defeated}}
+                <div class="daggerheart-state defeated">Defeated</div>
+                {{/if}}
+            </div>
+            {{#if dhDescription}}
+            <div class="daggerheart-description">{{dhDescription}}</div>
+            {{/if}}
+        </div>
+        {{/if}}
+
         {{#if hasDhActionTokens}}
         <div class="daggerheart-action-tokens">
             {{#each dhActionTokens}}
@@ -72,6 +86,19 @@
                 <i class="fa-solid fa-bolt-lightning"></i>
             </button>
             {{/each}}
+        </div>
+        {{/if}}
+
+        {{#if dhShowCompactStats}}
+        <div class="daggerheart-resource-row">
+            <div class="daggerheart-resource-pill primary">
+                <span class="label">{{dhPrimaryLabel}}</span>
+                <span class="value">{{resource.value}}{{#if resource.max}}/{{resource.max}}{{/if}}</span>
+            </div>
+            <div class="daggerheart-resource-pill secondary">
+                <span class="label">{{dhSecondaryLabel}}</span>
+                <span class="value">{{resource2.value}}{{#if resource2.max}}/{{resource2.max}}{{/if}}</span>
+            </div>
         </div>
         {{/if}}
 
@@ -85,7 +112,7 @@
 
 
 
-        <div class="tracked-attribute-text-container" {{#unless showText}}style="display: none;"{{/unless}}>
+        <div class="tracked-attribute-text-container" {{#if isDaggerheart}}style="display: none;"{{else unless showText}}style="display: none;"{{/if}}>
             <i class="tracked-attribute-text-value">{{resource.value}}</i>
             {{#if resource.max}}
             <i>/</i>
@@ -93,7 +120,7 @@
             {{/if}}
         </div>
 
-        <div class="tracked-attribute-text-container" {{#unless showText}}style="display: none;"{{/unless}}>
+        <div class="tracked-attribute-text-container" {{#if isDaggerheart}}style="display: none;"{{else unless showText}}style="display: none;"{{/if}}>
             <i class="tracked-attribute-text-value secondary-attribute">{{resource2.value}}</i>
             {{#if resource2.max}}
             <i>/</i>

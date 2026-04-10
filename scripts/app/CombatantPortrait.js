@@ -453,6 +453,10 @@ export class CombatantPortrait {
             dhRequestOrder: spotlight.requestOrderIndex,
             dhActionTokens: actionTokens,
             hasDhActionTokens: actionTokens.length > 0,
+            dhPrimaryLabel: "HP",
+            dhSecondaryLabel: "Stress",
+            dhShowCompactStats: this.isDaggerheart && hasPermission,
+            dhDescription: this.isDaggerheart ? this.getDescription() : null,
         };
         if (turn.initiative !== null && !Number.isInteger(turn.initiative)) hasDecimals = true;
         if (turn.initiativeData.value !== null && !Number.isInteger(turn.initiativeData.value)) hasDecimals = true;
