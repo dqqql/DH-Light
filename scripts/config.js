@@ -63,3 +63,20 @@ export function initConfig() {
     });
 
 }
+
+function l(key) {
+    return game.i18n.localize(key);
+}
+
+export function registerSystemSetting(key, data) {
+    const rootKey = `${MODULE_ID}.settings.systems.${game.system.id}`;
+    game.settings.register(MODULE_ID, `${game.system.id}.${key}`, {
+        ...data,
+        name: `${game.system.title} ${l(`${MODULE_ID}.settings.integration`)}: ${l(`${rootKey}.${key}.name`)}`,
+        hint: l(`${rootKey}.${key}.hint`),
+    });
+}
+
+export function getSystemSetting(key) {
+    return game.settings.get(MODULE_ID, `${game.system.id}.${key}`);
+}
