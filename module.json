@@ -16,6 +16,16 @@
       "path": "languages/en.json"
     },
     {
+      "lang": "zh-CN",
+      "name": "Simplified Chinese",
+      "path": "languages/zh-cn.json"
+    },
+    {
+      "lang": "cn",
+      "name": "Simplified Chinese",
+      "path": "languages/zh-cn.json"
+    },
+    {
       "lang": "ja",
       "name": "Japanese",
       "path": "languages/ja.json"

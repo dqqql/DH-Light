@@ -1,0 +1,295 @@
+{
+  "combat-tracker-dock": {
+    "configureCarousel": "配置战斗板",
+    "combat-dock": {
+      "title": "战斗追踪板",
+      "close": "关闭"
+    },
+    "common": {
+      "yes": "是",
+      "no": "否"
+    },
+    "controls": {
+      "toggleSpotlight": "切换聚光灯",
+      "requestSpotlight": "请求聚光灯",
+      "actionToken": "调整行动点",
+      "toggleHidden": "切换隐藏",
+      "toggleDefeated": "切换倒下状态",
+      "ping": "定位棋子"
+    },
+    "contextMenu": {
+      "setAsCurrent": "设为当前战斗者"
+    },
+    "combatConfig": {
+      "portraitResource": {
+        "label": "头像资源条",
+        "hint": "显示在头像上的覆盖资源条。设为“无”可关闭。"
+      }
+    },
+    "settings": {
+      "systems": {
+        "crucible": {
+          "alwaysShowActions": {
+            "name": "显示敌方行动点",
+            "hint": "若已启用“显示系统图标”，则无论权限如何都向玩家显示行动点。这样玩家能看到友军和敌人的行动点总量与剩余量。没有权限的玩家仍然看不到专注点。"
+          }
+        }
+      },
+      "integration": "集成",
+      "floatingSize": {
+        "name": "悬浮窗口大小",
+        "hint": "控制悬浮窗口尺寸，数值越大窗口越大。不影响横向（停靠）模式。"
+      },
+      "portraitSize": {
+        "name": "卡片大小",
+        "hint": "轮播中头像的最大尺寸。若战斗者过多无法放下，头像会自动缩小。",
+        "choices": {
+          "30px": "极小",
+          "50px": "较小",
+          "70px": "标准",
+          "90px": "较大",
+          "110px": "超大",
+          "150px": "特大",
+          "180px": "超特大"
+        }
+      },
+      "carouselStyle": {
+        "name": "排列样式",
+        "hint": "头像在战斗板中的排列与移动方式：轮播 - 居中：当前战斗者位于中央，其余成员围绕旋转。\n- 轮播 - 左侧：当前战斗者位于左侧，其余成员围绕旋转。\n- 无轮播：战斗者始终按顺序显示，仅当前战斗者移动。",
+        "choices": {
+          "centerCarousel": "轮播 - 居中",
+          "leftCarousel": "轮播 - 左侧",
+          "basic": "无轮播"
+        }
+      },
+      "overflowStyle": {
+        "name": "溢出方式",
+        "hint": "当战斗者过多无法全部显示时，战斗板的处理方式。",
+        "choices": {
+          "hidden": "隐藏超出部分",
+          "scroll": "滚动",
+          "autofit": "自动缩小卡片"
+        }
+      },
+      "portraitAspect": {
+        "name": "头像纵横比",
+        "hint": "头像的宽高比例。若图片比例不一致，会进行裁切。",
+        "choices": {
+          "square": "方形",
+          "portrait": "竖版",
+          "long": "长版"
+        }
+      },
+      "alignment": {
+        "name": "对齐方式",
+        "hint": "战斗板的对齐方式。",
+        "choices": {
+          "left": "左对齐",
+          "center": "居中",
+          "right": "右对齐"
+        }
+      },
+      "direction": {
+        "name": "显示位置",
+        "hint": "战斗板的显示方向。",
+        "choices": {
+          "row": "横向",
+          "column": "纵向",
+          "rowDocked": "横向（停靠）",
+          "rowFloat": "横向（悬浮）",
+          "columnFloat": "纵向（悬浮）"
+        }
+      },
+      "roundness": {
+        "name": "圆角程度",
+        "hint": "头像与悬浮提示的圆角程度。",
+        "choices": {
+          "sharp": "直角",
+          "soft": "柔和",
+          "round": "圆角"
+        }
+      },
+      "showDispositionColor": {
+        "name": "显示阵营颜色",
+        "hint": "在头像底边显示阵营颜色。"
+      },
+      "hideDefeated": {
+        "name": "隐藏已倒下单位",
+        "hint": "从战斗板中隐藏已倒下的战斗者。你仍可在原版战斗追踪器中与他们交互。"
+      },
+      "showInitiativeOnPortrait": {
+        "name": "在卡片上显示先攻",
+        "hint": "在头像左上角显示先攻值。悬浮提示中始终可以看到先攻。"
+      },
+      "portraitImageBorder": {
+        "name": "玩家边框",
+        "hint": "玩家角色专用边框。留空可关闭。若要自制图片，建议参考默认边框尺寸。"
+      },
+      "attributeColor": {
+        "name": "主属性颜色",
+        "hint": "轮播中主追踪属性文字与资源条的颜色。支持任意合法 CSS 颜色值。"
+      },
+      "attributeColor2": {
+        "name": "次属性颜色",
+        "hint": "轮播中次追踪属性文字与资源条的颜色。支持任意合法 CSS 颜色值。"
+      },
+      "attributeColorPortrait": {
+        "name": "头像资源条颜色",
+        "hint": "头像覆盖资源条的颜色。支持任意合法 CSS 颜色值。"
+      },
+      "barsPlacement": {
+        "name": "资源条位置",
+        "hint": "轮播中追踪资源条的摆放位置。",
+        "choices": {
+          "left": "左侧",
+          "right": "右侧",
+          "twinned": "两侧分列"
+        }
+      },
+      "attributeVisibility": {
+        "name": "属性显示方式",
+        "hint": "轮播中追踪属性的显示方式。",
+        "choices": {
+          "text": "仅文字",
+          "bars": "仅资源条",
+          "both": "文字和资源条"
+        }
+      },
+      "playerPlayerPermission": {
+        "name": "始终显示玩家信息",
+        "hint": "允许所有玩家查看其他玩家的追踪属性、悬浮提示信息和系统图标。"
+      },
+      "displayDescriptions": {
+        "name": "显示效果描述",
+        "hint": "在悬浮提示中显示激活效果的描述。",
+        "choices": {
+          "none": "不显示",
+          "owner": "拥有者/观察者",
+          "all": "所有人"
+        }
+      },
+      "portraitImage": {
+        "name": "头像来源",
+        "hint": "头像使用角色图片还是棋子图片。",
+        "choices": {
+          "actor": "角色",
+          "token": "棋子"
+        }
+      },
+      "portraitImageBackground": {
+        "name": "头像背景",
+        "hint": "当头像透明或未填满区域时，显示在背后的背景图片。"
+      },
+      "showSystemIcons": {
+        "name": "显示系统图标",
+        "hint": "在追踪资源下方、悬浮提示中，或两处同时显示系统专属图标。该功能依赖系统适配，仅在部分系统中可用。",
+        "choices": {
+          "none": "不显示",
+          "tooltip": "仅悬浮提示",
+          "resource": "仅卡片",
+          "both": "两者都显示"
+        }
+      },
+      "hideConflictingUIs": {
+        "name": "隐藏冲突界面",
+        "hint": "当战斗板显示时，自动隐藏停靠在屏幕顶部的其他界面，避免拥挤。"
+      },
+      "displayName": {
+        "name": "名称显示方式",
+        "hint": "是否在悬浮提示中显示战斗者名称。“基于棋子”仅会在玩家能看到棋子名称时显示。",
+        "choices": {
+          "default": "始终显示",
+          "token": "基于棋子",
+          "owner": "基于权限"
+        }
+      },
+      "hideFirstRound": {
+        "name": "首轮前隐藏",
+        "hint": "敌人在第一次行动前保持隐藏。（若要同时隐藏原版战斗追踪器中的敌人，需要 LibWrapper。）"
+      },
+      "hideEnemyInitiative": {
+        "name": "隐藏敌方先攻",
+        "hint": "在悬浮提示和卡片上隐藏敌人的先攻。"
+      },
+      "attributesMenu": {
+        "name": "悬浮提示属性",
+        "label": "配置属性",
+        "hint": "配置在悬浮提示中显示的自定义属性。",
+        "reset": "恢复默认",
+        "resetWarning": "确定要将属性恢复为默认值吗？",
+        "form": {
+          "attr": {
+            "name": "属性",
+            "choose": "选择属性"
+          },
+          "icon": {
+            "name": "图标"
+          },
+          "units": {
+            "name": "单位"
+          },
+          "save": "保存并关闭",
+          "add": "添加属性",
+          "reset": "恢复默认",
+          "notes": "将“属性”字段留空即可移除该项。"
+        }
+      },
+      "resource": {
+        "name": "次要资源",
+        "hint": "次要资源条。通常应在战斗配置中设置，这里主要供部分系统或高级用户手动调整。"
+      },
+      "portraitResource": {
+        "name": "头像资源",
+        "hint": "显示在头像上的覆盖资源条。通常应在战斗配置中设置，这里主要供部分系统或高级用户手动调整。"
+      }
+    },
+    "tooltip": {
+      "daggerheart": {
+        "spotlight": "聚光灯",
+        "stateActive": "当前聚光灯目标",
+        "stateRequest": "请求队列第 {order} 位",
+        "stateIdle": "未请求",
+        "status": "状态",
+        "defeated": "已倒下",
+        "actionTokens": "行动点",
+        "hitPoints": "生命",
+        "stress": "压力",
+        "evasion": "闪避"
+      }
+    },
+    "daggerheart": {
+      "stats": {
+        "hitPoints": "生命",
+        "stress": "压力",
+        "evasion": "闪避"
+      },
+      "description": {
+        "level": "等级",
+        "difficulty": "难度",
+        "adversary": "对手",
+        "companion": "伙伴",
+        "environment": "环境"
+      },
+      "initiative": {
+        "now": "当前",
+        "queueShort": "队列{order}"
+      }
+    },
+    "hotkeys": {
+      "combatPrev": {
+        "name": "上一回合"
+      },
+      "combatNext": {
+        "name": "下一回合"
+      }
+    },
+    "add-event": {
+      "title": "添加事件",
+      "duration": "事件持续时间（回合）",
+      "error": "错误：事件必须填写名称、图片和先攻值。",
+      "expired": "事件 %n 已过期。"
+    },
+    "deleteEffectTitle": "删除效果",
+    "deleteEffectContent": "确定要删除该效果："
+  }
+}

@@ -126,17 +126,17 @@ export function defaultAttributesConfig() {
             {
                 attr: "resources.hitPoints.value",
                 icon: "fas fa-heart",
-                units: "HP",
+                units: game.i18n.localize(`${MODULE_ID}.daggerheart.stats.hitPoints`),
             },
             {
                 attr: "resources.stress.value",
                 icon: "fas fa-brain",
-                units: "Stress",
+                units: game.i18n.localize(`${MODULE_ID}.daggerheart.stats.stress`),
             },
             {
                 attr: "evasion",
                 icon: "fas fa-feather-pointed",
-                units: "Evasion",
+                units: game.i18n.localize(`${MODULE_ID}.daggerheart.stats.evasion`),
             },
         ],
         "cyberpunk-red-core": [
@@ -758,14 +758,14 @@ export function generateDescription(actor) {
                         system.community?.name,
                         system.ancestry?.name,
                     ].filter(Boolean);
-                    return `Level ${level}${parts.length ? ` ${parts.join(" / ")}` : ""}`;
+                    return `${game.i18n.localize(`${MODULE_ID}.daggerheart.description.level`)} ${level}${parts.length ? ` ${parts.join(" / ")}` : ""}`;
                 }
                 case "adversary":
-                    return system.difficulty ? `Difficulty ${system.difficulty}` : "Adversary";
+                    return system.difficulty ? `${game.i18n.localize(`${MODULE_ID}.daggerheart.description.difficulty`)} ${system.difficulty}` : game.i18n.localize(`${MODULE_ID}.daggerheart.description.adversary`);
                 case "companion":
-                    return "Companion";
+                    return game.i18n.localize(`${MODULE_ID}.daggerheart.description.companion`);
                 case "environment":
-                    return "Environment";
+                    return game.i18n.localize(`${MODULE_ID}.daggerheart.description.environment`);
                 default:
                     return null;
             }
@@ -921,7 +921,11 @@ export function getInitiativeDisplay(combatant) {
             const active = combatant?.combat?.combatant === combatant;
             const requestOrder = combatant?.system?.spotlight?.requestOrderIndex ?? 0;
             return {
-                value: active ? "Now" : requestOrder > 0 ? `Q${requestOrder}` : null,
+                value: active
+                    ? game.i18n.localize(`${MODULE_ID}.daggerheart.initiative.now`)
+                    : requestOrder > 0
+                      ? game.i18n.format(`${MODULE_ID}.daggerheart.initiative.queueShort`, { order: requestOrder })
+                      : null,
                 icon: active ? "fas fa-hand-sparkles" : "fas fa-hand",
                 rollIcon: "fas fa-hand-sparkles",
             };

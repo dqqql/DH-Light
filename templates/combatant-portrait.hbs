@@ -1,8 +1,10 @@
 <div class="combatant-wrapper" style="background-image: url('{{img}}');{{#if defeated}}filter: grayscale(1);{{/if}}">
 
+    {{#unless isDaggerheart}}
     {{#if hasPortraitResource}}
     <div class="portrait-bar" style="height: calc( 100% - {{portraitResource.percentage}}% );"></div>
     {{/if}}
+    {{/unless}}
 
     {{#if showInitiativeRoll}}
     <i style="{{#if hasRolled}}display: none;{{/if}}{{#unless owner}}display: none;{{/unless}}"  {{#if
@@ -17,20 +19,14 @@
 
     {{#if isDaggerheart}}
     <div class="daggerheart-top-controls">
-        {{#if active}}
-        <div class="daggerheart-badge spotlight">Spotlight</div>
-        {{else if dhIsRequesting}}
-        <div class="daggerheart-badge requesting">Request {{dhRequestOrder}}</div>
-        {{/if}}
-
         {{#if dhCanToggleSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button" data-action="toggle-spotlight">
+        <button type="button" class="daggerheart-action daggerheart-button" data-action="toggle-spotlight" title="{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}">
             <i class="fa-solid {{#if active}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
 
         {{#if dhCanRequestSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}}" data-action="request-spotlight">
+        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}}" data-action="request-spotlight" title="{{localize 'combat-tracker-dock.controls.requestSpotlight'}}">
             <i class="fa-solid {{#if dhIsRequesting}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
@@ -40,6 +36,7 @@
 
 
     <div class="overlay-ui-container">
+    {{#unless isDaggerheart}}
     {{#if resource.max}}
         <div class="tracked-attribute-bar-max" style="order: {{barsOrder.bar1}};margin-left: {{barsOrder.bar1ML}};{{#unless showBars}}display: none;{{/unless}}" >
         <div class="tracked-attribute-bar-current" style="height: {{resource.percentage}}%;"></div>
@@ -63,55 +60,29 @@
         </li>
         {{/each}}
     </ul>
+    {{/unless}}
     </div>
-    <div class="bottom-ui-container">
-        {{#if isDaggerheart}}
-        <div class="daggerheart-nameplate">
-            <div class="daggerheart-name-row">
-                <div class="daggerheart-name">{{name}}</div>
-                {{#if defeated}}
-                <div class="daggerheart-state defeated">Defeated</div>
-                {{/if}}
-            </div>
-            {{#if dhDescription}}
-            <div class="daggerheart-description">{{dhDescription}}</div>
-            {{/if}}
-        </div>
-        {{/if}}
+    <div class="bottom-ui-container {{#if isDaggerheart}}daggerheart-controls{{/if}}">
 
         {{#if hasDhActionTokens}}
         <div class="daggerheart-action-tokens">
             {{#each dhActionTokens}}
-            <button type="button" class="daggerheart-action action-token {{#if spent}}spent{{/if}}" data-action="set-action-token" data-token-index="{{index}}" {{#unless canToggle}}disabled{{/unless}}>
+            <button type="button" class="daggerheart-action action-token {{#if spent}}spent{{/if}}" data-action="set-action-token" data-token-index="{{index}}" title="{{localize 'combat-tracker-dock.controls.actionToken'}}" {{#unless canToggle}}disabled{{/unless}}>
                 <i class="fa-solid fa-bolt-lightning"></i>
             </button>
             {{/each}}
         </div>
         {{/if}}
 
-        {{#if dhShowCompactStats}}
-        <div class="daggerheart-resource-row">
-            <div class="daggerheart-resource-pill primary">
-                <span class="label">{{dhPrimaryLabel}}</span>
-                <span class="value">{{resource.value}}{{#if resource.max}}/{{resource.max}}{{/if}}</span>
-            </div>
-            <div class="daggerheart-resource-pill secondary">
-                <span class="label">{{dhSecondaryLabel}}</span>
-                <span class="value">{{resource2.value}}{{#if resource2.max}}/{{resource2.max}}{{/if}}</span>
-            </div>
-        </div>
-        {{/if}}
-
         <div class="combatant-buttons">
             {{#if isGM}}
-            <i class="fas fa-eye-slash action" data-action="toggle-hidden"></i>
-            <i class="fas fa-skull action" data-action="toggle-defeated"></i>
+            <i class="fas fa-eye-slash action" data-action="toggle-hidden" title="{{localize 'combat-tracker-dock.controls.toggleHidden'}}"></i>
+            <i class="fas fa-skull action" data-action="toggle-defeated" title="{{localize 'combat-tracker-dock.controls.toggleDefeated'}}"></i>
             {{/if}}
-            <i class="fas fa-bullseye-arrow action" data-action="ping"></i>
+            <i class="fas fa-bullseye-arrow action" data-action="ping" title="{{localize 'combat-tracker-dock.controls.ping'}}"></i>
         </div>
 
-
-
+        {{#unless isDaggerheart}}
         <div class="tracked-attribute-text-container" {{#if isDaggerheart}}style="display: none;"{{else unless showText}}style="display: none;"{{/if}}>
             <i class="tracked-attribute-text-value">{{resource.value}}</i>
             {{#if resource.max}}
@@ -135,6 +106,7 @@
             {{/each}}
         </div>
         {{/if}}
+        {{/unless}}
 
     </div>
     {{#if hasPlayerOwner}}

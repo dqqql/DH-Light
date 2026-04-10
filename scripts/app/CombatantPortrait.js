@@ -331,7 +331,9 @@ export class CombatantPortrait {
     }
 
     validateValue(value) {
-        if (typeof value === "boolean") value = value ? "Yes" : "No";
+        if (typeof value === "boolean") {
+            value = game.i18n.localize(`${MODULE_ID}.common.${value ? "yes" : "no"}`);
+        }
 
         if (Array.isArray(value)) value = value.join(", ");
 
@@ -392,6 +394,9 @@ export class CombatantPortrait {
         const systemIconCount = systemIcons.resource?.length ?? 0;
         const spotlight = this.daggerheartSpotlight;
         const actionTokens = this.getDaggerheartActionTokens();
+        const actionTokenConfig = getDaggerheartActionTokenConfig();
+        const currentActionTokens = this.combatant.system?.actionTokens ?? actionTokenConfig.tokens;
+        const evasion = this.validateValue(foundry.utils.getProperty(this.actor?.system, "evasion"));
 
         const attributesVisibility = game.settings.get(MODULE_ID, "attributeVisibility");
 
@@ -453,10 +458,13 @@ export class CombatantPortrait {
             dhRequestOrder: spotlight.requestOrderIndex,
             dhActionTokens: actionTokens,
             hasDhActionTokens: actionTokens.length > 0,
-            dhPrimaryLabel: "HP",
-            dhSecondaryLabel: "Stress",
-            dhShowCompactStats: this.isDaggerheart && hasPermission,
-            dhDescription: this.isDaggerheart ? this.getDescription() : null,
+            dhShowTooltipActionTokens: this.isDaggerheart && this.isDaggerheartCharacter && actionTokenConfig.enabled && this.combat.started,
+            dhActionTokensCurrent: currentActionTokens,
+            dhActionTokensMax: actionTokenConfig.tokens,
+            dhHasPrimaryResource: resource?.value !== null && resource?.value !== undefined,
+            dhHasSecondaryResource: resource2?.value !== null && resource2?.value !== undefined,
+            dhEvasion: evasion,
+            dhHasEvasion: evasion !== null && evasion !== undefined,
         };
         if (turn.initiative !== null && !Number.isInteger(turn.initiative)) hasDecimals = true;
         if (turn.initiativeData.value !== null && !Number.isInteger(turn.initiativeData.value)) hasDecimals = true;

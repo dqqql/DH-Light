@@ -13,15 +13,55 @@
     {{/if}}
     {{/if}}
     {{#if isDaggerheart}}
-    <div class="daggerheart-tooltip-state">
-        {{#if active}}
-        <span>Spotlight is on this combatant.</span>
-        {{else if dhIsRequesting}}
-        <span>Spotlight request #{{dhRequestOrder}}</span>
+    <div class="daggerheart-tooltip-summary">
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.spotlight"}}</span>
+            <strong>
+                {{#if active}}
+                {{localize "combat-tracker-dock.tooltip.daggerheart.stateActive"}}
+                {{else if dhIsRequesting}}
+                {{localize "combat-tracker-dock.tooltip.daggerheart.stateRequest" order=dhRequestOrder}}
+                {{else}}
+                {{localize "combat-tracker-dock.tooltip.daggerheart.stateIdle"}}
+                {{/if}}
+            </strong>
+        </div>
+        {{#if defeated}}
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.status"}}</span>
+            <strong>{{localize "combat-tracker-dock.tooltip.daggerheart.defeated"}}</strong>
+        </div>
+        {{/if}}
+        {{#if hasPermission}}
+        {{#if dhShowTooltipActionTokens}}
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.actionTokens"}}</span>
+            <strong>{{dhActionTokensCurrent}}/{{dhActionTokensMax}}</strong>
+        </div>
+        {{/if}}
+        {{#if dhHasPrimaryResource}}
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.hitPoints"}}</span>
+            <strong>{{resource.value}}{{#if resource.max}}/{{resource.max}}{{/if}}</strong>
+        </div>
+        {{/if}}
+        {{#if dhHasSecondaryResource}}
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.stress"}}</span>
+            <strong>{{resource2.value}}{{#if resource2.max}}/{{resource2.max}}{{/if}}</strong>
+        </div>
+        {{/if}}
+        {{#if dhHasEvasion}}
+        <div class="daggerheart-tooltip-row">
+            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.evasion"}}</span>
+            <strong>{{dhEvasion}}</strong>
+        </div>
+        {{/if}}
         {{/if}}
     </div>
     {{/if}}
     {{#if hasPermission}}
+    {{#unless isDaggerheart}}
     <ul {{#unless hasAttributes}}style="display:none;" {{/unless}}>
         {{#each attributes as |attribute|}}
         <li>{{{attribute.icon}}}<span>{{#if
@@ -30,6 +70,7 @@
         </li>
         {{/each}}
     </ul>
+    {{/unless}}
     {{/if}}
     <ul {{#unless hasEffects}}style="display:none;" {{/unless}}>
         {{#each effects as |effect|}}
