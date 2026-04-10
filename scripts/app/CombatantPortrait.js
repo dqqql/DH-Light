@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../main.js";
+import { getModulePath, MODULE_ID } from "../main.js";
 import { generateDescription, getDaggerheartActionTokenConfig, getInitiativeDisplay, getSystemIcons, isDaggerheartCharacter, isDaggerheartSystem } from "../systems.js";
 
 export class CombatantPortrait {
@@ -249,8 +249,8 @@ export class CombatantPortrait {
             this.element.innerHTML = "";
             return;
         }
-        const template = await foundry.applications.handlebars.renderTemplate("modules/combat-tracker-dock/templates/combatant-portrait.hbs", { ...data });
-        const tooltip = await foundry.applications.handlebars.renderTemplate("modules/combat-tracker-dock/templates/combatant-tooltip.hbs", { ...data });
+        const template = await foundry.applications.handlebars.renderTemplate(`${getModulePath()}/templates/combatant-portrait.hbs`, { ...data });
+        const tooltip = await foundry.applications.handlebars.renderTemplate(`${getModulePath()}/templates/combatant-tooltip.hbs`, { ...data });
         this.element.innerHTML = template;
         this.element.setAttribute("data-tooltip", tooltip);
         const direction = game.settings.get(MODULE_ID, "direction");

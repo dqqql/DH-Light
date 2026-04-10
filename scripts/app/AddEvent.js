@@ -1,4 +1,4 @@
-import { MODULE_ID } from "../main.js";
+import { getModulePath, MODULE_ID } from "../main.js";
 import { HandlebarsApplication, mergeClone } from "../lib/utils.js";
 
 export class AddEvent extends HandlebarsApplication {
@@ -11,7 +11,7 @@ export class AddEvent extends HandlebarsApplication {
         return foundry.utils.mergeObject(super.defaultOptions, {
             id: "combat-dock-add-event",
             title: `combat-tracker-dock.add-event.title`,
-            template: `modules/combat-tracker-dock/templates/add-event.hbs`,
+            template: `${getModulePath()}/templates/add-event.hbs`,
             width: 400,
             height: "auto",
             closeOnSubmit: true,
@@ -85,7 +85,7 @@ export class AddEvent extends HandlebarsApplication {
                 img: formData.img,
                 initiative: formData.initiative,
                 hidden: formData.hidden || false,
-                "flags.combat-tracker-dock": {
+                [`flags.${MODULE_ID}`]: {
                     event: true,
                     duration: formData.duration || false,
                     roundCreated: this.combat.round,

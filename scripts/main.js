@@ -7,6 +7,10 @@ import { showWelcome } from './lib/welcome.js';
 
 export const MODULE_ID = 'combat-tracker-dock';
 
+export function getModulePath() {
+    return game.modules.get(MODULE_ID)?.path ?? `/modules/${MODULE_ID}`;
+}
+
 export function getCurrentCombat(){
     return ui.combat.viewed;
 }

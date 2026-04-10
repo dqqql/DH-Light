@@ -43,7 +43,7 @@ export function initConfig() {
             e.preventDefault();
             new foundry.applications.settings.SettingsConfig().render(true)
             Hooks.once("renderSettingsConfig", (app, html, data) => {
-                html.querySelector('button[data-tab="combat-tracker-dock"]').click();
+                html.querySelector(`button[data-tab="${MODULE_ID}"]`)?.click();
             });
         });
 

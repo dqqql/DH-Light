@@ -1,4 +1,4 @@
-import { MODULE_ID} from "../main.js";
+import { getModulePath, MODULE_ID} from "../main.js";
 import Sortable from "../sortable.js";
 import { HandlebarsApplication, mergeClone } from "../lib/utils.js";
 
@@ -29,7 +29,7 @@ export class AttributesConfig extends HandlebarsApplication {
     static get PARTS() {
         return {
             content: {
-                template: `modules/combat-tracker-dock/templates/attributes-config.hbs`,
+                template: `${getModulePath()}/templates/attributes-config.hbs`,
                 classes: ["standard-form", "scrollable"],
             },
             footer: {
@@ -102,7 +102,7 @@ export class AttributesConfig extends HandlebarsApplication {
             content: game.i18n.localize(`${MODULE_ID}.settings.attributesMenu.resetWarning`),
         });
         if(response) {
-            const defaultSett = game.settings.settings.get("combat-tracker-dock.attributes").default;
+            const defaultSett = game.settings.settings.get(`${MODULE_ID}.attributes`).default;
             await game.settings.set(MODULE_ID, "attributes", defaultSett);
             this.render({ force: true });
         }
