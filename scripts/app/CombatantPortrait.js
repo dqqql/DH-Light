@@ -189,6 +189,23 @@ export class CombatantPortrait {
         }
     }
 
+    async clearOwnDaggerheartSpotlight() {
+        logger.info("clear own spotlight", { combatantId: this.combatant.id });
+        if (this._spotlightActionLock) {
+            logger.debug("clear own spotlight ignored - busy", { combatantId: this.combatant.id });
+            return;
+        }
+        this._spotlightActionLock = true;
+        try {
+            await requestGMAction("clearSpotlight", {
+                combatId: this.combat.id,
+                combatantId: this.combatant.id,
+            });
+        } finally {
+            this._spotlightActionLock = false;
+        }
+    }
+
     async clearDaggerheartSpotlightRequest() {
         await requestGMAction("clearSpotlightRequest", {
             combatId: this.combat.id,
@@ -239,6 +256,9 @@ export class CombatantPortrait {
                         break;
                     case "approve-spotlight":
                         await this.approveDaggerheartSpotlight();
+                        break;
+                    case "clear-own-spotlight":
+                        await this.clearOwnDaggerheartSpotlight();
                         break;
                     case "request-spotlight":
                         await this.requestDaggerheartSpotlight();

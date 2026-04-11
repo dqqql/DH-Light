@@ -456,6 +456,7 @@ export class CombatDock extends HandlebarsApplication {
         });
         if ("round" in updates) this._onRoundChange();
         if (!this.element) return;
+        this.updateCombatants();
         if (!this.trueCarousel) {
             this.updateOrder();
             this.centerCurrentCombatant();

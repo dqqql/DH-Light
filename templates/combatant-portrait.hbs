@@ -30,7 +30,7 @@
         {{/if}}
 
         {{#if dhCanRequestSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}} {{#if active}}cancel-spotlight{{/if}}" data-action="request-spotlight" title="{{#if active}}{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}{{else}}{{localize 'combat-tracker-dock.controls.requestSpotlight'}}{{/if}}">
+        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}} {{#if active}}cancel-spotlight{{/if}}" data-action="{{#if active}}clear-own-spotlight{{else}}request-spotlight{{/if}}" title="{{#if active}}{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}{{else}}{{localize 'combat-tracker-dock.controls.requestSpotlight'}}{{/if}}">
             <i class="fa-solid {{#if active}}fa-circle-xmark{{else if dhIsRequesting}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
