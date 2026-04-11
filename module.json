@@ -67,6 +67,7 @@
     }
   ],
   "scripts": [],
+  "socket": true,
   "esmodules": [
     "scripts/main.js"
   ],

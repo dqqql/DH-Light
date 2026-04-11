@@ -8,6 +8,10 @@ const REQUEST_TIMEOUT_MS = 10000;
 
 const pendingRequests = new Map();
 
+function getActiveGM() {
+    return game.users.find((user) => user.active && user.isGM) ?? null;
+}
+
 export function registerGMActions() {
     logger.debug("registering GM action socket", { socket: SOCKET_NAME });
     game.socket.off(SOCKET_NAME, onSocketMessage);
@@ -19,7 +23,7 @@ export async function requestGMAction(action, payload = {}) {
         return executeGMAction(action, payload);
     }
 
-    const activeGM = game.users.activeGM;
+    const activeGM = getActiveGM();
     if (!activeGM) {
         throw new Error("An active GM is required for this action.");
     }
@@ -49,7 +53,7 @@ async function onSocketMessage(message = {}) {
 
     if (message.type !== REQUEST_TYPE) return;
     if (!game.user.isGM) return;
-    if (game.users.activeGM?.id !== game.user.id) return;
+    if (getActiveGM()?.id !== game.user.id) return;
 
     try {
         logger.debug("processing GM action request", {
