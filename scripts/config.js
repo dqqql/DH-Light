@@ -1,9 +1,12 @@
 import { MODULE_ID } from "./main.js";
+import { logger } from "./lib/logger.js";
 
 export function initConfig() {
+    logger.debug("initConfig");
 
     Hooks.on("renderCombatTrackerConfig", (app, html, data) => {
         if (!game.user.isGM) return;
+        logger.debug("renderCombatTrackerConfig");
         const attributes = TokenDocument.implementation.getTrackedAttributes();
         attributes.bar.forEach(a => a.push("value"));
         const attributeChoices = TokenDocument.implementation.getTrackedAttributeChoices(attributes)
@@ -60,23 +63,7 @@ export function initConfig() {
         });
 
         app.setPosition({height: "auto"});
+        logger.debug("combat tracker config patched");
     });
 
-}
-
-function l(key) {
-    return game.i18n.localize(key);
-}
-
-export function registerSystemSetting(key, data) {
-    const rootKey = `${MODULE_ID}.settings.systems.${game.system.id}`;
-    game.settings.register(MODULE_ID, `${game.system.id}.${key}`, {
-        ...data,
-        name: `${game.system.title} ${l(`${MODULE_ID}.settings.integration`)}: ${l(`${rootKey}.${key}.name`)}`,
-        hint: l(`${rootKey}.${key}.hint`),
-    });
-}
-
-export function getSystemSetting(key) {
-    return game.settings.get(MODULE_ID, `${game.system.id}.${key}`);
 }

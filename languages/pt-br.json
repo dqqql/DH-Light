@@ -15,15 +15,6 @@
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "Mostrar Pontos de Ação do Inimigo",
-            "hint": "Se 'Mostrar Ícones do Sistema' estiver habilitado, mostra os pontos de ação aos jogadores, independentemente das permissões. Isso permite que os jogadores vejam quantos pontos de ação totais e restantes aliados e inimigos têm. Os pontos de foco continuarão ocultos para jogadores sem permissão para vê-los."
-          }
-        }
-      },
-      "integration": "Integração",
       "floatingSize": {
         "name": "Tamanho Flutuante",
         "hint": "O tamanho da janela flutuante. Quanto maior o valor, maior será a janela. Isso não afeta o modo Horizontal (Ancorado)."
@@ -105,10 +96,6 @@
         "name": "Ocultar Derrotados",
         "hint": "Esconde os combatentes derrotados do carrossel. Eles ainda estarão visíveis no rastreador de combate regular, caso você precise interagir com eles."
       },
-      "showInitiativeOnPortrait": {
-        "name": "Mostrar Iniciativa no Retrato",
-        "hint": "Exibe o valor da iniciativa no canto superior esquerdo do retrato. Você sempre pode ver a iniciativa na dica de ferramenta!"
-      },
       "portraitImageBorder": {
         "name": "Borda do Jogador",
         "hint": "Borda especial que será exibida para personagens jogadores. Deixe em branco para desativar. Se desejar criar uma imagem personalizada, sugerimos que use a imagem padrão como referência para o dimensionamento correto."
@@ -168,16 +155,6 @@
         "name": "Imagem de Fundo",
         "hint": "A imagem de fundo atrás do retrato, que será visível se o retrato for transparente ou não preencher o espaço."
       },
-      "showSystemIcons": {
-        "name": "Mostrar Ícones do Sistema",
-        "hint": "Exibe os ícones do sistema abaixo do recurso rastreado, da dica de ferramenta ou de ambos. Lembre-se de que isso requer uma implementação específica do sistema e só funcionará em sistemas selecionados.",
-        "choices": {
-          "none": "Nenhum",
-          "tooltip": "Dica",
-          "resource": "Retrato",
-          "both": "Ambos"
-        }
-      },
       "hideConflictingUIs": {
         "name": "Ocultar Interfaces Conflitantes",
         "hint": "Oculta automaticamente outras interfaces ancoradas na parte superior da tela quando o Combat Tracker estiver visível para evitar poluição visual na interface."
@@ -194,10 +171,6 @@
       "hideFirstRound": {
         "name": "Ocultar Até Primeiro Turno",
         "hint": "Esconda os inimigos até que eles tenham jogado seu primeiro turno em combate. Requer LibWrapper para escondê-los também no rastreador de combate principal."
-      },
-      "hideEnemyInitiative": {
-        "name": "Ocultar Iniciativa do Inimigo",
-        "hint": "Esconde a iniciativa inimiga na dica de ferramenta e no retrato."
       },
       "attributesMenu": {
         "name": "Atributos de Dica",

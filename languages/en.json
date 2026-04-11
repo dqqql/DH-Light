@@ -27,15 +27,6 @@
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "Show enemy action points",
-            "hint": "If 'Show system icons' is enabled, show action points to players regardless of permissions. This lets players see how many total and remaining action points allies and enemies have. Focus points remain hidden from players without permission."
-          }
-        }
-      },
-      "integration": "Integration",
       "floatingSize": {
         "name": "Floating Size",
         "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
@@ -55,7 +46,7 @@
       },
       "carouselStyle": {
         "name": "Carousel Style",
-        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants always stay in initiative order and only the active combatant moves.",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
           "centerCarousel": "Carousel - Centered",
           "leftCarousel": "Carousel - Left",
@@ -117,10 +108,6 @@
         "name": "Hide Defeated",
         "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
-      "showInitiativeOnPortrait": {
-        "name": "Show Initiative on Portrait",
-        "hint": "Show initiative in the upper-left corner of the portrait. Initiative is always available in the tooltip."
-      },
       "portraitImageBorder": {
         "name": "Player Border",
         "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
@@ -180,16 +167,6 @@
         "name": "Portrait Background",
         "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
-      "showSystemIcons": {
-        "name": "Show System Icons",
-        "hint": "Show system-specific icons below the tracked resource, in the tooltip, or both. This requires a system-specific implementation and only works for supported systems.",
-        "choices": {
-          "none": "None",
-          "tooltip": "Tooltip",
-          "resource": "Portrait",
-          "both": "Both"
-        }
-      },
       "hideConflictingUIs": {
         "name": "Hide Conflicting UIs",
         "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
@@ -206,10 +183,6 @@
       "hideFirstRound": {
         "name": "Hide Until First Turn",
         "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
-      },
-      "hideEnemyInitiative": {
-        "name": "Hide Enemy Initiative",
-        "hint": "Hide enemy initiative in the tooltip and portrait."
       },
       "attributesMenu": {
         "name": "Tooltip Attributes",
@@ -269,10 +242,6 @@
         "adversary": "Adversary",
         "companion": "Companion",
         "environment": "Environment"
-      },
-      "initiative": {
-        "now": "Now",
-        "queueShort": "Q{order}"
       }
     },
     "hotkeys": {
@@ -286,7 +255,7 @@
     "add-event": {
       "title": "Add Event",
       "duration": "Event Duration (Rounds)",
-      "error": "Error: You must provide a name, an image, and an initiative value for the event.",
+      "error": "Error: You must provide a name and an image for the event.",
       "expired": "Event %n has expired."
     },
     "deleteEffectTitle": "Delete Effect",

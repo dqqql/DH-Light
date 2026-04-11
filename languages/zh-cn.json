@@ -27,15 +27,6 @@
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "显示敌方行动点",
-            "hint": "若已启用“显示系统图标”，则无论权限如何都向玩家显示行动点。这样玩家能看到友军和敌人的行动点总量与剩余量。没有权限的玩家仍然看不到专注点。"
-          }
-        }
-      },
-      "integration": "集成",
       "floatingSize": {
         "name": "悬浮窗口大小",
         "hint": "控制悬浮窗口尺寸，数值越大窗口越大。不影响横向（停靠）模式。"
@@ -117,10 +108,6 @@
         "name": "隐藏已倒下单位",
         "hint": "从战斗板中隐藏已倒下的战斗者。你仍可在原版战斗追踪器中与他们交互。"
       },
-      "showInitiativeOnPortrait": {
-        "name": "在卡片上显示先攻",
-        "hint": "在头像左上角显示先攻值。悬浮提示中始终可以看到先攻。"
-      },
       "portraitImageBorder": {
         "name": "玩家边框",
         "hint": "玩家角色专用边框。留空可关闭。若要自制图片，建议参考默认边框尺寸。"
@@ -180,16 +167,6 @@
         "name": "头像背景",
         "hint": "当头像透明或未填满区域时，显示在背后的背景图片。"
       },
-      "showSystemIcons": {
-        "name": "显示系统图标",
-        "hint": "在追踪资源下方、悬浮提示中，或两处同时显示系统专属图标。该功能依赖系统适配，仅在部分系统中可用。",
-        "choices": {
-          "none": "不显示",
-          "tooltip": "仅悬浮提示",
-          "resource": "仅卡片",
-          "both": "两者都显示"
-        }
-      },
       "hideConflictingUIs": {
         "name": "隐藏冲突界面",
         "hint": "当战斗板显示时，自动隐藏停靠在屏幕顶部的其他界面，避免拥挤。"
@@ -206,10 +183,6 @@
       "hideFirstRound": {
         "name": "首轮前隐藏",
         "hint": "敌人在第一次行动前保持隐藏。（若要同时隐藏原版战斗追踪器中的敌人，需要 LibWrapper。）"
-      },
-      "hideEnemyInitiative": {
-        "name": "隐藏敌方先攻",
-        "hint": "在悬浮提示和卡片上隐藏敌人的先攻。"
       },
       "attributesMenu": {
         "name": "悬浮提示属性",
@@ -269,10 +242,6 @@
         "adversary": "对手",
         "companion": "伙伴",
         "environment": "环境"
-      },
-      "initiative": {
-        "now": "当前",
-        "queueShort": "队列{order}"
       }
     },
     "hotkeys": {

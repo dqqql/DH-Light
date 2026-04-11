@@ -6,71 +6,62 @@
       "close": "Fermer"
     },
     "contextMenu": {
-      "setAsCurrent": "Définir comme combattant actuel"
+      "setAsCurrent": "D茅finir comme combattant actuel"
     },
     "combatConfig": {
       "portraitResource": {
         "label": "Barre de portraits",
-        "hint": "Barre de ressources qui sera affichée en superposition au-dessus de l'image de portrait, définie sur \"Aucune\" pour la désactiver."
+        "hint": "Barre de ressources qui sera affich茅e en superposition au-dessus de l'image de portrait, d茅finie sur \"Aucune\" pour la d茅sactiver."
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "Afficher les actions ennemies",
-            "hint": "Si \"Afficher les icônes du système\" est activé, affichez les points d'action aux joueurs, quelles que soient les autorisations. \nCela permettra aux joueurs de voir combien de points d'action totaux et restants ont les alliés et les ennemis."
-          }
-        }
-      },
-      "integration": "L'intégration",
       "floatingSize": {
         "name": "Taille flottante",
-        "hint": "La taille de la fenêtre flottante. Plus la valeur est élevée, plus la fenêtre sera grande. Cela n'affectera pas le mode horizontal (ancré)."
+        "hint": "La taille de la fen锚tre flottante. Plus la valeur est 茅lev茅e, plus la fen锚tre sera grande. Cela n'affectera pas le mode horizontal (ancr茅)."
       },
       "portraitSize": {
         "name": "Taille du portrait",
-        "hint": "La taille maximale du portrait dans le suivi des combats. \nNotez que la taille des portraits sera automatiquement réduite s'il y a trop de combattants pour tenir sur l'écran.",
+        "hint": "La taille maximale du portrait dans le suivi des combats. \nNotez que la taille des portraits sera automatiquement r茅duite s'il y a trop de combattants pour tenir sur l'茅cran.",
         "choices": {
           "30px": "Minuscule",
           "50px": "Petit",
           "70px": "Normal",
           "90px": "Grand",
-          "110px": "Énorme",
+          "110px": "脡norme",
           "150px": "XX-Grand",
           "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
         "name": "Style de carrousel",
-        "hint": "La façon dont les portraits sont placés et se déplacent dans le carrousel : Carrousel - Centré : Le combattant actif est au centre du carrousel, les autres combattants tournent autour de lui.\n\n- Carrousel - Gauche : Le Combattant Actif est à Gauche du carrousel, les autres combattants tournent autour de lui.\n\n- Pas de carrousel : Les combattants sont toujours affichés dans l'ordre d'initiative et le combattant actif se déplace tandis que les combattants restent dans la même position.",
+        "hint": "La fa莽on dont les portraits sont plac茅s et se d茅placent dans le carrousel : Carrousel - Centr茅 : Le combattant actif est au centre du carrousel, les autres combattants tournent autour de lui.\n\n- Carrousel - Gauche : Le Combattant Actif est 脿 Gauche du carrousel, les autres combattants tournent autour de lui.\n\n- Pas de carrousel : Les combattants sont toujours affich茅s dans l'ordre actuel et le combattant actif se d茅place tandis que les combattants restent dans la m锚me position.",
         "choices": {
-          "centerCarousel": "Carrousel - Centré",
+          "centerCarousel": "Carrousel - Centr茅",
           "leftCarousel": "Carrousel - Gauche",
           "basic": "Pas de carrousel"
         }
       },
       "overflowStyle": {
-        "name": "Style de débordement",
-        "hint": "La façon dont le carrousel se comporte lorsqu'il y a trop de combattants pour tenir sur l'écran.",
+        "name": "Style de d茅bordement",
+        "hint": "La fa莽on dont le carrousel se comporte lorsqu'il y a trop de combattants pour tenir sur l'茅cran.",
         "choices": {
-          "hidden": "Caché",
-          "scroll": "Faire défiler",
-          "autofit": "Réduire les portraits"
+          "hidden": "Cach茅",
+          "scroll": "Faire d茅filer",
+          "autofit": "R茅duire les portraits"
         }
       },
       "portraitAspect": {
         "name": "Format portrait",
-        "hint": "Le rapport d'aspect du portrait. \nL'image sera recadrée si elle ne correspond pas au format d'image du portrait.",
+        "hint": "Le rapport d'aspect du portrait. \nL'image sera recadr茅e si elle ne correspond pas au format d'image du portrait.",
         "choices": {
-          "square": "Carré",
+          "square": "Carr茅",
           "portrait": "Portrait",
           "long": "Long"
         }
       },
       "alignment": {
         "name": "Alignement",
-        "hint": "L'alignement du carrousel. \nNotez que le carrousel est destiné à être centré, vous devez utiliser ce paramètre uniquement pour la compatibilité avec d'autres modules.",
+        "hint": "L'alignement du carrousel. \nNotez que le carrousel est destin茅 脿 锚tre centr茅, vous devez utiliser ce param猫tre uniquement pour la compatibilit茅 avec d'autres modules.",
         "choices": {
           "left": "Gauche",
           "center": "Centre",
@@ -83,7 +74,7 @@
         "choices": {
           "row": "Horizontal",
           "column": "Vertical",
-          "rowDocked": "Horizontal (ancré)",
+          "rowDocked": "Horizontal (ancr茅)",
           "rowFloat": "Horizontal (flottant)",
           "columnFloat": "Vertical (flottant)"
         }
@@ -99,19 +90,15 @@
       },
       "showDispositionColor": {
         "name": "Afficher la couleur de disposition",
-        "hint": "Montrez la disposition dans la bordure inférieure du portrait."
+        "hint": "Montrez la disposition dans la bordure inf茅rieure du portrait."
       },
       "hideDefeated": {
         "name": "Masquer Vaincu",
-        "hint": "Cachez les combattants vaincus du carrousel. \nIls seront toujours visibles dans le suivi de combat habituel au cas où vous auriez besoin d'interagir avec eux."
-      },
-      "showInitiativeOnPortrait": {
-        "name": "Afficher l'initiative sur le portrait",
-        "hint": "Affichez la valeur d'initiative dans le coin supérieur gauche du portrait. \nVous pouvez toujours voir l'initiative dans l'info-bulle !"
+        "hint": "Cachez les combattants vaincus du carrousel. \nIls seront toujours visibles dans le suivi de combat habituel au cas o霉 vous auriez besoin d'interagir avec eux."
       },
       "portraitImageBorder": {
         "name": "Bordure du joueur",
-        "hint": "Bordure spéciale qui sera affichée pour les personnages joueurs. \nLaissez vide pour désactiver. \nSi vous souhaitez créer une image personnalisée, il est suggéré d'utiliser celle par défaut comme référence pour un dimensionnement correct."
+        "hint": "Bordure sp茅ciale qui sera affich茅e pour les personnages joueurs. \nLaissez vide pour d茅sactiver. \nSi vous souhaitez cr茅er une image personnalis茅e, il est sugg茅r茅 d'utiliser celle par d茅faut comme r茅f茅rence pour un dimensionnement correct."
       },
       "attributeColor": {
         "name": "Couleur d'attribut",
@@ -131,12 +118,12 @@
         "choices": {
           "left": "Gauche",
           "right": "Droite",
-          "twinned": "Jumelée"
+          "twinned": "Jumel茅e"
         }
       },
       "attributeVisibility": {
-        "name": "Visibilité des attributs",
-        "hint": "La visibilité des attributs suivis dans le carrousel.",
+        "name": "Visibilit茅 des attributs",
+        "hint": "La visibilit茅 des attributs suivis dans le carrousel.",
         "choices": {
           "text": "Texte seulement",
           "bars": "Barres uniquement",
@@ -145,14 +132,14 @@
       },
       "playerPlayerPermission": {
         "name": "Toujours afficher les informations sur le joueur",
-        "hint": "Autoriser tous les joueurs à voir les attributs suivis, les info-bulles et les icônes système des autres joueurs."
+        "hint": "Autoriser tous les joueurs 脿 voir les attributs suivis, les info-bulles et les ic么nes syst猫me des autres joueurs."
       },
       "displayDescriptions": {
         "name": "Afficher les descriptions",
         "hint": "Afficher les descriptions des effets actifs dans l'info-bulle.",
         "choices": {
           "none": "Aucun",
-          "owner": "Propriétaire/Observateur",
+          "owner": "Propri茅taire/Observateur",
           "all": "Tout le monde"
         }
       },
@@ -169,87 +156,73 @@
         }
       },
       "portraitImageBackground": {
-        "name": "Fond d'écran",
-        "hint": "L'image d'arrière-plan derrière le portrait qui sera visible si le portrait est transparent ou ne remplit pas l'espace."
-      },
-      "showSystemIcons": {
-        "name": "Afficher les icônes du système",
-        "hint": "Afficher les icônes système sous la ressource suivie, l'info-bulle ou les deux. \nGardez à l'esprit que cela nécessite une implémentation spécifique au système et ne fonctionnera que sur certains systèmes.",
-        "choices": {
-          "none": "Aucun",
-          "tooltip": "Info-bulle",
-          "resource": "Portrait",
-          "both": "Les deux"
-        }
+        "name": "Fond d'茅cran",
+        "hint": "L'image d'arri猫re-plan derri猫re le portrait qui sera visible si le portrait est transparent ou ne remplit pas l'espace."
       },
       "hideConflictingUIs": {
         "name": "Masquer les interfaces utilisateur conflictuelles",
-        "hint": "Masquer automatiquement les autres interfaces utilisateur ancrées en haut de l'écran lorsque le dock du traqueur de combat est visible afin d'éviter l'encombrement de l'interface utilisateur."
+        "hint": "Masquer automatiquement les autres interfaces utilisateur ancr茅es en haut de l'茅cran lorsque le dock du traqueur de combat est visible afin d'茅viter l'encombrement de l'interface utilisateur."
       },
       "displayName": {
         "name": "Afficher un nom",
-        "hint": "Afficher ou non le nom du combattant dans l'infobulle. \n'Basé sur le jeton' n'affichera le nom que si le joueur peut voir le nom du jeton.",
+        "hint": "Afficher ou non le nom du combattant dans l'infobulle. \n'Bas茅 sur le jeton' n'affichera le nom que si le joueur peut voir le nom du jeton.",
         "choices": {
           "default": "Toujours",
-          "token": "Basé sur le jeton",
-          "owner": "Basé sur la propriété"
+          "token": "Bas茅 sur le jeton",
+          "owner": "Bas茅 sur la propri茅t茅"
         }
       },
       "hideFirstRound": {
         "name": "Cacher jusqu'au premier tour",
-        "hint": "Cachez les ennemis jusqu'à ce qu'ils aient effectué leur premier tour de combat. \n(Nécessite LibWrapper pour les cacher également dans le tracker de combat principal.)"
-      },
-      "hideEnemyInitiative": {
-        "name": "Masquer l'initiative ennemie",
-        "hint": "Masquez l'initiative ennemie dans l'infobulle et le portrait."
+        "hint": "Cachez les ennemis jusqu'脿 ce qu'ils aient effectu茅 leur premier tour de combat. \n(N茅cessite LibWrapper pour les cacher 茅galement dans le tracker de combat principal.)"
       },
       "attributesMenu": {
         "name": "Attributs d'info-bulle",
         "label": "Configurer les attributs",
-        "hint": "Configurez les attributs personnalisés à afficher dans l'info-bulle.",
-        "reset": "Réinitialiser par défaut",
-        "resetWarning": "Voulez-vous vraiment réinitialiser les attributs à leurs valeurs par défaut ?",
+        "hint": "Configurez les attributs personnalis茅s 脿 afficher dans l'info-bulle.",
+        "reset": "R茅initialiser par d茅faut",
+        "resetWarning": "Voulez-vous vraiment r茅initialiser les attributs 脿 leurs valeurs par d茅faut聽?",
         "form": {
           "attr": {
             "name": "Attribut",
             "choose": "Choisissez l'attribut"
           },
           "icon": {
-            "name": "Icône"
+            "name": "Ic么ne"
           },
           "units": {
-            "name": "Unités"
+            "name": "Unit茅s"
           },
           "save": "Sauvegarder",
           "add": "Ajouter un attribut",
-          "reset": "Réinitialiser par défaut",
+          "reset": "R茅initialiser par d茅faut",
           "notes": "Laissez le champ Attribut vide pour le supprimer."
         }
       },
       "resource": {
         "name": "Ressource secondaire",
-        "hint": "La barre de ressources secondaire. \nVous devez définir cela dans la configuration de combat. \nCette option est là pour que certains systèmes et utilisateurs expérimentés puissent la modifier manuellement."
+        "hint": "La barre de ressources secondaire. \nVous devez d茅finir cela dans la configuration de combat. \nCette option est l脿 pour que certains syst猫mes et utilisateurs exp茅riment茅s puissent la modifier manuellement."
       },
       "portraitResource": {
         "name": "Ressource de portrait",
-        "hint": "La barre de ressources qui sera affichée en superposition au-dessus de l'image du portrait. \nVous devez définir cela dans la configuration de combat. \nCette option est là pour que certains systèmes et utilisateurs expérimentés puissent la modifier manuellement."
+        "hint": "La barre de ressources qui sera affich茅e en superposition au-dessus de l'image du portrait. \nVous devez d茅finir cela dans la configuration de combat. \nCette option est l脿 pour que certains syst猫mes et utilisateurs exp茅riment茅s puissent la modifier manuellement."
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "Tour précédent"
+        "name": "Tour pr茅c茅dent"
       },
       "combatNext": {
         "name": "Tour suivant"
       }
     },
     "add-event": {
-      "title": "Ajouter un évènement",
-      "duration": "Durée de l'événement (tours)",
-      "error": "Erreur : Vous devez fournir un nom, une image et une valeur d'initiative pour l'événement.",
-      "expired": "L'événement %n a expiré."
+      "title": "Ajouter un 茅v猫nement",
+      "duration": "Dur茅e de l'茅v茅nement (tours)",
+      "error": "Erreur聽: Vous devez fournir un nom, une image et une valeur de tri pour l'茅v茅nement.",
+      "expired": "L'茅v茅nement %n a expir茅."
     },
     "deleteEffectTitle": "Supprimer l'effet",
-    "deleteEffectContent": "Etes-vous sûr de vouloir supprimer l'effet"
+    "deleteEffectContent": "Etes-vous s没r de vouloir supprimer l'effet"
   }
 }

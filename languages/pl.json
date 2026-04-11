@@ -15,15 +15,6 @@
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "Pokaż punkty akcji przeciwnika",
-            "hint": "Jeśli opcja „Pokaż ikony systemowe” jest włączona, wyświetla punkty akcji graczom niezależnie od uprawnień. Pozwoli to graczom zobaczyć, ile punktów akcji mają sojusznicy i przeciwnicy. Punkty skupienia nadal będą ukryte przed graczami bez uprawnień do ich wyświetlania."
-          }
-        }
-      },
-      "integration": "Integracja",
       "floatingSize": {
         "name": "Rozmiar pływający",
         "hint": "Rozmiar okna pływającego. Im większa wartość, tym większe będzie okno. Nie ma to wpływu na tryb poziomy (zadokowany)."
@@ -105,10 +96,6 @@
         "name": "Ukryj pokonanych",
         "hint": "Ukryj pokonanych bojowników z karuzeli. Będą oni nadal widoczni w zwykłym module śledzenia walki, jeśli zajdzie potrzeba interakcji z nimi."
       },
-      "showInitiativeOnPortrait": {
-        "name": "Pokaż inicjatywę na Portrecie",
-        "hint": "Pokazuje wartość inicjatywy w lewym górnym rogu portretu. Zawsze możesz zobaczyć inicjatywę w podpowiedzi!"
-      },
       "portraitImageBorder": {
         "name": "Obramowanie gracza",
         "hint": "Specjalne obramowanie, które będzie wyświetlane dla postaci gracza. Pozostaw puste, aby wyłączyć. Jeśli chcesz utworzyć niestandardowy obraz, sugerujemy użycie domyślnego jako odniesienia dla prawidłowego rozmiaru."
@@ -172,16 +159,6 @@
         "name": "Tło portretu",
         "hint": "Obraz tła za portretem, który będzie widoczny, jeśli portret jest przezroczysty lub nie wypełnia przestrzeni."
       },
-      "showSystemIcons": {
-        "name": "Pokaż ikony systemowe",
-        "hint": "Wyświetlanie ikon systemowych poniżej śledzonego zasobu, podpowiedzi lub obu. Należy pamiętać, że wymaga to implementacji specyficznej dla systemu i będzie działać tylko w wybranych systemach.",
-        "choices": {
-          "none": "Brak",
-          "tooltip": "Podpowiedź",
-          "resource": "Portret",
-          "both": "Oba"
-        }
-      },
       "hideConflictingUIs": {
         "name": "Ukryj kolidujące interfejsy użytkownika",
         "hint": "Automatycznie ukryj inne interfejsy użytkownika zadokowane u góry ekranu, gdy widoczny jest dok Combat Tracker, aby uniknąć zagracenia interfejsu użytkownika."
@@ -198,10 +175,6 @@
       "hideFirstRound": {
         "name": "Ukryj do pierwszej tury",
         "hint": "Ukrywa wrogów, dopóki nie wykonają swojej pierwszej tury w walce. (Wymaga LibWrapper, aby ukryć ich również w głównym module śledzenia walki)."
-      },
-      "hideEnemyInitiative": {
-        "name": "Ukrycie inicjatywy wroga",
-        "hint": "Ukrywa inicjatywę wroga w podpowiedzi i portrecie."
       },
       "attributesMenu": {
         "name": "Atrybuty podpowiedzi",

@@ -1,214 +1,187 @@
 {
   "combat-tracker-dock": {
-    "configureCarousel": "Nastavení kolotoče",
+    "configureCarousel": "Nastaven铆 koloto膷e",
     "combat-dock": {
-      "title": "Bojový sledovací dok",
-      "close": "Zavřít"
+      "title": "Bojov媒 sledovac铆 dok",
+      "close": "Zav艡铆t"
     },
     "contextMenu": {
-      "setAsCurrent": "Nastavit jako aktuálního bojovníka"
+      "setAsCurrent": "Nastavit jako aktu谩ln铆ho bojovn铆ka"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "Lišta portrétu",
-        "hint": "Lišta zdrojů, která bude zobrazena jako překrytí nad portrétem. Chceš-li ji deaktivovat, nastav na 'žádné'."
+        "label": "Li拧ta portr茅tu",
+        "hint": "Li拧ta zdroj暖, kter谩 bude zobrazena jako p艡ekryt铆 nad portr茅tem. Chce拧-li ji deaktivovat, nastav na '啪谩dn茅'."
       }
     },
     "settings": {
-      "systems": {
-        "crucible": {
-          "alwaysShowActions": {
-            "name": "Zobrazení akčních bodů nepřátel",
-            "hint": "Pokud je povolena možnost 'Zobrazení systémových ikon', zobrazí se hráčům akční body bez ohledu na oprávnění. To umožní hráčům vidět celkový počet i zbývající akční body spojenců a nepřátel. Body soustředění však zůstanou pro hráče bez oprávnění je vidět skryté."
-          }
-        }
-      },
-      "integration": "Integrace",
       "floatingSize": {
-        "name": "Velikost plovoucí",
-        "hint": "Velikost plovoucího okna. Čím větší hodnota, tím větší bude okno. To nemá vliv na režim Horizontální (ukotvený)."
+        "name": "Velikost plovouc铆",
+        "hint": "Velikost plovouc铆ho okna. 膶铆m v臎t拧铆 hodnota, t铆m v臎t拧铆 bude okno. To nem谩 vliv na re啪im Horizont谩ln铆 (ukotven媒)."
       },
       "portraitSize": {
-        "name": "Velikost kolotoče",
-        "hint": "Maximální velikost portrétů v kolotoči. Všimni si, že pokud je na obrazovce příliš mnoho bojovníků, bude velikost portrétů automaticky zmenšena.",
+        "name": "Velikost koloto膷e",
+        "hint": "Maxim谩ln铆 velikost portr茅t暖 v koloto膷i. V拧imni si, 啪e pokud je na obrazovce p艡铆li拧 mnoho bojovn铆k暖, bude velikost portr茅t暖 automaticky zmen拧ena.",
         "choices": {
-          "30px": "Drobná",
-          "50px": "Malá",
-          "70px": "Normální",
-          "90px": "Velká",
-          "110px": "Extra velká",
-          "150px": "XX-velká",
-          "180px": "XXX-velká"
+          "30px": "Drobn谩",
+          "50px": "Mal谩",
+          "70px": "Norm谩ln铆",
+          "90px": "Velk谩",
+          "110px": "Extra velk谩",
+          "150px": "XX-velk谩",
+          "180px": "XXX-velk谩"
         }
       },
       "carouselStyle": {
-        "name": "Styl kolotoče",
-        "hint": "Způsob, jakým jsou portréty umístěny a pohybují se v kolotoči:\n- Kolotoč - na středu: Aktivní bojovník je ve středu kolotoče, ostatní bojovníci se kolem něj otáčejí.\n- Kolotoč - vlevo: Aktivní bojovník je vlevo v kolotoči, ostatní bojovníci se kolem něj otáčejí.\n- Bez kolotoče: Bojovníci jsou vždy zobrazeni podle pořadí iniciativy a aktivní bojovník se pohybuje, zatímco ostatní zůstávají na místě.",
+        "name": "Styl koloto膷e",
+        "hint": "Zp暖sob, jak媒m jsou portr茅ty um铆st臎ny a pohybuj铆 se v koloto膷i:\n- Koloto膷 - na st艡edu: Aktivn铆 bojovn铆k je ve st艡edu koloto膷e, ostatn铆 bojovn铆ci se kolem n臎j ot谩膷ej铆.\n- Koloto膷 - vlevo: Aktivn铆 bojovn铆k je vlevo v koloto膷i, ostatn铆 bojovn铆ci se kolem n臎j ot谩膷ej铆.\n- Bez koloto膷e: Bojovn铆ci jsou v啪dy zobrazeni podle po艡ad铆 iniciativy a aktivn铆 bojovn铆k se pohybuje, zat铆mco ostatn铆 z暖st谩vaj铆 na m铆st臎.",
         "choices": {
-          "centerCarousel": "Kolotoč - na středu",
-          "leftCarousel": "Kolotoč - vlevo",
-          "basic": "Bez kolotoče"
+          "centerCarousel": "Koloto膷 - na st艡edu",
+          "leftCarousel": "Koloto膷 - vlevo",
+          "basic": "Bez koloto膷e"
         }
       },
       "overflowStyle": {
-        "name": "Přeplnění",
-        "hint": "Způsob, jakým se kolotoč chová, když je na obrazovce příliš mnoho bojovníků.",
+        "name": "P艡epln臎n铆",
+        "hint": "Zp暖sob, jak媒m se koloto膷 chov谩, kdy啪 je na obrazovce p艡铆li拧 mnoho bojovn铆k暖.",
         "choices": {
-          "hidden": "Skrývání",
-          "scroll": "Posouvání",
-          "autofit": "Zmenšení portrétů"
+          "hidden": "Skr媒v谩n铆",
+          "scroll": "Posouv谩n铆",
+          "autofit": "Zmen拧en铆 portr茅t暖"
         }
       },
       "portraitAspect": {
-        "name": "Poměr stran portrétu",
-        "hint": "Poměr stran portrétů. Pokud neodpovídá poměru stran portrétu, bude obrázek oříznut.",
+        "name": "Pom臎r stran portr茅tu",
+        "hint": "Pom臎r stran portr茅t暖. Pokud neodpov铆d谩 pom臎ru stran portr茅tu, bude obr谩zek o艡铆znut.",
         "choices": {
-          "square": "Čtvercový",
-          "portrait": "Portrét",
-          "long": "Podlouhlý"
+          "square": "膶tvercov媒",
+          "portrait": "Portr茅t",
+          "long": "Podlouhl媒"
         }
       },
       "alignment": {
-        "name": "Zarovnání",
-        "hint": "Zarovnání kolotoče na stránce.",
+        "name": "Zarovn谩n铆",
+        "hint": "Zarovn谩n铆 koloto膷e na str谩nce.",
         "choices": {
           "left": "Vlevo",
-          "center": "Na střed",
+          "center": "Na st艡ed",
           "right": "Vpravo"
         }
       },
       "direction": {
-        "name": "Směr",
-        "hint": "Směr pohybu kolotoče.",
+        "name": "Sm臎r",
+        "hint": "Sm臎r pohybu koloto膷e.",
         "choices": {
-          "row": "Horizontální",
-          "column": "Vertikální",
-          "rowDocked": "Vodorovně (ukotvené)",
-          "rowFloat": "Horizontální (plovoucí)",
-          "columnFloat": "Vertikální (plovoucí)"
+          "row": "Horizont谩ln铆",
+          "column": "Vertik谩ln铆",
+          "rowDocked": "Vodorovn臎 (ukotven茅)",
+          "rowFloat": "Horizont谩ln铆 (plovouc铆)",
+          "columnFloat": "Vertik谩ln铆 (plovouc铆)"
         }
       },
       "roundness": {
-        "name": "Zaoblení",
-        "hint": "Zaoblení portrétů a popisků.",
+        "name": "Zaoblen铆",
+        "hint": "Zaoblen铆 portr茅t暖 a popisk暖.",
         "choices": {
-          "sharp": "Ostré",
-          "soft": "Měkké",
-          "round": "Kulaté"
+          "sharp": "Ostr茅",
+          "soft": "M臎kk茅",
+          "round": "Kulat茅"
         }
       },
       "showDispositionColor": {
         "name": "Zobrazovat postoje?",
-        "hint": "Zobrazí v dolním ohraničení portrétu barvu postoje vůči postavě."
+        "hint": "Zobraz铆 v doln铆m ohrani膷en铆 portr茅tu barvu postoje v暖膷i postav臎."
       },
       "hideDefeated": {
-        "name": "Skrývat poražené?",
-        "hint": "Skryje v kolotoči poražené bojovníky. Pro případ, že by s nimi bylo potřeba interagovat, budou stále viditelní ve standardním sledovači boje."
-      },
-      "showInitiativeOnPortrait": {
-        "name": "Zobrazovat iniciativu na portrétu?",
-        "hint": "Zobrazí v levém horním rohu portrétu hodnotu iniciativy. Iniciativu vždy můžeš vidět v popiscích!"
+        "name": "Skr媒vat pora啪en茅?",
+        "hint": "Skryje v koloto膷i pora啪en茅 bojovn铆ky. Pro p艡铆pad, 啪e by s nimi bylo pot艡eba interagovat, budou st谩le viditeln铆 ve standardn铆m sledova膷i boje."
       },
       "portraitImageBorder": {
-        "name": "Ohraničení hráče",
-        "hint": "Speciální ohraničení, které se zobrazí u postav hráčů. Chceš-li deaktivovat, ponech prázdné. Pokud chceš vytvořit vlastní obrázek, doporučuje se pro správné rozměry použít jako referenci výchozí."
+        "name": "Ohrani膷en铆 hr谩膷e",
+        "hint": "Speci谩ln铆 ohrani膷en铆, kter茅 se zobraz铆 u postav hr谩膷暖. Chce拧-li deaktivovat, ponech pr谩zdn茅. Pokud chce拧 vytvo艡it vlastn铆 obr谩zek, doporu膷uje se pro spr谩vn茅 rozm臎ry pou啪铆t jako referenci v媒choz铆."
       },
       "attributeColor": {
         "name": "Barva atributu",
-        "hint": "Barva hlavního sledovaného atributu (textu a lišty) v kolotoči. Lze použít jakoukoli platnou hodnotu CSS barvy (např. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "hint": "Barva hlavn铆ho sledovan茅ho atributu (textu a li拧ty) v koloto膷i. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
       },
       "attributeColor2": {
-        "name": "Barva sekundárního atributu",
-        "hint": "Barva sekundárního sledovaného atributu (textu a lišty) v kolotoči. Lze použít jakoukoli platnou hodnotu CSS barvy (např. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "name": "Barva sekund谩rn铆ho atributu",
+        "hint": "Barva sekund谩rn铆ho sledovan茅ho atributu (textu a li拧ty) v koloto膷i. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
       },
       "attributeColorPortrait": {
-        "name": "Barva atributu portrétu",
-        "hint": "Barva překryvné lišty sledovaného atributu na portrétu. Lze použít jakoukoli platnou hodnotu CSS barvy (např. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "name": "Barva atributu portr茅tu",
+        "hint": "Barva p艡ekryvn茅 li拧ty sledovan茅ho atributu na portr茅tu. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
       },
       "barsPlacement": {
-        "name": "Umístění lišt",
-        "hint": "Umístění lišt sledovaných atributů v kolotoči.",
+        "name": "Um铆st臎n铆 li拧t",
+        "hint": "Um铆st臎n铆 li拧t sledovan媒ch atribut暖 v koloto膷i.",
         "choices": {
           "left": "Vlevo",
           "right": "Vpravo",
-          "twinned": "Zdvojené"
+          "twinned": "Zdvojen茅"
         }
       },
       "attributeVisibility": {
-        "name": "Viditelnost atributů",
-        "hint": "Viditelnost sledovaných atributů v kolotoči.",
+        "name": "Viditelnost atribut暖",
+        "hint": "Viditelnost sledovan媒ch atribut暖 v koloto膷i.",
         "choices": {
           "text": "Pouze text",
-          "bars": "Pouze lišty",
-          "both": "Text a lišty"
+          "bars": "Pouze li拧ty",
+          "both": "Text a li拧ty"
         }
       },
       "playerPlayerPermission": {
-        "name": "Zobrazovat informace o hráčích?",
-        "hint": "Umožní všem hráčům vidět sledované atributy, informace v popiscích a systémové ikony ostatních hráčů."
+        "name": "Zobrazovat informace o hr谩膷铆ch?",
+        "hint": "Umo啪n铆 v拧em hr谩膷暖m vid臎t sledovan茅 atributy, informace v popisc铆ch a syst茅mov茅 ikony ostatn铆ch hr谩膷暖."
       },
       "displayDescriptions": {
-        "name": "Zobrazení popisů",
-        "hint": "Zobrazí popisy aktivních efektů v popiscích.",
+        "name": "Zobrazen铆 popis暖",
+        "hint": "Zobraz铆 popisy aktivn铆ch efekt暖 v popisc铆ch.",
         "choices": {
-          "none": "Žádné",
-          "owner": "Vlastník/pozorovatel",
-          "all": "Všichni"
+          "none": "沤谩dn茅",
+          "owner": "Vlastn铆k/pozorovatel",
+          "all": "V拧ichni"
         }
       },
       "tooltipColor": {
-        "name": "Barva popisků",
-        "hint": "Barevné schéma popisků. Lze použít jakoukoli platnou hodnotu CSS barvy (např. #ff0000, red, rgba(255,0,0,0.5) atd.). Výchozí hodnota: #888888."
+        "name": "Barva popisk暖",
+        "hint": "Barevn茅 sch茅ma popisk暖. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.). V媒choz铆 hodnota: #888888."
       },
       "portraitImage": {
-        "name": "Obrázek portrétu",
-        "hint": "Zda jako portrét použít buď obrázek aktéra, nebo tokenu.",
+        "name": "Obr谩zek portr茅tu",
+        "hint": "Zda jako portr茅t pou啪铆t bu膹 obr谩zek akt茅ra, nebo tokenu.",
         "choices": {
-          "actor": "Aktér",
+          "actor": "Akt茅r",
           "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "Pozadí portrétu",
-        "hint": "Obrázek na pozadí za portrétem, který bude viditelný, pokud je portrét průhledný, nebo nevyplňuje celý prostor."
-      },
-      "showSystemIcons": {
-        "name": "Zobrazení systémových ikon",
-        "hint": "Zobrazí systémové ikony pod sledovaným zdrojem, vpopiscích, nebo obojí. Měj na paměti, že to vyžaduje specifickou implementaci systému a bude fungovat pouze v některých systémech.",
-        "choices": {
-          "none": "Žádné",
-          "tooltip": "Popisek",
-          "resource": "Portrét",
-          "both": "Obojí"
-        }
+        "name": "Pozad铆 portr茅tu",
+        "hint": "Obr谩zek na pozad铆 za portr茅tem, kter媒 bude viditeln媒, pokud je portr茅t pr暖hledn媒, nebo nevypl艌uje cel媒 prostor."
       },
       "hideConflictingUIs": {
-        "name": "Skrytí konfliktních uživatelských rozhraní",
-        "hint": "Automatické skrývání ostatních uživatelských rozhraní umístěných v horní části obrazovky, když je viditelný dok Combat Tracker, aby se zabránilo nepořádku v uživatelském rozhraní."
+        "name": "Skryt铆 konfliktn铆ch u啪ivatelsk媒ch rozhran铆",
+        "hint": "Automatick茅 skr媒v谩n铆 ostatn铆ch u啪ivatelsk媒ch rozhran铆 um铆st臎n媒ch v horn铆 膷谩sti obrazovky, kdy啪 je viditeln媒 dok Combat Tracker, aby se zabr谩nilo nepo艡谩dku v u啪ivatelsk茅m rozhran铆."
       },
       "displayName": {
-        "name": "Zobrazení jména",
-        "hint": "Zda se má zobrazovat jméno bojovníků v popiscích. 'Podle tokenu' zobrazí jméno pouze tehdy, pokud hráč může vidět jméno tokenu.",
+        "name": "Zobrazen铆 jm茅na",
+        "hint": "Zda se m谩 zobrazovat jm茅no bojovn铆k暖 v popisc铆ch. 'Podle tokenu' zobraz铆 jm茅no pouze tehdy, pokud hr谩膷 m暖啪e vid臎t jm茅no tokenu.",
         "choices": {
-          "default": "Vždy",
+          "default": "V啪dy",
           "token": "Podle tokenu",
-          "owner": "Podle vlastnictví"
+          "owner": "Podle vlastnictv铆"
         }
       },
       "hideFirstRound": {
-        "name": "Skrývat nepřátele do prvního tahu?",
-        "hint": "Bude skrývat nepřátele, dokud v boji neprovedou svůj první tah. (Vyžaduje LibWrapper k jejich skrytí i ve standardním sledovači boje.)"
-      },
-      "hideEnemyInitiative": {
-        "name": "Skrývat iniciativu nepřátel?",
-        "hint": "Bude skrývat iniciativu nepřátel v popiscích i na portrétu."
+        "name": "Skr媒vat nep艡谩tele do prvn铆ho tahu?",
+        "hint": "Bude skr媒vat nep艡谩tele, dokud v boji neprovedou sv暖j prvn铆 tah. (Vy啪aduje LibWrapper k jejich skryt铆 i ve standardn铆m sledova膷i boje.)"
       },
       "attributesMenu": {
-        "name": "Atributy v popiscích",
-        "label": "Nastavení atributů",
-        "hint": "Nastavení vlastních atributů zobrazených v popiscích.",
-        "reset": "Obnovit výchozí",
-        "resetWarning": "Opravdu chceš obnovit atributy na jejich výchozí hodnoty?",
+        "name": "Atributy v popisc铆ch",
+        "label": "Nastaven铆 atribut暖",
+        "hint": "Nastaven铆 vlastn铆ch atribut暖 zobrazen媒ch v popisc铆ch.",
+        "reset": "Obnovit v媒choz铆",
+        "resetWarning": "Opravdu chce拧 obnovit atributy na jejich v媒choz铆 hodnoty?",
         "form": {
           "attr": {
             "name": "Atribut",
@@ -220,36 +193,36 @@
           "units": {
             "name": "Jednotky"
           },
-          "save": "Uložit a zavřít",
-          "add": "Přidat atribut",
-          "reset": "Obnovit výchozí",
-          "notes": "Nechat pole atributu prázdné pro jeho odstranění."
+          "save": "Ulo啪it a zav艡铆t",
+          "add": "P艡idat atribut",
+          "reset": "Obnovit v媒choz铆",
+          "notes": "Nechat pole atributu pr谩zdn茅 pro jeho odstran臎n铆."
         }
       },
       "resource": {
-        "name": "Sekundární zdroj",
-        "hint": "Sekundární lišta zdrojů. Tato možnost by měla být nastavena v nastavení boje. Tato volba je zde pro některé systémy a zkušené uživatele k ručním úpravám."
+        "name": "Sekund谩rn铆 zdroj",
+        "hint": "Sekund谩rn铆 li拧ta zdroj暖. Tato mo啪nost by m臎la b媒t nastavena v nastaven铆 boje. Tato volba je zde pro n臎kter茅 syst茅my a zku拧en茅 u啪ivatele k ru膷n铆m 煤prav谩m."
       },
       "portraitResource": {
-        "name": "Zdroj portrétu",
-        "hint": "Lišta zdrojů, která se zobrazí jako překryv na portrétu. Tato možnost by měla být nastavena v nastavení boje. Tato volba je zde pro některé systémy a zkušené uživatele k ručním úpravám."
+        "name": "Zdroj portr茅tu",
+        "hint": "Li拧ta zdroj暖, kter谩 se zobraz铆 jako p艡ekryv na portr茅tu. Tato mo啪nost by m臎la b媒t nastavena v nastaven铆 boje. Tato volba je zde pro n臎kter茅 syst茅my a zku拧en茅 u啪ivatele k ru膷n铆m 煤prav谩m."
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "Předchozí tah"
+        "name": "P艡edchoz铆 tah"
       },
       "combatNext": {
-        "name": "Další tah"
+        "name": "Dal拧铆 tah"
       }
     },
     "add-event": {
-      "title": "Přidat událost",
-      "duration": "Doba trvání události (kola)",
-      "error": "Chyba: Musíš zadat název, obrázek a hodnotu iniciativy události.",
-      "expired": "Událost %n vypršela."
+      "title": "P艡idat ud谩lost",
+      "duration": "Doba trv谩n铆 ud谩losti (kola)",
+      "error": "Chyba: Mus铆拧 zadat n谩zev, obr谩zek a hodnotu iniciativy ud谩losti.",
+      "expired": "Ud谩lost %n vypr拧ela."
     },
     "deleteEffectTitle": "Odstranit efekt",
-    "deleteEffectContent": "Opravdu chceš odstranit efekt "
+    "deleteEffectContent": "Opravdu chce拧 odstranit efekt "
   }
 }

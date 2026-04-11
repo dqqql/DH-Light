@@ -1,5 +1,6 @@
 import { getModulePath, MODULE_ID } from "../main.js";
 import { HandlebarsApplication, mergeClone } from "../lib/utils.js";
+import { logger } from "../lib/logger.js";
 
 export class AddEvent extends HandlebarsApplication {
     constructor(combat) {
@@ -60,6 +61,7 @@ export class AddEvent extends HandlebarsApplication {
 
     _onRender(context, options) {
         super._onRender(context, options);
+        logger.debug("AddEvent render", { combatId: this.combat?.id ?? null, recentEvents: game.settings.get(MODULE_ID, "events").length });
         const html = this.element;
         html.querySelectorAll(".cct-event").forEach((eventButton) => {
             eventButton.addEventListener("click", (e) => {
@@ -68,7 +70,6 @@ export class AddEvent extends HandlebarsApplication {
                 const event = recentEvents[eventIndex];
                 html.querySelector("[name='name']").value = event.name;
                 html.querySelector("[name='img']").value = event.img;
-                html.querySelector("[name='initiative']").value = event.initiative;
                 html.querySelector("[name='duration']").value = event.duration;
                 html.querySelector("[name='hidden']").checked = event.hidden;
             });
@@ -78,25 +79,39 @@ export class AddEvent extends HandlebarsApplication {
     static async #onSubmit(event) {
         const form = this.element;
         const formData = new foundry.applications.ux.FormDataExtended(form).object;
-        if (!formData.name || !formData.img || (!Number.isNumeric(formData.initiative) && !formData.initiative)) return ui.notifications.error(game.i18n.localize("combat-tracker-dock.add-event.error"));
-        this.combat.createEmbeddedDocuments("Combatant", [
-            {
-                name: formData.name,
-                img: formData.img,
-                initiative: formData.initiative,
-                hidden: formData.hidden || false,
-                [`flags.${MODULE_ID}`]: {
-                    event: true,
-                    duration: formData.duration || false,
-                    roundCreated: this.combat.round,
+        if (!formData.name || !formData.img) {
+            logger.warn("AddEvent validation failed", { combatId: this.combat?.id ?? null, formData });
+            return ui.notifications.error(game.i18n.localize("combat-tracker-dock.add-event.error"));
+        }
+        logger.info("AddEvent submit", {
+            combatId: this.combat?.id ?? null,
+            name: formData.name,
+            duration: formData.duration ?? null,
+            hidden: !!formData.hidden,
+        });
+        try {
+            await this.combat.createEmbeddedDocuments("Combatant", [
+                {
+                    name: formData.name,
+                    img: formData.img,
+                    initiative: this.combat.combatant?.initiative ?? 0,
+                    hidden: formData.hidden || false,
+                    [`flags.${MODULE_ID}`]: {
+                        event: true,
+                        duration: formData.duration || false,
+                        roundCreated: this.combat.round,
+                    },
                 },
-            },
-        ]);
-        let recentEvents = game.settings.get(MODULE_ID, "events");
-        const newRecentEvent = { name: formData.name, img: formData.img, initiative: formData.initiative, duration: formData.duration, hidden: formData.hidden };
-        recentEvents = recentEvents.filter((event) => event.name !== newRecentEvent.name && event.img !== newRecentEvent.img);
-        recentEvents.unshift(newRecentEvent);
-        recentEvents = recentEvents.slice(0, 10);
-        await game.settings.set(MODULE_ID, "events", recentEvents);
+            ]);
+            let recentEvents = game.settings.get(MODULE_ID, "events");
+            const newRecentEvent = { name: formData.name, img: formData.img, duration: formData.duration, hidden: formData.hidden };
+            recentEvents = recentEvents.filter((event) => event.name !== newRecentEvent.name && event.img !== newRecentEvent.img);
+            recentEvents.unshift(newRecentEvent);
+            recentEvents = recentEvents.slice(0, 10);
+            await game.settings.set(MODULE_ID, "events", recentEvents);
+        } catch (error) {
+            logger.error("AddEvent submit failed", { combatId: this.combat?.id ?? null, error });
+            ui.notifications.error(game.i18n.localize("combat-tracker-dock.add-event.error"));
+        }
     }
 }

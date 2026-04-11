@@ -1,11 +1,13 @@
 import { MODULE_ID } from "../main.js";
 import { AddEvent } from "./AddEvent.js";
 import { HandlebarsApplication, mergeClone, mergeObject } from "../lib/utils.js";
+import { logger } from "../lib/logger.js";
 import { isDaggerheartCharacter, isDaggerheartSpotlightRequesting, isDaggerheartSystem } from "../systems.js";
 
 export class CombatDock extends HandlebarsApplication {
     constructor(combat) {
         super();
+        logger.info("CombatDock constructor", { combatId: combat?.id ?? game.combat?.id ?? null });
         ui.combatDock?.close();
         ui.combatDock = this;
         this.portraits = [];
@@ -106,6 +108,7 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     setHooks() {
+        logger.debug("CombatDock registering hooks", { combatId: this.combat?.id ?? null });
         this.hooks = [
             {
                 hook: "renderCombatTracker",
@@ -163,6 +166,10 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     setupCombatants() {
+        logger.debug("CombatDock setupCombatants", {
+            combatId: this.combat?.id ?? null,
+            combatantCount: this.sortedCombatants.length,
+        });
         this.portraits = [];
         this.sortedCombatants.forEach((combatant) => this.portraits.push(new CONFIG.combatTrackerDock.CombatantPortrait(combatant)));
         const combatantsContainer = this.element.querySelector("#combatants");
@@ -194,6 +201,13 @@ export class CombatDock extends HandlebarsApplication {
         const turn = this.combat.turn + 1;
         const combatantsCount = this.sortedCombatants.length;
         const afterHalf = turn > Math.floor(combatantsCount / 2) || this.leftAligned ? 1 : 0;
+        logger.debug("CombatDock setupSeparator", {
+            combatId: this.combat?.id ?? null,
+            round: this.combat?.round ?? null,
+            turn,
+            combatantsCount,
+            afterHalf,
+        });
         const separator = document.createElement("div");
         separator.classList.add("separator");
         const line = document.createElement("div");
@@ -207,6 +221,7 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     playIntroAnimation(easing = "cubic-bezier(0.22, 1, 0.36, 1)") {
+        logger.info("CombatDock playIntroAnimation", { combatId: this.combat?.id ?? null, combatants: this.sortedCombatants.length });
         Hooks.callAll("combatDock:playIntroAnimation", this);
 
         const duration = CONFIG.combatTrackerDock.INTRO_ANIMATION_DURATION;
@@ -272,6 +287,14 @@ export class CombatDock extends HandlebarsApplication {
         }
         portraitSize = this.isVertical ? Math.min(verticalSize, Math.floor(maxSpace / combatantCount)) / aspect : Math.min(max, Math.floor(maxSpace / combatantCount));
 
+        logger.debug("CombatDock autosize", {
+            combatId: this.combat?.id ?? null,
+            combatantCount,
+            max,
+            aspect,
+            portraitSize,
+            autoFit: this.autoFit,
+        });
         document.documentElement.style.setProperty("--combatant-portrait-size", portraitSize / (this.isVertical ? 1 : 1.2) + "px");
     }
 
@@ -286,7 +309,8 @@ export class CombatDock extends HandlebarsApplication {
                 updateKeys.some((key) => key.startsWith("system.spotlight"))
             );
 
-        if ("initiative" in updates || spotlightChanged) {
+        if (spotlightChanged) {
+            logger.debug("CombatDock updateCombatant spotlight change", { combatantId: combatant.id });
             this.setupCombatants();
             return;
         }
@@ -299,6 +323,11 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     updateOrder() {
+        logger.debug("CombatDock updateOrder", {
+            combatId: this.combat?.id ?? null,
+            combatantCount: this.sortedCombatants.length,
+            trueCarousel: this.trueCarousel,
+        });
         this.setupSeparator();
         const separator = this.element.querySelector(".separator");
         const isTrueCarousel = this.trueCarousel;
@@ -355,6 +384,7 @@ export class CombatDock extends HandlebarsApplication {
 
     _onRender(context, options) {
         if (this._closed) return this.close();
+        logger.info("CombatDock render", { combatId: this.combat?.id ?? null });
         super._onRender(context, options);
         this.setupCombatants();
         this.appendHtml();
@@ -377,22 +407,16 @@ export class CombatDock extends HandlebarsApplication {
                     case "end-combat":
                         this.combat.endCombat();
                         break;
-                    case "roll-all":
-                        this.combat.rollAll({ event: e });
-                        break;
-                    case "roll-npc":
-                        this.combat.rollNPC({ event: e });
-                        break;
-                    case "reset":
-                        this.combat.resetAll();
-                        break;
                     case "configure":
+                        logger.debug("CombatDock configure clicked");
                         new foundry.applications.apps.CombatTrackerConfig().render(true);
                         break;
                     case "start-combat":
+                        logger.info("CombatDock start-combat clicked");
                         this.combat.startCombat();
                         break;
                     case "add-event":
+                        logger.info("CombatDock add-event clicked");
                         new AddEvent(this.combat).render(true);
                         break;
                 }
@@ -418,12 +442,18 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     _onRenderCombatTracker() {
+        logger.debug("CombatDock renderCombatTracker event");
         this.portraits.forEach((p) => p.renderInner());
         this.updateStartEndButtons();
     }
 
     _onCombatTurn(combat, updates, update) {
         if (!("turn" in updates) && !("round" in updates)) return;
+        logger.debug("CombatDock combat turn update", {
+            combatId: combat.id,
+            updates,
+            direction: update?.direction ?? null,
+        });
         if ("round" in updates) this._onRoundChange();
         if (!this.element) return;
         if (!this.trueCarousel) {
@@ -497,6 +527,7 @@ export class CombatDock extends HandlebarsApplication {
     }
 
     async _onRoundChange() {
+        logger.debug("CombatDock round change", { combatId: this.combat?.id ?? null, round: this.combat?.round ?? null });
         const toDelete = [];
         for (const combatant of this.combat.combatants) {
             const duration = combatant.getFlag(MODULE_ID, "duration");
@@ -507,6 +538,14 @@ export class CombatDock extends HandlebarsApplication {
             const roundsElapsed = currentRound - roundCreated;
             if (roundsElapsed >= duration) {
                 toDelete.push(combatant.id);
+                logger.warn("CombatDock event expired", {
+                    combatId: this.combat?.id ?? null,
+                    combatantId: combatant.id,
+                    name: combatant.name,
+                    duration,
+                    roundCreated,
+                    currentRound,
+                });
                 ChatMessage.create({
                     speaker: { alias: "Combat Tracker Dock" },
                     content: game.i18n.localize("combat-tracker-dock.add-event.expired").replace("%n", `<strong>${combatant.name}</strong>`),
@@ -578,32 +617,40 @@ export class CombatDock extends HandlebarsApplication {
 
     _onDeleteCombat(combat) {
         if (combat === this.combat) {
+            logger.info("CombatDock deleteCombat", { combatId: combat.id });
             this.close();
         }
     }
 
     _onCombatStart(combat) {
-        if (combat === this.combat) this._playAnimation = true;
+        if (combat === this.combat) {
+            logger.info("CombatDock combatStart", { combatId: combat.id });
+            this._playAnimation = true;
+        }
     }
 
     _onHoverToken(token, hover) {
+        logger.debug("CombatDock hoverToken", { tokenId: token?.id ?? null, hover });
         const portrait = this.portraits.find((p) => p.token === token);
         if (!portrait) return;
         portrait.element.classList.toggle("hovered", hover);
     }
 
     refresh() {
+        logger.debug("CombatDock refresh", { combatId: this.combat?.id ?? null });
         this.autosize();
         this.updateCombatants();
         this.appendHtml();
     }
 
     async restart() {
+        logger.info("CombatDock restart", { combatId: this.combat?.id ?? null });
         await this.close();
         await new CombatDock().render({ force: true });
     }
 
     async close(...args) {
+        logger.info("CombatDock close", { combatId: this.combat?.id ?? null });
         this.removeHooks();
         window.removeEventListener("resize", this.autosize.bind(this));
         if (this.element) this.element.remove();

@@ -1,13 +1,14 @@
 import { AttributesConfig } from "./app/AttributesConfig.js";
-import {registerSystemSettings} from "./systems.js";
 import { MODULE_ID } from "./main.js";
+import { logger } from "./lib/logger.js";
 
 export function registerSettings() {
+    logger.debug("registerSettings start");
     game.settings.register(MODULE_ID, "attributes", {
         scope: "world",
         config: false,
         type: Array,
-        default: CONFIG.combatTrackerDock.defaultAttributesConfig()[game.system.id] ?? [],
+        default: CONFIG.combatTrackerDock.defaultAttributesConfig().daggerheart,
         onChange: () => ui.combatDock?.refresh(),
     });
 
@@ -284,16 +285,6 @@ export function registerSettings() {
         onChange: () => ui.combatDock?.refresh(),
     });
 
-    game.settings.register(MODULE_ID, "showInitiativeOnPortrait", {
-        name: "combat-tracker-dock.settings.showInitiativeOnPortrait.name",
-        hint: "combat-tracker-dock.settings.showInitiativeOnPortrait.hint",
-        scope: "world",
-        config: true,
-        type: Boolean,
-        default: true,
-        onChange: () => ui.combatDock?.refresh(),
-    });
-
     game.settings.register(MODULE_ID, "portraitImage", {
         name: "combat-tracker-dock.settings.portraitImage.name",
         hint: "combat-tracker-dock.settings.portraitImage.hint",
@@ -343,16 +334,6 @@ export function registerSettings() {
         onChange: () => ui.combatDock?.refresh(),
     });
 
-    game.settings.register(MODULE_ID, "hideEnemyInitiative", {
-        name: "combat-tracker-dock.settings.hideEnemyInitiative.name",
-        hint: "combat-tracker-dock.settings.hideEnemyInitiative.hint",
-        scope: "world",
-        config: true,
-        type: Boolean,
-        default: false,
-        onChange: () => ui.combatDock?.refresh(),
-    });
-
     game.settings.register(MODULE_ID, "portraitImageBorder", {
         name: "combat-tracker-dock.settings.portraitImageBorder.name",
         hint: "combat-tracker-dock.settings.portraitImageBorder.hint",
@@ -379,22 +360,6 @@ export function registerSettings() {
         },
     });
 
-    game.settings.register(MODULE_ID, "showSystemIcons", {
-        name: "combat-tracker-dock.settings.showSystemIcons.name",
-        hint: "combat-tracker-dock.settings.showSystemIcons.hint",
-        scope: "world",
-        config: true,
-        type: Number,
-        choices: {
-            0: "combat-tracker-dock.settings.showSystemIcons.choices.none",
-            1: "combat-tracker-dock.settings.showSystemIcons.choices.tooltip",
-            2: "combat-tracker-dock.settings.showSystemIcons.choices.resource",
-            3: "combat-tracker-dock.settings.showSystemIcons.choices.both",
-        },
-        default: 1,
-        onChange: () => ui.combatDock?.refresh(),
-    });
-
     game.settings.register(MODULE_ID, "hideConflictingUIs", {
         name: "combat-tracker-dock.settings.hideConflictingUIs.name",
         hint: "combat-tracker-dock.settings.hideConflictingUIs.hint",
@@ -404,8 +369,6 @@ export function registerSettings() {
         default: true,
         onChange: () => setHideConflictingUIs(),
     });
-
-    registerSystemSettings();
 
     setAllSettings();
 
@@ -428,9 +391,11 @@ export function registerSettings() {
         default: game.system.id === "daggerheart" ? (game.system.primaryTokenAttribute ?? "resources.hitPoints") : "",
         onChange: () => ui.combatDock?.refresh(),
     });
+    logger.info("registerSettings complete");
 }
 
 function setAllSettings() {
+    logger.debug("setAllSettings");
     setDirection();
     setOverflowStyle();
     setAlignment();
@@ -446,21 +411,25 @@ function setAllSettings() {
 
 function setFloatingSize() {
     const floatingSize = game.settings.get(MODULE_ID, "floatingSize");
+    logger.debug("setFloatingSize", { floatingSize });
     document.documentElement.style.setProperty("--carousel-floating-size", floatingSize + "%");
 }
 
 function setPortraitSize() {
     const portraitSize = game.settings.get(MODULE_ID, "portraitSize");
+    logger.debug("setPortraitSize", { portraitSize });
     document.documentElement.style.setProperty("--combatant-portrait-size", portraitSize);
 }
 
 function setPortraitAspect() {
     const portraitAspect = game.settings.get(MODULE_ID, "portraitAspect");
+    logger.debug("setPortraitAspect", { portraitAspect });
     document.documentElement.style.setProperty("--combatant-portrait-aspect", portraitAspect);
 }
 
 function setAlignment() {
     const alignment = game.settings.get(MODULE_ID, "alignment");
+    logger.debug("setAlignment", { alignment });
     document.documentElement.style.setProperty("--carousel-alignment", alignment);
     ui.combatDock?.setControlsOrder();
 }
@@ -477,16 +446,23 @@ function setPortraitImageBackground() {
 
 function setHideConflictingUIs() {
     const hideConflictingUIs = game.settings.get(MODULE_ID, "hideConflictingUIs");
+    logger.debug("setHideConflictingUIs", { hideConflictingUIs });
     document.querySelector("#ui-top")?.classList.toggle("ctd-hide-conflicting-uis", hideConflictingUIs);
 }
 
 function setRoundness() {
     const roundness = game.settings.get(MODULE_ID, "roundness");
+    logger.debug("setRoundness", { roundness });
     document.documentElement.style.setProperty("--combatant-portrait-border-radius", roundness);
 }
 
 function setAttributeColor() {
     const attributeColor = game.settings.get(MODULE_ID, "attributeColor") || "#41AA7D";
+    logger.debug("setAttributeColor", {
+        attributeColor,
+        attributeColor2: game.settings.get(MODULE_ID, "attributeColor2") || "#ffcd00",
+        attributeColorPortrait: game.settings.get(MODULE_ID, "attributeColorPortrait") || "#e62121",
+    });
     document.documentElement.style.setProperty("--attribute-bar-primary-color", attributeColor);
 
     const color = Color.from(attributeColor);
@@ -509,6 +485,7 @@ function setAttributeColor() {
 
 function setOverflowStyle() {
     let overflowStyle = game.settings.get(MODULE_ID, "overflowStyle");
+    logger.debug("setOverflowStyle", { overflowStyle, direction: game.settings.get(MODULE_ID, "direction") });
     if (overflowStyle === "autofit") overflowStyle = "hidden";
     if (overflowStyle === "scroll") {
         const direction = game.settings.get(MODULE_ID, "direction");
@@ -520,6 +497,7 @@ function setOverflowStyle() {
 
 function setDirection() {
     let direction = game.settings.get(MODULE_ID, "direction");
+    logger.debug("setDirection", { direction });
     if(!(direction in game.settings.settings.get(`${MODULE_ID}.direction`).choices)) {
         direction = direction.includes("column") ? "columnFloat" : "rowDocked"; 
         game.settings.set(MODULE_ID, "direction", direction);
@@ -537,21 +515,4 @@ function setFlex() {
     if (direction == "columnFloat" && alignment == "center") flexD = "center";
 
     document.documentElement.style.setProperty("--carousel-align-items", flexD);
-}
-
-function l(key) {
-    return game.i18n.localize(key);
-}
-
-export function registerSystemSetting(key, data) {
-    const rootKey = MODULE_ID + ".settings.systems." + game.system.id;
-    game.settings.register(MODULE_ID, game.system.id + "." + key, {
-        ...data,
-        name: game.system.title + " " + l(MODULE_ID + ".settings.integration") + ": " + l(rootKey+"."+key+".name"),
-        hint: l(rootKey+"."+key+".hint"),
-    });
-}
-
-export function getSystemSetting(key) {
-    return game.settings.get(MODULE_ID, game.system.id + "." + key);
 }

@@ -1,8 +1,10 @@
 import { getModulePath, MODULE_ID } from "../main.js";
-import { generateDescription, getDaggerheartActionTokenConfig, getInitiativeDisplay, getSystemIcons, isDaggerheartCharacter, isDaggerheartSystem } from "../systems.js";
+import { generateDescription, getDaggerheartActionTokenConfig, isDaggerheartCharacter, isDaggerheartSystem } from "../systems.js";
+import { logger } from "../lib/logger.js";
 
 export class CombatantPortrait {
     constructor(combatant) {
+        logger.debug("CombatantPortrait constructor", { combatantId: combatant.id, combatId: combatant.combat?.id ?? null });
         this.combatant = combatant;
         this.combat = combatant.combat;
         this.element = document.createElement("div");
@@ -104,6 +106,7 @@ export class CombatantPortrait {
     }
 
     async toggleDaggerheartSpotlight() {
+        logger.info("toggle spotlight", { combatantId: this.combatant.id });
         if (typeof ui.combat?.setCombatantSpotlight === "function") {
             return ui.combat.setCombatantSpotlight(this.combatant.id);
         }
@@ -121,6 +124,7 @@ export class CombatantPortrait {
     }
 
     async requestDaggerheartSpotlight() {
+        logger.info("request spotlight", { combatantId: this.combatant.id });
         const characters = this.combat.combatants.contents.filter((combatant) => isDaggerheartCharacter(combatant));
         const maxRequestIndex = Math.max(0, ...characters.map((combatant) => combatant.system?.spotlight?.requestOrderIndex ?? 0));
         const requesting = !this.daggerheartSpotlight.requesting;
@@ -135,6 +139,7 @@ export class CombatantPortrait {
         const changeIndex = Number(tokenIndex);
         const current = this.combatant.system?.actionTokens ?? 0;
         const newIndex = current > changeIndex ? changeIndex : changeIndex + 1;
+        logger.info("set action token", { combatantId: this.combatant.id, tokenIndex: changeIndex, newIndex });
         await this.combatant.update({ "system.actionTokens": newIndex });
     }
 
@@ -206,8 +211,6 @@ export class CombatantPortrait {
     async _onCombatantMouseDown(event) {
         event.preventDefault();
 
-        if (event.target.dataset.action === "player-pass") return this.combat.nextTurn();
-
         if (!event.target.classList.contains("combatant-wrapper")) return;
 
         if (event.button === 2) return game.user.isGM && this.combatant.sheet.render(true);
@@ -242,6 +245,7 @@ export class CombatantPortrait {
     }
 
     async renderInner() {
+        logger.debug("CombatantPortrait renderInner", { combatantId: this.combatant.id });
         const data = await this.getData();
         this.element.classList.toggle("hidden", !data);
         if (!data) {
@@ -267,16 +271,6 @@ export class CombatantPortrait {
         this.element.classList.toggle("defeated", data.css.includes("defeated"));
         this.element.classList.toggle("requesting", !!data.dhIsRequesting);
         this.element.style.borderBottomColor = this.getBorderColor(this.token?.document);
-        const rollInitiative = this.element.querySelector(".roll-initiative");
-        if (rollInitiative) {
-            rollInitiative.addEventListener("click", async (event) => {
-                event.preventDefault();
-                Hooks.once("renderCombatTracker", () => {
-                    ui.combatDock.updateOrder();
-                });
-                await this.combatant.combat.rollInitiative([this.combatant.id],{event});
-            });
-        }
         this.element.querySelectorAll(".action").forEach((action) => {
             action.addEventListener("click", async (event) => {
                 event.stopPropagation();
@@ -351,11 +345,11 @@ export class CombatantPortrait {
 
         switch (sett) {
             case "left":
-                return {bar1: 0, bar2: 1, init: 2, effects: 3, bar1ML: 0, bar2ML: 0, initBars: 2.5 - r1 - r2};
+                return {bar1: 0, bar2: 1, effects: 2, bar1ML: 0, bar2ML: 0};
             case "right":
-                return {bar1: 2, bar2: 3, init: 0, effects: 1, bar1ML: hasEffects ? 0 : "auto", bar2ML: 0, initBars: 0.5};
+                return {bar1: 2, bar2: 3, effects: 1, bar1ML: hasEffects ? 0 : "auto", bar2ML: 0};
             case "twinned":
-                return {bar1: 0, bar2: 3, init: 1, effects: 2, bar1ML: 0, bar2ML: hasEffects ? 0 : "auto", initBars: 1.5 - r1};
+                return {bar1: 0, bar2: 3, effects: 2, bar1ML: 0, bar2ML: hasEffects ? 0 : "auto"};
         }
     }
 
@@ -368,7 +362,6 @@ export class CombatantPortrait {
 
     async getData() {
         // Format information about each combatant in the encounter
-        let hasDecimals = false;
         const combatant = this.combatant;
         const hideDefeated = game.settings.get(MODULE_ID, "hideDefeated");
         if (hideDefeated && combatant.isDefeated) return null;
@@ -412,11 +405,6 @@ export class CombatantPortrait {
         const resource2 = hasPermission ? this.getResource(game.settings.get(MODULE_ID, "resource")) : null;
         const portraitResourceSetting = game.settings.get(MODULE_ID, "portraitResource");
         const portraitResource = hasPermission && portraitResourceSetting ? this.getResource(portraitResourceSetting) : null;
-        const initiativeData = this.getInitiativeDisplay();
-        initiativeData.isIconImg = initiativeData.icon?.includes(".") ?? false;
-        initiativeData.isRollIconImg = initiativeData.rollIcon?.includes(".") ?? false;
-        const showInitiative = !this.isDaggerheart && game.settings.get(MODULE_ID, "showInitiativeOnPortrait");
-        const hasRolled = !this.isDaggerheart && combatant.initiative !== null && combatant.initiative !== undefined;
         const turn = {
             id: combatant.id,
             name: this.name,
@@ -425,20 +413,13 @@ export class CombatantPortrait {
             owner: combatant.isOwner,
             isGM: game.user.isGM,
             isDaggerheart: this.isDaggerheart,
-            showPass: !this.isDaggerheart && combatant.isOwner && !game.user.isGM,
             defeated: combatant.isDefeated,
             hidden: combatant.hidden,
-            initiative: this.isDaggerheart ? null : combatant.initiative,
-            hasRolled: hasRolled,
             hasResource: resource !== null,
             hasResource2: resource2 !== null,
             hasPortraitResource: portraitResource !== null,
             hasPlayerOwner: combatant.actor?.hasPlayerOwner,
             hasPermission: hasPermission,
-            showInitiative: showInitiative,
-            showInitiativeRoll: !this.isDaggerheart,
-            isInitiativeNaN: this.isDaggerheart || combatant.initiative === null || combatant.initiative === undefined,
-            initiativeData: initiativeData,
             resource: resource,
             resource2: resource2,
             portraitResource: portraitResource,
@@ -466,8 +447,6 @@ export class CombatantPortrait {
             dhEvasion: evasion,
             dhHasEvasion: evasion !== null && evasion !== undefined,
         };
-        if (turn.initiative !== null && !Number.isInteger(turn.initiative)) hasDecimals = true;
-        if (turn.initiativeData.value !== null && !Number.isInteger(turn.initiativeData.value)) hasDecimals = true;
         turn.css = [turn.active ? "active" : "", turn.hidden ? "hidden" : "", turn.defeated ? "defeated" : "", turn.dhIsRequesting ? "requesting" : ""].join(" ").trim();
 
         // Actor and Token status effects
@@ -488,14 +467,6 @@ export class CombatantPortrait {
 
         turn.hasEffects = turn.effects.size > 0;
         turn.barsOrder = this.getBarsOrder(turn.hasEffects, resource, resource2);
-        // Format initiative numeric precision
-        const precision = CONFIG.Combat.initiative.decimals;
-        if (turn.hasRolled && typeof turn.initiative == "number") turn.initiative = turn.initiative.toFixed(hasDecimals ? precision : 0);
-        if (turn.hasRolled && typeof turn.initiativeData.value == "number") turn.initiativeData.value = turn.initiativeData.value.toFixed(hasDecimals ? precision : 0);
-        if (!game.user.isGM && !combatant.actor?.isOwner && game.settings.get(MODULE_ID, "hideEnemyInitiative")) {
-            turn.initiative = "?";
-            turn.initiativeData.value = "?";
-        }
         return turn;
     }
 
@@ -507,35 +478,15 @@ export class CombatantPortrait {
         try {
             description = generateDescription(actor);
         } catch (e) {
-            console.error(e);
+            logger.error("CombatantPortrait description failed", { combatantId: this.combatant.id, error: e });
         }
 
         return description;
     }
 
     getSystemIcons() {
-        try {
-            const sett = game.settings.get(MODULE_ID, "showSystemIcons");
-            const icons = sett > 0 ? getSystemIcons(this.combatant) : [];
-            const hasPermission = this.hasPermission;
-            icons.forEach((icon) => {
-                if (icon.callback) icon.hasCallback = true;
-                icon.visible ??= hasPermission;
-            });
-            this._systemIcons = icons;
-            if (!icons || !icons?.length) return { resource: null, tooltip: null };
-            return {
-                resource: sett >= 2 ? icons : null,
-                tooltip: sett == 1 || sett == 3 ? icons : null,
-            };
-        } catch (e) {
-            console.error(e);
-            return { resource: null, tooltip: null };
-        }
-    }
-
-    getInitiativeDisplay() {
-        return getInitiativeDisplay(this.combatant);
+        this._systemIcons = [];
+        return { resource: null, tooltip: null };
     }
 
     getBorderColor(tokenDocument) {
@@ -558,6 +509,7 @@ export class CombatantPortrait {
     }
 
     destroy() {
+        logger.debug("CombatantPortrait destroy", { combatantId: this.combatant.id });
         this.element?.remove();
     }
 }
