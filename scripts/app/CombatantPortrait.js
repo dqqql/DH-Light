@@ -85,6 +85,10 @@ export class CombatantPortrait {
         return this.isDaggerheart && game.user.isGM;
     }
 
+    get canApproveDaggerheartSpotlight() {
+        return this.canManageDaggerheartSpotlight && this.daggerheartSpotlight.requesting;
+    }
+
     get canRequestDaggerheartSpotlight() {
         return this.isDaggerheart && !game.user.isGM && this.isDaggerheartCharacter && this.combatant.isOwner;
     }
@@ -107,32 +111,81 @@ export class CombatantPortrait {
 
     async toggleDaggerheartSpotlight() {
         logger.info("toggle spotlight", { combatantId: this.combatant.id });
-        if (typeof ui.combat?.setCombatantSpotlight === "function") {
-            return ui.combat.setCombatantSpotlight(this.combatant.id);
+        if (this._spotlightActionLock) {
+            logger.debug("toggle spotlight ignored - busy", { combatantId: this.combatant.id });
+            return;
         }
+        this._spotlightActionLock = true;
+        try {
+            if (typeof ui.combat?.setCombatantSpotlight === "function") {
+                return await ui.combat.setCombatantSpotlight(this.combatant.id);
+            }
 
-        const sortedIds = Array.from(this.combat.combatants.contents).sort(this.combat._sortCombatants).map((combatant) => combatant.id);
-        const turn = sortedIds.indexOf(this.combatant.id);
-        await this.combat.update({
-            turn: this.combat.turn === turn ? null : turn,
-            round: (this.combat.round ?? 0) + 1,
-        });
-        await this.combatant.update({
-            "system.spotlight.requesting": false,
-            "system.spotlight.requestOrderIndex": 0,
-        });
+            const sortedIds = Array.from(this.combat.combatants.contents).sort(this.combat._sortCombatants).map((combatant) => combatant.id);
+            const turn = sortedIds.indexOf(this.combatant.id);
+            await this.combat.update({
+                turn: this.combat.turn === turn ? null : turn,
+                round: (this.combat.round ?? 0) + 1,
+            });
+            await this.combatant.update({
+                "system.spotlight.requesting": false,
+                "system.spotlight.requestOrderIndex": 0,
+            });
+        } finally {
+            this._spotlightActionLock = false;
+        }
+    }
+
+    async approveDaggerheartSpotlight() {
+        logger.info("approve spotlight", { combatantId: this.combatant.id });
+        if (this._spotlightActionLock) {
+            logger.debug("approve spotlight ignored - busy", { combatantId: this.combatant.id });
+            return;
+        }
+        this._spotlightActionLock = true;
+        try {
+            if (typeof ui.combat?.setCombatantSpotlight === "function") {
+                await ui.combat.setCombatantSpotlight(this.combatant.id);
+            } else {
+                const sortedIds = Array.from(this.combat.combatants.contents).sort(this.combat._sortCombatants).map((combatant) => combatant.id);
+                const turn = sortedIds.indexOf(this.combatant.id);
+                await this.combat.update({
+                    turn,
+                    round: (this.combat.round ?? 0) + 1,
+                });
+            }
+
+            await this.combatant.update({
+                "system.spotlight.requesting": false,
+                "system.spotlight.requestOrderIndex": 0,
+            });
+        } finally {
+            this._spotlightActionLock = false;
+        }
     }
 
     async requestDaggerheartSpotlight() {
         logger.info("request spotlight", { combatantId: this.combatant.id });
-        const characters = this.combat.combatants.contents.filter((combatant) => isDaggerheartCharacter(combatant));
-        const maxRequestIndex = Math.max(0, ...characters.map((combatant) => combatant.system?.spotlight?.requestOrderIndex ?? 0));
-        const requesting = !this.daggerheartSpotlight.requesting;
+        if (this._spotlightActionLock) {
+            logger.debug("request spotlight ignored - busy", { combatantId: this.combatant.id });
+            return;
+        }
+        if (this.daggerheartSpotlight.requesting) {
+            logger.debug("request spotlight ignored - already pending", { combatantId: this.combatant.id });
+            return;
+        }
+        this._spotlightActionLock = true;
+        try {
+            const characters = this.combat.combatants.contents.filter((combatant) => isDaggerheartCharacter(combatant));
+            const maxRequestIndex = Math.max(0, ...characters.map((combatant) => combatant.system?.spotlight?.requestOrderIndex ?? 0));
 
-        await this.combatant.update({
-            "system.spotlight.requesting": requesting,
-            "system.spotlight.requestOrderIndex": requesting ? maxRequestIndex + 1 : 0,
-        });
+            await this.combatant.update({
+                "system.spotlight.requesting": true,
+                "system.spotlight.requestOrderIndex": maxRequestIndex + 1,
+            });
+        } finally {
+            this._spotlightActionLock = false;
+        }
     }
 
     async setDaggerheartActionTokens(tokenIndex) {
@@ -171,6 +224,9 @@ export class CombatantPortrait {
                 switch (actionEl.dataset.action) {
                     case "toggle-spotlight":
                         await this.toggleDaggerheartSpotlight();
+                        break;
+                    case "approve-spotlight":
+                        await this.approveDaggerheartSpotlight();
                         break;
                     case "request-spotlight":
                         await this.requestDaggerheartSpotlight();
@@ -434,6 +490,7 @@ export class CombatantPortrait {
             barsOrder: null,
             displayDescriptions: displayDescriptions,
             dhCanToggleSpotlight: this.canManageDaggerheartSpotlight,
+            dhCanApproveSpotlight: this.canApproveDaggerheartSpotlight,
             dhCanRequestSpotlight: this.canRequestDaggerheartSpotlight,
             dhIsRequesting: spotlight.requesting,
             dhRequestOrder: spotlight.requestOrderIndex,

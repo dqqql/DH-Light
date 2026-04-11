@@ -15,7 +15,9 @@
       "actionToken": "调整行动点",
       "toggleHidden": "切换隐藏",
       "toggleDefeated": "切换倒下状态",
-      "ping": "定位棋子"
+      "ping": "定位棋子",
+      "approveSpotlight": "批准聚光灯",
+      "requestSpotlightPending": "等待批准"
     },
     "contextMenu": {
       "setAsCurrent": "设为当前战斗者"

@@ -15,7 +15,9 @@
       "actionToken": "Adjust action token",
       "toggleHidden": "Toggle hidden",
       "toggleDefeated": "Toggle defeated",
-      "ping": "Ping token"
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
       "setAsCurrent": "Set as current combatant"
