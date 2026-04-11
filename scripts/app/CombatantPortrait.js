@@ -1,4 +1,5 @@
 import { getModulePath, MODULE_ID } from "../main.js";
+import { requestGMAction } from "../gm-actions.js";
 import { generateDescription, getDaggerheartActionTokenConfig, isDaggerheartCharacter, isDaggerheartSystem } from "../systems.js";
 import { logger } from "../lib/logger.js";
 
@@ -118,19 +119,17 @@ export class CombatantPortrait {
         this._spotlightActionLock = true;
         try {
             if (typeof ui.combat?.setCombatantSpotlight === "function") {
-                return await ui.combat.setCombatantSpotlight(this.combatant.id);
+                await ui.combat.setCombatantSpotlight(this.combatant.id);
+            } else {
+                const sortedIds = Array.from(this.combat.combatants.contents).sort(this.combat._sortCombatants).map((combatant) => combatant.id);
+                const turn = sortedIds.indexOf(this.combatant.id);
+                await this.combat.update({
+                    turn: this.combat.turn === turn ? null : turn,
+                    round: (this.combat.round ?? 0) + 1,
+                });
             }
 
-            const sortedIds = Array.from(this.combat.combatants.contents).sort(this.combat._sortCombatants).map((combatant) => combatant.id);
-            const turn = sortedIds.indexOf(this.combatant.id);
-            await this.combat.update({
-                turn: this.combat.turn === turn ? null : turn,
-                round: (this.combat.round ?? 0) + 1,
-            });
-            await this.combatant.update({
-                "system.spotlight.requesting": false,
-                "system.spotlight.requestOrderIndex": 0,
-            });
+            await this.clearDaggerheartSpotlightRequest();
         } finally {
             this._spotlightActionLock = false;
         }
@@ -155,10 +154,7 @@ export class CombatantPortrait {
                 });
             }
 
-            await this.combatant.update({
-                "system.spotlight.requesting": false,
-                "system.spotlight.requestOrderIndex": 0,
-            });
+            await this.clearDaggerheartSpotlightRequest();
         } finally {
             this._spotlightActionLock = false;
         }
@@ -170,22 +166,22 @@ export class CombatantPortrait {
             logger.debug("request spotlight ignored - busy", { combatantId: this.combatant.id });
             return;
         }
-        if (this.daggerheartSpotlight.requesting) {
-            logger.debug("request spotlight ignored - already pending", { combatantId: this.combatant.id });
-            return;
-        }
         this._spotlightActionLock = true;
         try {
-            const characters = this.combat.combatants.contents.filter((combatant) => isDaggerheartCharacter(combatant));
-            const maxRequestIndex = Math.max(0, ...characters.map((combatant) => combatant.system?.spotlight?.requestOrderIndex ?? 0));
-
-            await this.combatant.update({
-                "system.spotlight.requesting": true,
-                "system.spotlight.requestOrderIndex": maxRequestIndex + 1,
+            await requestGMAction("toggleSpotlightRequest", {
+                combatId: this.combat.id,
+                combatantId: this.combatant.id,
             });
         } finally {
             this._spotlightActionLock = false;
         }
+    }
+
+    async clearDaggerheartSpotlightRequest() {
+        await requestGMAction("clearSpotlightRequest", {
+            combatId: this.combat.id,
+            combatantId: this.combatant.id,
+        });
     }
 
     async setDaggerheartActionTokens(tokenIndex) {
@@ -193,7 +189,11 @@ export class CombatantPortrait {
         const current = this.combatant.system?.actionTokens ?? 0;
         const newIndex = current > changeIndex ? changeIndex : changeIndex + 1;
         logger.info("set action token", { combatantId: this.combatant.id, tokenIndex: changeIndex, newIndex });
-        await this.combatant.update({ "system.actionTokens": newIndex });
+        await requestGMAction("setActionTokens", {
+            combatId: this.combat.id,
+            combatantId: this.combatant.id,
+            newIndex,
+        });
     }
 
     activateCoreListeners() {

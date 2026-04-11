@@ -9,19 +9,19 @@
     {{#if isDaggerheart}}
     <div class="daggerheart-top-controls">
         {{#if dhCanToggleSpotlight}}
-        {{#if dhCanApproveSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button approve-spotlight" data-action="approve-spotlight" title="{{localize 'combat-tracker-dock.controls.approveSpotlight'}}">
-            <i class="fa-solid fa-circle-check"></i>
-        </button>
-        {{else}}
         <button type="button" class="daggerheart-action daggerheart-button" data-action="toggle-spotlight" title="{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}">
             <i class="fa-solid {{#if active}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
+
+        {{#if dhCanApproveSpotlight}}
+        <button type="button" class="daggerheart-action daggerheart-button approve-spotlight" data-action="approve-spotlight" title="{{localize 'combat-tracker-dock.controls.approveSpotlight'}}">
+            <i class="fa-solid fa-circle-check"></i>
+        </button>
         {{/if}}
 
         {{#if dhCanRequestSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}}" data-action="request-spotlight" title="{{#if dhIsRequesting}}{{localize 'combat-tracker-dock.controls.requestSpotlightPending'}}{{else}}{{localize 'combat-tracker-dock.controls.requestSpotlight'}}{{/if}}" {{#if dhIsRequesting}}disabled{{/if}}>
+        <button type="button" class="daggerheart-action daggerheart-button {{#if dhIsRequesting}}requesting{{/if}}" data-action="request-spotlight" title="{{localize 'combat-tracker-dock.controls.requestSpotlight'}}">
             <i class="fa-solid {{#if dhIsRequesting}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}

@@ -3,6 +3,7 @@ import {registerSettings} from './settings.js';
 import {CombatDock} from './app/CombatDock.js';
 import {CombatantPortrait} from './app/CombatantPortrait.js';
 import {defaultAttributesConfig, generateDescription} from './systems.js';
+import { registerGMActions } from './gm-actions.js';
 import { logger } from './lib/logger.js';
 
 export const MODULE_ID = 'combat-tracker-dock';
@@ -34,6 +35,7 @@ Hooks.once('init', function () {
 
 Hooks.on('ready', () => {
     logger.info("ready start");
+    registerGMActions();
     registerSettings();
     initConfig();
     const currentCombat = getCurrentCombat();
