@@ -102,6 +102,8 @@ async function executeGMAction(action, payload) {
             return toggleSpotlightRequest(payload);
         case "clearSpotlightRequest":
             return clearSpotlightRequest(payload);
+        case "clearSpotlight":
+            return clearSpotlight(payload);
         case "setActionTokens":
             return setActionTokens(payload);
         default:
@@ -145,6 +147,21 @@ async function clearSpotlightRequest({ combatId, combatantId }) {
         "system.spotlight.requesting": false,
         "system.spotlight.requestOrderIndex": 0,
     });
+}
+
+async function clearSpotlight({ combatId, combatantId }) {
+    const combatant = getCombatant({ combatId, combatantId });
+    const combat = combatant.combat;
+    const currentTurn = combat.turns.indexOf(combatant);
+
+    if (combat.turn === currentTurn) {
+        await combat.update({
+            turn: null,
+            round: (combat.round ?? 0) + 1,
+        });
+    }
+
+    return clearSpotlightRequest({ combatId, combatantId });
 }
 
 async function setActionTokens({ combatId, combatantId, newIndex }) {

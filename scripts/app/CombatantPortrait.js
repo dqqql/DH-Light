@@ -94,6 +94,10 @@ export class CombatantPortrait {
         return this.isDaggerheart && !game.user.isGM && this.isDaggerheartCharacter && this.combatant.isOwner;
     }
 
+    get isDaggerheartSpotlightActive() {
+        return this.combat.started && this.combat.turns.indexOf(this.combatant) === this.combat.turn;
+    }
+
     get canAdjustDaggerheartActionTokens() {
         return this.isDaggerheart && this.isDaggerheartCharacter && (game.user.isGM || this.combatant.isOwner);
     }
@@ -168,6 +172,14 @@ export class CombatantPortrait {
         }
         this._spotlightActionLock = true;
         try {
+            if (this.isDaggerheartSpotlightActive) {
+                await requestGMAction("clearSpotlight", {
+                    combatId: this.combat.id,
+                    combatantId: this.combatant.id,
+                });
+                return;
+            }
+
             await requestGMAction("toggleSpotlightRequest", {
                 combatId: this.combat.id,
                 combatantId: this.combatant.id,
