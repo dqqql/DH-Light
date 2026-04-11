@@ -1,5 +1,0 @@
-2026/03/27-07:31:51.135326 7f63e8dfc6c0 Delete type=3 #1
-2026/03/27-07:31:51.136850 7f63a3fff6c0 Level-0 table #5: started
-2026/03/27-07:31:51.138456 7f63a3fff6c0 Level-0 table #5: 116245 bytes OK
-2026/03/27-07:31:51.138786 7f63a3fff6c0 Delete type=0 #3
-2026/03/27-07:31:51.138890 7f63a3fff6c0 Manual compaction at level-0 from '!journal!Cty8pCZZxJDc2E1l' @ 72057594037927935 : 1 .. '!journal.pages!uNs7ne9VCbbu5dcG.xCcdczIt2x2HBihY' @ 0 : 0; will stop at (end)
