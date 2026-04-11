@@ -28,6 +28,19 @@ export function isDaggerheartSpotlightRequesting(combatant) {
     return !!combatant?.system?.spotlight?.requesting;
 }
 
+export function getDaggerheartSpotlightTurnIndex(combat, combatantId) {
+    if (!combat || !combatantId) return -1;
+    return Array.from(combat.combatants.contents)
+        .sort(combat._sortCombatants)
+        .map((combatant) => combatant.id)
+        .indexOf(combatantId);
+}
+
+export function isDaggerheartSpotlightActive(combat, combatantId) {
+    if (!combat || combat.turn == null) return false;
+    return combat.turn === getDaggerheartSpotlightTurnIndex(combat, combatantId);
+}
+
 export function getDaggerheartActionTokenConfig() {
     if (!isDaggerheartSystem()) return { enabled: false, tokens: 0 };
     return game.settings.get(CONFIG.DH.id, CONFIG.DH.SETTINGS.gameSettings.variantRules)?.actionTokens ?? { enabled: false, tokens: 0 };

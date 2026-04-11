@@ -1,4 +1,4 @@
-import { isDaggerheartCharacter } from "./systems.js";
+import { getDaggerheartSpotlightTurnIndex, isDaggerheartCharacter, isDaggerheartSystem } from "./systems.js";
 import { logger } from "./lib/logger.js";
 
 const SOCKET_NAME = "module.combat-tracker-dock";
@@ -152,14 +152,20 @@ async function clearSpotlightRequest({ combatId, combatantId }) {
 async function clearSpotlight({ combatId, combatantId }) {
     const combatant = getCombatant({ combatId, combatantId });
     const combat = combatant.combat;
-    const currentTurn = combat.turns.indexOf(combatant);
+    const currentTurn = getDaggerheartSpotlightTurnIndex(combat, combatantId);
 
-    if (combat.turn === currentTurn) {
-        await combat.update({
-            turn: null,
-            round: (combat.round ?? 0) + 1,
-        });
+    if (combat.turn !== currentTurn) {
+        return clearSpotlightRequest({ combatId, combatantId });
     }
+
+    if (isDaggerheartSystem()) {
+        return setDaggerheartCombatantSpotlight(combat, combatant);
+    }
+
+    await combat.update({
+        turn: null,
+        round: (combat.round ?? 0) + 1,
+    });
 
     return clearSpotlightRequest({ combatId, combatantId });
 }
@@ -167,4 +173,43 @@ async function clearSpotlight({ combatId, combatantId }) {
 async function setActionTokens({ combatId, combatantId, newIndex }) {
     const combatant = getCombatant({ combatId, combatantId });
     return combatant.update({ "system.actionTokens": newIndex });
+}
+
+async function setDaggerheartCombatantSpotlight(combat, combatant) {
+    const update = {
+        system: {
+            "spotlight.requesting": false,
+            "spotlight.requestOrderIndex": 0,
+        },
+    };
+    const toggleTurn = getDaggerheartSpotlightTurnIndex(combat, combatant.id);
+
+    if (toggleTurn === -1) {
+        throw new Error(`Combatant ${combatant.id} could not be resolved in combat ${combat.id}.`);
+    }
+
+    if (combat.turn !== toggleTurn) {
+        const updateCountdowns = game.system?.api?.applications?.ui?.DhCountdowns?.updateCountdowns;
+        if (typeof updateCountdowns === "function") {
+            if (combatant.actor?.type === "character") {
+                await updateCountdowns(
+                    CONFIG.DH.GENERAL.countdownProgressionTypes.spotlight.id,
+                    CONFIG.DH.GENERAL.countdownProgressionTypes.characterSpotlight.id
+                );
+            } else {
+                await updateCountdowns(CONFIG.DH.GENERAL.countdownProgressionTypes.spotlight.id);
+            }
+        }
+
+        const automationSettings = game.settings.get(CONFIG.DH.id, CONFIG.DH.SETTINGS.gameSettings.Automation);
+        if (automationSettings?.actionPoints) {
+            update.system.actionTokens = Math.max((combatant.system?.actionTokens ?? 0) - 1, 0);
+        }
+    }
+
+    await combat.update({
+        turn: combat.turn === toggleTurn ? null : toggleTurn,
+        round: (combat.round ?? 0) + 1,
+    });
+    await combatant.update(update);
 }

@@ -1,6 +1,6 @@
 import { getModulePath, MODULE_ID } from "../main.js";
 import { requestGMAction } from "../gm-actions.js";
-import { generateDescription, getDaggerheartActionTokenConfig, isDaggerheartCharacter, isDaggerheartSystem } from "../systems.js";
+import { generateDescription, getDaggerheartActionTokenConfig, isDaggerheartCharacter, isDaggerheartSpotlightActive, isDaggerheartSystem } from "../systems.js";
 import { logger } from "../lib/logger.js";
 
 export class CombatantPortrait {
@@ -95,7 +95,7 @@ export class CombatantPortrait {
     }
 
     get isDaggerheartSpotlightActive() {
-        return this.combat.started && this.combat.turns.indexOf(this.combatant) === this.combat.turn;
+        return this.combat.started && isDaggerheartSpotlightActive(this.combat, this.combatant.id);
     }
 
     get canAdjustDaggerheartActionTokens() {
@@ -453,7 +453,7 @@ export class CombatantPortrait {
         const combatant = this.combatant;
         const hideDefeated = game.settings.get(MODULE_ID, "hideDefeated");
         if (hideDefeated && combatant.isDefeated) return null;
-        const isActive = this.combat.turns.indexOf(combatant) === this.combat.turn;
+        const isActive = isDaggerheartSpotlightActive(this.combat, combatant.id);
         if (isActive && this.combat.started) this._hasTakenTurn = true;
         const hasPermission = this.hasPermission;
         if (!hasPermission && !this._hasTakenTurn) return null;
@@ -497,7 +497,7 @@ export class CombatantPortrait {
             id: combatant.id,
             name: this.name,
             img: this.img,
-            active: this.combat.turns.indexOf(combatant) === this.combat.turn,
+            active: isActive,
             owner: combatant.isOwner,
             isGM: game.user.isGM,
             isDaggerheart: this.isDaggerheart,
