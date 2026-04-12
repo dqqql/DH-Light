@@ -7,16 +7,16 @@
 .combat-dock .combatant-wrapper .daggerheart-spotlight-control {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem;
   pointer-events: none;
   z-index: 2;
 }
 
 .combat-dock .combatant-wrapper .daggerheart-button.spotlight-primary-button {
-  margin-left: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  transform: translate(-50%, -50%);
   width: calc(var(--combatant-portrait-size) * 0.42);
   height: calc(var(--combatant-portrait-size) * 0.42);
   font-size: calc(var(--combatant-portrait-size) * 0.16);
@@ -32,14 +32,12 @@
 
 .combat-dock.daggerheart-mode .combatant-wrapper .daggerheart-spotlight-control {
   opacity: 0;
-  transform: scale(0.92);
-  transition: opacity 0.18s ease, transform 0.18s ease;
+  transition: opacity 0.18s ease;
 }
 
 .combat-dock.daggerheart-mode .combatant-portrait:hover .daggerheart-spotlight-control,
 .combat-dock.daggerheart-mode .combatant-portrait.hovered .daggerheart-spotlight-control {
   opacity: 1;
-  transform: scale(1);
 }
 
 .combat-dock.daggerheart-mode .combatant-wrapper .daggerheart-button.spotlight-primary-button {
