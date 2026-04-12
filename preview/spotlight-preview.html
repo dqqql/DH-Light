@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>DH-Light Spotlight Preview</title>
+  <link rel="stylesheet" href="./spotlight-preview.css">
+</head>
+<body>
+  <main class="preview-page">
+    <header class="preview-header">
+      <h1>聚光灯按钮预览</h1>
+      <p>这是一个脱离 Foundry 的本地预览页，用来快速确认立绘按钮布局。</p>
+      <p class="hint">直接双击打开 [preview/spotlight-preview.html]，或拖进浏览器即可。</p>
+    </header>
+
+    <section class="preview-grid">
+      <article class="preview-card">
+        <h2>玩家正常态</h2>
+        <div class="combatant-portrait hovered">
+          <div class="combatant-wrapper portrait-one">
+            <div class="daggerheart-spotlight-control">
+              <button type="button" class="daggerheart-button spotlight-primary-button" aria-label="请求聚光灯">
+                <span class="icon">✋</span>
+              </button>
+            </div>
+
+            <div class="bottom-ui-container daggerheart-controls">
+              <div class="combatant-buttons">
+                <span class="mini-icon">◎</span>
+                <span class="mini-icon">◌</span>
+                <span class="mini-icon">◈</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="preview-card">
+        <h2>玩家等待批准</h2>
+        <div class="combatant-portrait hovered requesting">
+          <div class="combatant-wrapper portrait-two">
+            <div class="daggerheart-request-badge">
+              <div class="daggerheart-badge requesting">
+                <span class="icon small">⏳</span>
+                <span>#1</span>
+              </div>
+            </div>
+
+            <div class="daggerheart-spotlight-control">
+              <button type="button" class="daggerheart-button spotlight-primary-button requesting" aria-label="等待批准">
+                <span class="icon">✦</span>
+              </button>
+            </div>
+
+            <div class="bottom-ui-container daggerheart-controls">
+              <div class="combatant-buttons">
+                <span class="mini-icon">◎</span>
+                <span class="mini-icon">◌</span>
+                <span class="mini-icon">◈</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article class="preview-card">
+        <h2>GM 批准态</h2>
+        <div class="combatant-portrait hovered">
+          <div class="combatant-wrapper portrait-three">
+            <div class="daggerheart-request-badge">
+              <div class="daggerheart-badge requesting">
+                <span class="icon small">⏳</span>
+                <span>#1</span>
+              </div>
+            </div>
+
+            <div class="daggerheart-top-controls">
+              <button type="button" class="daggerheart-button approve-spotlight" aria-label="批准聚光灯">
+                <span class="icon">✓</span>
+              </button>
+            </div>
+
+            <div class="daggerheart-spotlight-control">
+              <button type="button" class="daggerheart-button spotlight-primary-button" aria-label="给予聚光灯">
+                <span class="icon">✋</span>
+              </button>
+            </div>
+
+            <div class="bottom-ui-container daggerheart-controls">
+              <div class="combatant-buttons">
+                <span class="mini-icon">◎</span>
+                <span class="mini-icon">◌</span>
+                <span class="mini-icon">◈</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

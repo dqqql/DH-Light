@@ -1,0 +1,247 @@
+:root {
+  --combatant-portrait-size: 168px;
+  --combatant-portrait-aspect: 1.5;
+  --dh-gold: #d9c27a;
+  --dh-gold-soft: #f0e2ae;
+  --dh-blue: #84c4dd;
+  --dh-ink: #121416;
+  --dh-shadow: 0 14px 30px rgba(0, 0, 0, 0.36);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: #f7f1da;
+  background:
+    radial-gradient(circle at top, rgba(103, 136, 113, 0.35), transparent 42%),
+    linear-gradient(180deg, #243126, #101712 70%);
+}
+
+.preview-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 56px;
+}
+
+.preview-header h1 {
+  margin: 0 0 10px;
+  font-size: 28px;
+}
+
+.preview-header p {
+  margin: 6px 0;
+  color: rgba(247, 241, 218, 0.82);
+}
+
+.preview-header .hint {
+  color: var(--dh-gold-soft);
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 28px;
+}
+
+.preview-card {
+  padding: 18px 18px 22px;
+  border: 1px solid rgba(240, 226, 174, 0.18);
+  border-radius: 24px;
+  background: rgba(11, 15, 13, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.22);
+}
+
+.preview-card h2 {
+  margin: 0 0 16px;
+  font-size: 16px;
+  color: #fff6da;
+}
+
+.combatant-portrait {
+  width: var(--combatant-portrait-size);
+  height: calc(var(--combatant-portrait-size) * var(--combatant-portrait-aspect));
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid rgba(217, 194, 122, 0.18);
+  border-radius: 22px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(14, 16, 18, 0.25), rgba(14, 16, 18, 0.7));
+  box-shadow: var(--dh-shadow);
+}
+
+.combatant-portrait::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255, 245, 210, 0.08), transparent 28%, rgba(7, 10, 12, 0.12) 55%, rgba(7, 10, 12, 0.8) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.combatant-portrait.requesting:not(.active) {
+  border-color: rgba(132, 196, 221, 0.72);
+  box-shadow:
+    0 0 0 1px rgba(132, 196, 221, 0.42),
+    0 18px 34px rgba(0, 0, 0, 0.42),
+    0 0 24px rgba(132, 196, 221, 0.16);
+}
+
+.combatant-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  background-position: center top;
+  background-size: cover;
+}
+
+.portrait-one {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(0, 0, 0, 0.18)),
+    linear-gradient(135deg, #d5d8d6, #f6f6f6 38%, #d7cdbf 100%);
+}
+
+.portrait-two {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.18)),
+    linear-gradient(135deg, #bfc7d5, #f3f6fb 40%, #cfdec8 100%);
+}
+
+.portrait-three {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(0, 0, 0, 0.18)),
+    linear-gradient(135deg, #d4c7c0, #fbf7f2 40%, #c9d3bb 100%);
+}
+
+.daggerheart-top-controls {
+  position: absolute;
+  top: 9px;
+  right: 9px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  z-index: 3;
+}
+
+.daggerheart-spotlight-control {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 2;
+}
+
+.daggerheart-request-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 3;
+}
+
+.daggerheart-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, rgba(40, 45, 50, 0.92), rgba(19, 21, 24, 0.95));
+  border: 1px solid rgba(240, 226, 174, 0.24);
+  color: var(--dh-gold-soft);
+  font-size: 14px;
+  line-height: 1.2;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.24);
+}
+
+.daggerheart-badge.requesting {
+  color: #e2f9ff;
+  border-color: rgba(132, 196, 221, 0.5);
+  box-shadow:
+    0 8px 18px rgba(20, 80, 96, 0.24),
+    0 0 0 1px rgba(132, 196, 221, 0.16);
+}
+
+.daggerheart-button {
+  border: 1px solid rgba(246, 230, 179, 0.4);
+  background: linear-gradient(180deg, rgba(34, 39, 44, 0.92), rgba(15, 18, 20, 0.94));
+  color: var(--dh-gold-soft);
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.28);
+}
+
+.spotlight-primary-button {
+  width: calc(var(--combatant-portrait-size) * 0.42);
+  height: calc(var(--combatant-portrait-size) * 0.42);
+  font-size: calc(var(--combatant-portrait-size) * 0.16);
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.34),
+    0 0 0 1px rgba(240, 226, 174, 0.14);
+}
+
+.approve-spotlight {
+  width: calc(var(--combatant-portrait-size) * 0.26);
+  height: calc(var(--combatant-portrait-size) * 0.26);
+  border-color: rgba(132, 221, 154, 0.45);
+  background: linear-gradient(180deg, rgba(30, 43, 33, 0.92), rgba(13, 18, 15, 0.94));
+  color: #dcffdf;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.28),
+    0 0 0 1px rgba(132, 221, 154, 0.14);
+}
+
+.daggerheart-button.requesting {
+  color: #d8f2ff;
+  border-color: rgba(132, 196, 221, 0.55);
+}
+
+.icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.icon.small {
+  font-size: 12px;
+}
+
+.bottom-ui-container {
+  position: absolute;
+  bottom: 10px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  z-index: 2;
+}
+
+.combatant-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.mini-icon {
+  width: 28px;
+  height: 28px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: rgba(11, 14, 16, 0.68);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.22);
+  color: #efe5c1;
+  font-size: 15px;
+}
