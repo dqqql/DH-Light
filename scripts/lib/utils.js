@@ -78,7 +78,7 @@ export class HandlebarsApplication extends foundry.applications.api.HandlebarsAp
     static get DEFAULT_OPTIONS() {
         return {
             tag: "div",
-            id: this.APP_ID,
+            id: `${MODULE_ID}-${this.APP_ID}`,
             window: {
                 title: `${MODULE_ID}.${this.APP_ID}.title`,
                 frame: true,

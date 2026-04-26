@@ -1,4 +1,4 @@
-<div class="combat-dock-tooltip-wrapper">
+<div class="dh-combat-dock-tooltip-wrapper">
     <div class="portrait-header">
         <h2>{{name}}</h2>
     </div>
@@ -10,45 +10,45 @@
     {{#if isDaggerheart}}
     <div class="daggerheart-tooltip-summary">
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.spotlight"}}</span>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.spotlight"}}</span>
             <strong>
                 {{#if active}}
-                {{localize "combat-tracker-dock.tooltip.daggerheart.stateActive"}}
+                {{localize "dh-combat-tracker-dock.tooltip.daggerheart.stateActive"}}
                 {{else if dhIsRequesting}}
-                {{localize "combat-tracker-dock.tooltip.daggerheart.stateRequest" order=dhRequestOrder}}
+                {{localize "dh-combat-tracker-dock.tooltip.daggerheart.stateRequest" order=dhRequestOrder}}
                 {{else}}
-                {{localize "combat-tracker-dock.tooltip.daggerheart.stateIdle"}}
+                {{localize "dh-combat-tracker-dock.tooltip.daggerheart.stateIdle"}}
                 {{/if}}
             </strong>
         </div>
         {{#if defeated}}
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.status"}}</span>
-            <strong>{{localize "combat-tracker-dock.tooltip.daggerheart.defeated"}}</strong>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.status"}}</span>
+            <strong>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.defeated"}}</strong>
         </div>
         {{/if}}
         {{#if hasPermission}}
         {{#if dhShowTooltipActionTokens}}
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.actionTokens"}}</span>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.actionTokens"}}</span>
             <strong>{{dhActionTokensCurrent}}/{{dhActionTokensMax}}</strong>
         </div>
         {{/if}}
         {{#if dhHasPrimaryResource}}
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.hitPoints"}}</span>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.hitPoints"}}</span>
             <strong>{{resource.value}}{{#if resource.max}}/{{resource.max}}{{/if}}</strong>
         </div>
         {{/if}}
         {{#if dhHasSecondaryResource}}
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.stress"}}</span>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.stress"}}</span>
             <strong>{{resource2.value}}{{#if resource2.max}}/{{resource2.max}}{{/if}}</strong>
         </div>
         {{/if}}
         {{#if dhHasEvasion}}
         <div class="daggerheart-tooltip-row">
-            <span>{{localize "combat-tracker-dock.tooltip.daggerheart.evasion"}}</span>
+            <span>{{localize "dh-combat-tracker-dock.tooltip.daggerheart.evasion"}}</span>
             <strong>{{dhEvasion}}</strong>
         </div>
         {{/if}}
@@ -70,7 +70,7 @@
     <ul {{#unless hasEffects}}style="display:none;" {{/unless}}>
         {{#each effects as |effect|}}
         <li class="effects-list">
-            <div class="percent-border" style="background: conic-gradient(var(--carousel-tooltip-color) {{percent}}%, var(--carousel-tooltip-bg-color) 0);"></div>
+            <div class="percent-border" style="background: conic-gradient(var(--dhctd-carousel-tooltip-color) {{percent}}%, var(--dhctd-carousel-tooltip-bg-color) 0);"></div>
             <img src="{{effect.img}}" alt=""><span>{{{localize effect.label}}}</span>{{#if hasDuration}}{{#if ../hasPermission}}<span class="tooltip-duration"><i class="fa-duotone fa-stopwatch"></i> {{duration}}</span>{{/if}}{{/if}}</li>
         {{#if effect.description}}
         {{#if ../displayDescriptions}}

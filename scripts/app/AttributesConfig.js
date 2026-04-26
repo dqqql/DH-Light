@@ -10,7 +10,7 @@ export class AttributesConfig extends HandlebarsApplication {
     static get DEFAULT_OPTIONS() {
         return mergeClone(super.DEFAULT_OPTIONS, {
             tag: "form",
-            id: "combat-dock-attributes-config",
+            id: "dh-combat-dock-attributes-config",
             window: {
                 title: `${MODULE_ID}.settings.attributesMenu.name`,
                 contentClasses: ["standard-form"],
@@ -47,19 +47,19 @@ export class AttributesConfig extends HandlebarsApplication {
             type: "submit",
             action: "submit",
             icon: "fas fa-save",
-            label: "combat-tracker-dock.settings.attributesMenu.form.save",
+            label: "dh-combat-tracker-dock.settings.attributesMenu.form.save",
         };
         const resetButton = {
             type: "button",
             action: "onReset",
             icon: "fas fa-undo",
-            label: "combat-tracker-dock.settings.attributesMenu.form.reset",
+            label: "dh-combat-tracker-dock.settings.attributesMenu.form.reset",
         };
         const addButton = {
             type: "button",
             action: "onAdd",
             icon: "fas fa-plus",
-            label: "combat-tracker-dock.settings.attributesMenu.form.add",
+            label: "dh-combat-tracker-dock.settings.attributesMenu.form.add",
         };
 
         return {attributes: game.settings.get(MODULE_ID, "attributes"), attributeChoices, buttons: [saveButton, resetButton, addButton]};

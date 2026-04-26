@@ -1,266 +1,266 @@
-{
-  "combat-tracker-dock": {
-    "configureCarousel": "配置战斗板",
+﻿{
+  "dh-combat-tracker-dock": {
+    "configureCarousel": "Configure Carousel",
     "combat-dock": {
-      "title": "战斗追踪板",
-      "close": "关闭"
+      "title": "Combat Tracker Dock",
+      "close": "Close"
     },
     "common": {
-      "yes": "是",
-      "no": "否"
+      "yes": "Yes",
+      "no": "No"
     },
     "controls": {
-      "toggleSpotlight": "切换聚光灯",
-      "requestSpotlight": "请求聚光灯",
-      "actionToken": "调整行动点",
-      "toggleHidden": "切换隐藏",
-      "toggleDefeated": "切换倒下状态",
-      "ping": "定位棋子",
-      "approveSpotlight": "批准聚光灯",
-      "requestSpotlightPending": "等待批准"
+      "toggleSpotlight": "Toggle spotlight",
+      "requestSpotlight": "Request spotlight",
+      "actionToken": "Adjust action token",
+      "toggleHidden": "Toggle hidden",
+      "toggleDefeated": "Toggle defeated",
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
-      "setAsCurrent": "设为当前战斗者"
+      "setAsCurrent": "Set as current combatant"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "头像资源条",
-        "hint": "显示在头像上的覆盖资源条。设为“无”可关闭。"
+        "label": "Portrait Bar",
+        "hint": "Resource bar that will be shown as an overlay on top of the portrait image. Set to 'None' to disable."
       }
     },
     "settings": {
       "floatingSize": {
-        "name": "悬浮窗口大小",
-        "hint": "控制悬浮窗口尺寸，数值越大窗口越大。不影响横向（停靠）模式。"
+        "name": "Floating Size",
+        "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
       },
       "portraitSize": {
-        "name": "卡片大小",
-        "hint": "轮播中头像的最大尺寸。若战斗者过多无法放下，头像会自动缩小。",
+        "name": "Carousel Size",
+        "hint": "The maximum size of portraits in the carousel. Portraits are reduced automatically if too many combatants must fit on screen.",
         "choices": {
-          "30px": "极小",
-          "50px": "较小",
-          "70px": "标准",
-          "90px": "较大",
-          "110px": "超大",
-          "150px": "特大",
-          "180px": "超特大"
+          "30px": "Tiny",
+          "50px": "Small",
+          "70px": "Normal",
+          "90px": "Large",
+          "110px": "X-Large",
+          "150px": "XX-Large",
+          "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
-        "name": "排列样式",
-        "hint": "头像在战斗板中的排列与移动方式：轮播 - 居中：当前战斗者位于中央，其余成员围绕旋转。\n- 轮播 - 左侧：当前战斗者位于左侧，其余成员围绕旋转。\n- 无轮播：战斗者始终按顺序显示，仅当前战斗者移动。",
+        "name": "Carousel Style",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
-          "centerCarousel": "轮播 - 居中",
-          "leftCarousel": "轮播 - 左侧",
-          "basic": "无轮播"
+          "centerCarousel": "Carousel - Centered",
+          "leftCarousel": "Carousel - Left",
+          "basic": "No Carousel"
         }
       },
       "overflowStyle": {
-        "name": "溢出方式",
-        "hint": "当战斗者过多无法全部显示时，战斗板的处理方式。",
+        "name": "Overflow Style",
+        "hint": "How the carousel behaves when too many combatants must fit on screen.",
         "choices": {
-          "hidden": "隐藏超出部分",
-          "scroll": "滚动",
-          "autofit": "自动缩小卡片"
+          "hidden": "Hidden",
+          "scroll": "Scroll",
+          "autofit": "Shrink Portraits"
         }
       },
       "portraitAspect": {
-        "name": "头像纵横比",
-        "hint": "头像的宽高比例。若图片比例不一致，会进行裁切。",
+        "name": "Portrait Aspect Ratio",
+        "hint": "The portrait aspect ratio. Images are cropped if they do not match the selected ratio.",
         "choices": {
-          "square": "方形",
-          "portrait": "竖版",
-          "long": "长版"
+          "square": "Square",
+          "portrait": "Portrait",
+          "long": "Long"
         }
       },
       "alignment": {
-        "name": "对齐方式",
-        "hint": "战斗板的对齐方式。",
+        "name": "Alignment",
+        "hint": "The alignment of the carousel.",
         "choices": {
-          "left": "左对齐",
-          "center": "居中",
-          "right": "右对齐"
+          "left": "Left",
+          "center": "Center",
+          "right": "Right"
         }
       },
       "direction": {
-        "name": "显示位置",
-        "hint": "战斗板的显示方向。",
+        "name": "Position",
+        "hint": "The direction of the carousel.",
         "choices": {
-          "row": "横向",
-          "column": "纵向",
-          "rowDocked": "横向（停靠）",
-          "rowFloat": "横向（悬浮）",
-          "columnFloat": "纵向（悬浮）"
+          "row": "Horizontal",
+          "column": "Vertical",
+          "rowDocked": "Horizontal (Docked)",
+          "rowFloat": "Horizontal (Floating)",
+          "columnFloat": "Vertical (Floating)"
         }
       },
       "roundness": {
-        "name": "圆角程度",
-        "hint": "头像与悬浮提示的圆角程度。",
+        "name": "Roundness",
+        "hint": "The roundness of portraits and tooltips.",
         "choices": {
-          "sharp": "直角",
-          "soft": "柔和",
-          "round": "圆角"
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
         }
       },
       "showDispositionColor": {
-        "name": "显示阵营颜色",
-        "hint": "在头像底边显示阵营颜色。"
+        "name": "Show Disposition Color",
+        "hint": "Show disposition color in the bottom border of the portrait."
       },
       "hideDefeated": {
-        "name": "隐藏已倒下单位",
-        "hint": "从战斗板中隐藏已倒下的战斗者。你仍可在原版战斗追踪器中与他们交互。"
+        "name": "Hide Defeated",
+        "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
       "portraitImageBorder": {
-        "name": "玩家边框",
-        "hint": "玩家角色专用边框。留空可关闭。若要自制图片，建议参考默认边框尺寸。"
+        "name": "Player Border",
+        "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
       },
       "attributeColor": {
-        "name": "主属性颜色",
-        "hint": "轮播中主追踪属性文字与资源条的颜色。支持任意合法 CSS 颜色值。"
+        "name": "Attribute Color",
+        "hint": "Color of the main tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColor2": {
-        "name": "次属性颜色",
-        "hint": "轮播中次追踪属性文字与资源条的颜色。支持任意合法 CSS 颜色值。"
+        "name": "Secondary Attribute Color",
+        "hint": "Color of the secondary tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColorPortrait": {
-        "name": "头像资源条颜色",
-        "hint": "头像覆盖资源条的颜色。支持任意合法 CSS 颜色值。"
+        "name": "Portrait Attribute Color",
+        "hint": "Color of the portrait overlay resource bar. Any valid CSS color is supported."
       },
       "barsPlacement": {
-        "name": "资源条位置",
-        "hint": "轮播中追踪资源条的摆放位置。",
+        "name": "Bars Placement",
+        "hint": "Placement of tracked attribute bars in the carousel.",
         "choices": {
-          "left": "左侧",
-          "right": "右侧",
-          "twinned": "两侧分列"
+          "left": "Left",
+          "right": "Right",
+          "twinned": "Twinned"
         }
       },
       "attributeVisibility": {
-        "name": "属性显示方式",
-        "hint": "轮播中追踪属性的显示方式。",
+        "name": "Attribute Visibility",
+        "hint": "How tracked attributes are displayed in the carousel.",
         "choices": {
-          "text": "仅文字",
-          "bars": "仅资源条",
-          "both": "文字和资源条"
+          "text": "Text Only",
+          "bars": "Bars Only",
+          "both": "Text & Bars"
         }
       },
       "playerPlayerPermission": {
-        "name": "始终显示玩家信息",
-        "hint": "允许所有玩家查看其他玩家的追踪属性、悬浮提示信息和系统图标。"
+        "name": "Always Show Player Info",
+        "hint": "Allow all players to see tracked attributes, tooltip information, and system icons for other players."
       },
       "displayDescriptions": {
-        "name": "显示效果描述",
-        "hint": "在悬浮提示中显示激活效果的描述。",
+        "name": "Show Descriptions",
+        "hint": "Show active effect descriptions in the tooltip.",
         "choices": {
-          "none": "不显示",
-          "owner": "拥有者/观察者",
-          "all": "所有人"
+          "none": "None",
+          "owner": "Owner/Observer",
+          "all": "Everyone"
         }
       },
       "portraitImage": {
-        "name": "头像来源",
-        "hint": "头像使用角色图片还是棋子图片。",
+        "name": "Portrait Image",
+        "hint": "Whether to use the Actor image or Token image for the portrait.",
         "choices": {
-          "actor": "角色",
-          "token": "棋子"
+          "actor": "Actor",
+          "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "头像背景",
-        "hint": "当头像透明或未填满区域时，显示在背后的背景图片。"
+        "name": "Portrait Background",
+        "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
       "hideConflictingUIs": {
-        "name": "隐藏冲突界面",
-        "hint": "当战斗板显示时，自动隐藏停靠在屏幕顶部的其他界面，避免拥挤。"
+        "name": "Hide Conflicting UIs",
+        "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
       },
       "displayName": {
-        "name": "名称显示方式",
-        "hint": "是否在悬浮提示中显示战斗者名称。“基于棋子”仅会在玩家能看到棋子名称时显示。",
+        "name": "Display Name",
+        "hint": "Whether to display the combatant name in the tooltip. 'Based on Token' only shows the name if the player can see the token name.",
         "choices": {
-          "default": "始终显示",
-          "token": "基于棋子",
-          "owner": "基于权限"
+          "default": "Always",
+          "token": "Based on Token",
+          "owner": "Based on Ownership"
         }
       },
       "hideFirstRound": {
-        "name": "首轮前隐藏",
-        "hint": "敌人在第一次行动前保持隐藏。（若要同时隐藏原版战斗追踪器中的敌人，需要 LibWrapper。）"
+        "name": "Hide Until First Turn",
+        "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
       },
       "attributesMenu": {
-        "name": "悬浮提示属性",
-        "label": "配置属性",
-        "hint": "配置在悬浮提示中显示的自定义属性。",
-        "reset": "恢复默认",
-        "resetWarning": "确定要将属性恢复为默认值吗？",
+        "name": "Tooltip Attributes",
+        "label": "Configure Attributes",
+        "hint": "Configure custom attributes shown in the tooltip.",
+        "reset": "Reset to Default",
+        "resetWarning": "Are you sure you want to reset attributes to their default values?",
         "form": {
           "attr": {
-            "name": "属性",
-            "choose": "选择属性"
+            "name": "Attribute",
+            "choose": "Choose Attribute"
           },
           "icon": {
-            "name": "图标"
+            "name": "Icon"
           },
           "units": {
-            "name": "单位"
+            "name": "Units"
           },
-          "save": "保存并关闭",
-          "add": "添加属性",
-          "reset": "恢复默认",
-          "notes": "将“属性”字段留空即可移除该项。"
+          "save": "Save & Close",
+          "add": "Add Attribute",
+          "reset": "Reset Defaults",
+          "notes": "Leave the Attribute field blank to remove it."
         }
       },
       "resource": {
-        "name": "次要资源",
-        "hint": "次要资源条。通常应在战斗配置中设置，这里主要供部分系统或高级用户手动调整。"
+        "name": "Secondary Resource",
+        "hint": "The secondary resource bar. You should usually set this in combat configuration. This setting is here for manual adjustments."
       },
       "portraitResource": {
-        "name": "头像资源",
-        "hint": "显示在头像上的覆盖资源条。通常应在战斗配置中设置，这里主要供部分系统或高级用户手动调整。"
+        "name": "Portrait Resource",
+        "hint": "The resource bar shown as an overlay on top of the portrait image. You should usually set this in combat configuration. This setting is here for manual adjustments."
       }
     },
     "tooltip": {
       "daggerheart": {
-        "spotlight": "聚光灯",
-        "stateActive": "当前聚光灯目标",
-        "stateRequest": "请求队列第 {order} 位",
-        "stateIdle": "未请求",
-        "status": "状态",
-        "defeated": "已倒下",
-        "actionTokens": "行动点",
-        "hitPoints": "生命",
-        "stress": "压力",
-        "evasion": "闪避"
+        "spotlight": "Spotlight",
+        "stateActive": "Currently in the spotlight",
+        "stateRequest": "Request queue #{order}",
+        "stateIdle": "Not requesting",
+        "status": "Status",
+        "defeated": "Defeated",
+        "actionTokens": "Action Tokens",
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
       }
     },
     "daggerheart": {
       "stats": {
-        "hitPoints": "生命",
-        "stress": "压力",
-        "evasion": "闪避"
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
       },
       "description": {
-        "level": "等级",
-        "difficulty": "难度",
-        "adversary": "对手",
-        "companion": "伙伴",
-        "environment": "环境"
+        "level": "Level",
+        "difficulty": "Difficulty",
+        "adversary": "Adversary",
+        "companion": "Companion",
+        "environment": "Environment"
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "上一回合"
+        "name": "Previous Turn"
       },
       "combatNext": {
-        "name": "下一回合"
+        "name": "Next Turn"
       }
     },
     "add-event": {
-      "title": "添加事件",
-      "duration": "事件持续时间（回合）",
-      "error": "错误：事件必须填写名称、图片和先攻值。",
-      "expired": "事件 %n 已过期。"
+      "title": "Add Event",
+      "duration": "Event Duration (Rounds)",
+      "error": "Error: You must provide a name and an image for the event.",
+      "expired": "Event %n has expired."
     },
-    "deleteEffectTitle": "删除效果",
-    "deleteEffectContent": "确定要删除该效果："
+    "deleteEffectTitle": "Delete Effect",
+    "deleteEffectContent": "Are you sure you want to delete the effect "
   }
 }

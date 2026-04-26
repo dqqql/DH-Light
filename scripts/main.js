@@ -6,7 +6,7 @@ import {defaultAttributesConfig, generateDescription} from './systems.js';
 import { registerGMActions } from './gm-actions.js';
 import { logger } from './lib/logger.js';
 
-export const MODULE_ID = 'combat-tracker-dock';
+export const MODULE_ID = 'dh-combat-tracker-dock';
 
 export function getModulePath() {
     return game.modules.get(MODULE_ID)?.path ?? `/modules/${MODULE_ID}`;
@@ -20,7 +20,7 @@ Hooks.once('init', function () {
     logger.info("init start", { system: game.system.id, module: MODULE_ID });
     registerWrappers();
     registerHotkeys();
-    CONFIG.combatTrackerDock = {
+    CONFIG.dhCombatTrackerDock = {
         CombatDock,
         CombatantPortrait,
         defaultAttributesConfig,
@@ -29,7 +29,7 @@ Hooks.once('init', function () {
         INTRO_ANIMATION_DELAY: 0.25,
     }
 
-    Hooks.callAll(`${MODULE_ID}-init`, CONFIG.combatTrackerDock);
+    Hooks.callAll(`${MODULE_ID}-init`, CONFIG.dhCombatTrackerDock);
     logger.info("init complete");
 });
 
@@ -39,9 +39,9 @@ Hooks.on('ready', () => {
     registerSettings();
     initConfig();
     const currentCombat = getCurrentCombat();
-    if(currentCombat && !ui.combatDock && game.settings.get("core", "noCanvas")) {
+    if(currentCombat && !ui.dhCombatDock && game.settings.get("core", "noCanvas")) {
         logger.debug("opening dock in noCanvas mode", { combatId: currentCombat.id });
-        new CONFIG.combatTrackerDock.CombatDock(currentCombat).render(true);
+        new CONFIG.dhCombatTrackerDock.CombatDock(currentCombat).render(true);
     }
     logger.info("ready complete", { combatId: currentCombat?.id ?? null });
 });
@@ -49,7 +49,7 @@ Hooks.on('ready', () => {
 Hooks.on('createCombat', (combat) => {
     if (game.combat === combat) {
         logger.info("createCombat matched active combat", { combatId: combat.id });
-        new CONFIG.combatTrackerDock.CombatDock(combat).render(true);
+        new CONFIG.dhCombatTrackerDock.CombatDock(combat).render(true);
     }
 });
 
@@ -57,11 +57,11 @@ Hooks.on('updateCombat', (combat, updates) => {
     logger.debug("updateCombat", { combatId: combat.id, keys: Object.keys(updates ?? {}) });
     if(updates.active || updates.scene === null) {
         logger.debug("re-rendering dock after combat update", { combatId: combat.id });
-        new CONFIG.combatTrackerDock.CombatDock(combat).render(true);
+        new CONFIG.dhCombatTrackerDock.CombatDock(combat).render(true);
     }
-    if(updates.scene && combat.scene !== game.scenes.viewed && ui.combatDock?.combat === combat) {
+    if(updates.scene && combat.scene !== game.scenes.viewed && ui.dhCombatDock?.combat === combat) {
         logger.info("closing dock after scene change", { combatId: combat.id });
-        ui.combatDock.close();
+        ui.dhCombatDock.close();
     }
 });
 
@@ -71,10 +71,10 @@ Hooks.on('canvasReady', () => {
         const currentCombat = getCurrentCombat();
             if(currentCombat) {
                 logger.debug("renderCombatTracker after canvasReady", { combatId: currentCombat.id });
-                new CONFIG.combatTrackerDock.CombatDock(currentCombat).render(true);
+                new CONFIG.dhCombatTrackerDock.CombatDock(currentCombat).render(true);
             } else {
                 logger.debug("renderCombatTracker found no active combat");
-                ui.combatDock?.close();
+                ui.dhCombatDock?.close();
             }
     })
 });
@@ -86,8 +86,8 @@ function registerWrappers() {
     logger.debug("registering libWrapper visibility override");
     libWrapper.register(MODULE_ID, "Combatant.prototype.visible", function (wrapped, ...args) {
         const visible = wrapped(...args);
-        if (!ui.combatDock?.rendered) return visible;
-        const cDVisible = ui.combatDock.portraits.find((p) => p.combatant == this)?.firstTurnHidden;
+        if (!ui.dhCombatDock?.rendered) return visible;
+        const cDVisible = ui.dhCombatDock.portraits.find((p) => p.combatant == this)?.firstTurnHidden;
         return visible && !cDVisible;
     });
 }
@@ -96,7 +96,13 @@ function registerHotkeys() {
     logger.debug("registering hotkeys");
     game.keybindings.register(MODULE_ID, "combatPrev", {
         name: `${MODULE_ID}.hotkeys.combatPrev.name`,
-        editable: [{ key: "KeyN", modifiers: [foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.SHIFT] }],
+        editable: [{
+            key: "KeyN",
+            modifiers: [
+                foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.CONTROL,
+                foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.SHIFT,
+            ],
+        }],
         restricted: false,
         onDown: () => {},
         onUp: () => {
@@ -109,7 +115,13 @@ function registerHotkeys() {
 
     game.keybindings.register(MODULE_ID, "combatNext", {
         name: `${MODULE_ID}.hotkeys.combatNext.name`,
-        editable: [{ key: "KeyM", modifiers: [foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.SHIFT] }],
+        editable: [{
+            key: "KeyM",
+            modifiers: [
+                foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.CONTROL,
+                foundry.helpers.interaction.KeyboardManager.MODIFIER_KEYS.SHIFT,
+            ],
+        }],
         restricted: false,
         onDown: () => {},
         onUp: () => {

@@ -1,7 +1,7 @@
 {
   "title": "DH-Light",
   "description": "A lightweight Daggerheart combat dock focused on spotlight flow, request queue tracking, and action token visibility.",
-  "id": "combat-tracker-dock",
+  "id": "dh-combat-tracker-dock",
   "version": "0.1.0",
   "authors": [
     {

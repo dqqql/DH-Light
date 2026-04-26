@@ -1,7 +1,7 @@
 import { getDaggerheartSpotlightTurnIndex, isDaggerheartCharacter, isDaggerheartSystem } from "./systems.js";
 import { logger } from "./lib/logger.js";
 
-const SOCKET_NAME = "module.combat-tracker-dock";
+const SOCKET_NAME = "module.dh-combat-tracker-dock";
 const REQUEST_TYPE = "request";
 const RESPONSE_TYPE = "response";
 const REQUEST_TIMEOUT_MS = 10000;

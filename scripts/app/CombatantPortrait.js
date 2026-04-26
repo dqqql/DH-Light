@@ -11,7 +11,7 @@ export class CombatantPortrait {
         this.element = document.createElement("div");
         this.element.classList.add("combatant-portrait");
         this.element.setAttribute("data-combatant-id", combatant.id);
-        this.element.setAttribute("data-tooltip-class", "combat-dock-tooltip");
+        this.element.setAttribute("data-tooltip-class", "dh-combat-dock-tooltip");
         this.element.style.backgroundImage = `url("${game.settings.get(MODULE_ID, "portraitImageBackground")}")`;
         this.resolve = null;
         this.ready = new Promise((res) => (this.resolve = res));

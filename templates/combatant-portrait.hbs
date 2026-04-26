@@ -18,7 +18,7 @@
 
     <div class="daggerheart-top-controls">
         {{#if dhCanApproveSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button approve-spotlight" data-action="approve-spotlight" title="{{localize 'combat-tracker-dock.controls.approveSpotlight'}}">
+        <button type="button" class="daggerheart-action daggerheart-button approve-spotlight" data-action="approve-spotlight" title="{{localize 'dh-combat-tracker-dock.controls.approveSpotlight'}}">
             <i class="fa-solid fa-circle-check"></i>
         </button>
         {{/if}}
@@ -26,13 +26,13 @@
 
     <div class="daggerheart-spotlight-control">
         {{#if dhCanToggleSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button spotlight-primary-button" data-action="toggle-spotlight" title="{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}">
+        <button type="button" class="daggerheart-action daggerheart-button spotlight-primary-button" data-action="toggle-spotlight" title="{{localize 'dh-combat-tracker-dock.controls.toggleSpotlight'}}">
             <i class="fa-solid {{#if active}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
 
         {{#if dhCanRequestSpotlight}}
-        <button type="button" class="daggerheart-action daggerheart-button spotlight-primary-button {{#if dhIsRequesting}}requesting{{/if}} {{#if active}}cancel-spotlight{{/if}}" data-action="{{#if active}}clear-own-spotlight{{else}}request-spotlight{{/if}}" title="{{#if active}}{{localize 'combat-tracker-dock.controls.toggleSpotlight'}}{{else}}{{localize 'combat-tracker-dock.controls.requestSpotlight'}}{{/if}}">
+        <button type="button" class="daggerheart-action daggerheart-button spotlight-primary-button {{#if dhIsRequesting}}requesting{{/if}} {{#if active}}cancel-spotlight{{/if}}" data-action="{{#if active}}clear-own-spotlight{{else}}request-spotlight{{/if}}" title="{{#if active}}{{localize 'dh-combat-tracker-dock.controls.toggleSpotlight'}}{{else}}{{localize 'dh-combat-tracker-dock.controls.requestSpotlight'}}{{/if}}">
             <i class="fa-solid {{#if active}}fa-circle-xmark{{else if dhIsRequesting}}fa-hand-sparkles{{else}}fa-hand{{/if}}"></i>
         </button>
         {{/if}}
@@ -56,7 +56,7 @@
         <ul class="effects-container" style="order: {{barsOrder.effects}};{{#unless hasEffects}}display:none;{{/unless}}" >
         {{#each effects as |effect|}}
         <li class="portrait-effect" data-uuid="{{effect.uuid}}" style="background-image: url('{{effect.img}}');">
-            <div class="percent-border" style="background: conic-gradient(var(--carousel-tooltip-color) {{percent}}%, var(--carousel-tooltip-bg-color) 0);"></div>
+            <div class="percent-border" style="background: conic-gradient(var(--dhctd-carousel-tooltip-color) {{percent}}%, var(--dhctd-carousel-tooltip-bg-color) 0);"></div>
         </li>
         {{/each}}
     </ul>
@@ -67,7 +67,7 @@
         {{#if hasDhActionTokens}}
         <div class="daggerheart-action-tokens">
             {{#each dhActionTokens}}
-            <button type="button" class="daggerheart-action action-token {{#if spent}}spent{{/if}}" data-action="set-action-token" data-token-index="{{index}}" title="{{localize 'combat-tracker-dock.controls.actionToken'}}" {{#unless canToggle}}disabled{{/unless}}>
+            <button type="button" class="daggerheart-action action-token {{#if spent}}spent{{/if}}" data-action="set-action-token" data-token-index="{{index}}" title="{{localize 'dh-combat-tracker-dock.controls.actionToken'}}" {{#unless canToggle}}disabled{{/unless}}>
                 <i class="fa-solid fa-bolt-lightning"></i>
             </button>
             {{/each}}
@@ -76,10 +76,10 @@
 
         <div class="combatant-buttons">
             {{#if isGM}}
-            <i class="fas fa-eye-slash action" data-action="toggle-hidden" title="{{localize 'combat-tracker-dock.controls.toggleHidden'}}"></i>
-            <i class="fas fa-skull action" data-action="toggle-defeated" title="{{localize 'combat-tracker-dock.controls.toggleDefeated'}}"></i>
+            <i class="fas fa-eye-slash action" data-action="toggle-hidden" title="{{localize 'dh-combat-tracker-dock.controls.toggleHidden'}}"></i>
+            <i class="fas fa-skull action" data-action="toggle-defeated" title="{{localize 'dh-combat-tracker-dock.controls.toggleDefeated'}}"></i>
             {{/if}}
-            <i class="fas fa-bullseye-arrow action" data-action="ping" title="{{localize 'combat-tracker-dock.controls.ping'}}"></i>
+            <i class="fas fa-bullseye-arrow action" data-action="ping" title="{{localize 'dh-combat-tracker-dock.controls.ping'}}"></i>
         </div>
 
         {{#unless isDaggerheart}}
@@ -100,7 +100,7 @@
         </div>
 
         {{#if resSystemIcons}}
-        <div class="system-icons" style="gap: calc(var(--combatant-portrait-size)*{{systemIconsSizeMulti}});">
+        <div class="system-icons" style="gap: calc(var(--dhctd-combatant-portrait-size)*{{systemIconsSizeMulti}});">
             {{#each resSystemIcons}}
             <i data-index="{{@index}}" data-id="{{id}}" class="system-icon {{icon}} {{#if hasCallback}}{{#if enabled}}callback{{/if}}{{/if}}" style="color: {{color}};{{#unless visible}}display: none;{{/unless}}{{#unless enabled}}filter: grayscale(1);{{/unless}}{{#if fontSize}}font-size: {{fontSize}};{{/if}}"></i>
             {{/each}}

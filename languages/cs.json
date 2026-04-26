@@ -1,228 +1,266 @@
-{
-  "combat-tracker-dock": {
-    "configureCarousel": "Nastaven铆 koloto膷e",
+﻿{
+  "dh-combat-tracker-dock": {
+    "configureCarousel": "Configure Carousel",
     "combat-dock": {
-      "title": "Bojov媒 sledovac铆 dok",
-      "close": "Zav艡铆t"
+      "title": "Combat Tracker Dock",
+      "close": "Close"
+    },
+    "common": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "controls": {
+      "toggleSpotlight": "Toggle spotlight",
+      "requestSpotlight": "Request spotlight",
+      "actionToken": "Adjust action token",
+      "toggleHidden": "Toggle hidden",
+      "toggleDefeated": "Toggle defeated",
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
-      "setAsCurrent": "Nastavit jako aktu谩ln铆ho bojovn铆ka"
+      "setAsCurrent": "Set as current combatant"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "Li拧ta portr茅tu",
-        "hint": "Li拧ta zdroj暖, kter谩 bude zobrazena jako p艡ekryt铆 nad portr茅tem. Chce拧-li ji deaktivovat, nastav na '啪谩dn茅'."
+        "label": "Portrait Bar",
+        "hint": "Resource bar that will be shown as an overlay on top of the portrait image. Set to 'None' to disable."
       }
     },
     "settings": {
       "floatingSize": {
-        "name": "Velikost plovouc铆",
-        "hint": "Velikost plovouc铆ho okna. 膶铆m v臎t拧铆 hodnota, t铆m v臎t拧铆 bude okno. To nem谩 vliv na re啪im Horizont谩ln铆 (ukotven媒)."
+        "name": "Floating Size",
+        "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
       },
       "portraitSize": {
-        "name": "Velikost koloto膷e",
-        "hint": "Maxim谩ln铆 velikost portr茅t暖 v koloto膷i. V拧imni si, 啪e pokud je na obrazovce p艡铆li拧 mnoho bojovn铆k暖, bude velikost portr茅t暖 automaticky zmen拧ena.",
+        "name": "Carousel Size",
+        "hint": "The maximum size of portraits in the carousel. Portraits are reduced automatically if too many combatants must fit on screen.",
         "choices": {
-          "30px": "Drobn谩",
-          "50px": "Mal谩",
-          "70px": "Norm谩ln铆",
-          "90px": "Velk谩",
-          "110px": "Extra velk谩",
-          "150px": "XX-velk谩",
-          "180px": "XXX-velk谩"
+          "30px": "Tiny",
+          "50px": "Small",
+          "70px": "Normal",
+          "90px": "Large",
+          "110px": "X-Large",
+          "150px": "XX-Large",
+          "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
-        "name": "Styl koloto膷e",
-        "hint": "Zp暖sob, jak媒m jsou portr茅ty um铆st臎ny a pohybuj铆 se v koloto膷i:\n- Koloto膷 - na st艡edu: Aktivn铆 bojovn铆k je ve st艡edu koloto膷e, ostatn铆 bojovn铆ci se kolem n臎j ot谩膷ej铆.\n- Koloto膷 - vlevo: Aktivn铆 bojovn铆k je vlevo v koloto膷i, ostatn铆 bojovn铆ci se kolem n臎j ot谩膷ej铆.\n- Bez koloto膷e: Bojovn铆ci jsou v啪dy zobrazeni podle po艡ad铆 iniciativy a aktivn铆 bojovn铆k se pohybuje, zat铆mco ostatn铆 z暖st谩vaj铆 na m铆st臎.",
+        "name": "Carousel Style",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
-          "centerCarousel": "Koloto膷 - na st艡edu",
-          "leftCarousel": "Koloto膷 - vlevo",
-          "basic": "Bez koloto膷e"
+          "centerCarousel": "Carousel - Centered",
+          "leftCarousel": "Carousel - Left",
+          "basic": "No Carousel"
         }
       },
       "overflowStyle": {
-        "name": "P艡epln臎n铆",
-        "hint": "Zp暖sob, jak媒m se koloto膷 chov谩, kdy啪 je na obrazovce p艡铆li拧 mnoho bojovn铆k暖.",
+        "name": "Overflow Style",
+        "hint": "How the carousel behaves when too many combatants must fit on screen.",
         "choices": {
-          "hidden": "Skr媒v谩n铆",
-          "scroll": "Posouv谩n铆",
-          "autofit": "Zmen拧en铆 portr茅t暖"
+          "hidden": "Hidden",
+          "scroll": "Scroll",
+          "autofit": "Shrink Portraits"
         }
       },
       "portraitAspect": {
-        "name": "Pom臎r stran portr茅tu",
-        "hint": "Pom臎r stran portr茅t暖. Pokud neodpov铆d谩 pom臎ru stran portr茅tu, bude obr谩zek o艡铆znut.",
+        "name": "Portrait Aspect Ratio",
+        "hint": "The portrait aspect ratio. Images are cropped if they do not match the selected ratio.",
         "choices": {
-          "square": "膶tvercov媒",
-          "portrait": "Portr茅t",
-          "long": "Podlouhl媒"
+          "square": "Square",
+          "portrait": "Portrait",
+          "long": "Long"
         }
       },
       "alignment": {
-        "name": "Zarovn谩n铆",
-        "hint": "Zarovn谩n铆 koloto膷e na str谩nce.",
+        "name": "Alignment",
+        "hint": "The alignment of the carousel.",
         "choices": {
-          "left": "Vlevo",
-          "center": "Na st艡ed",
-          "right": "Vpravo"
+          "left": "Left",
+          "center": "Center",
+          "right": "Right"
         }
       },
       "direction": {
-        "name": "Sm臎r",
-        "hint": "Sm臎r pohybu koloto膷e.",
+        "name": "Position",
+        "hint": "The direction of the carousel.",
         "choices": {
-          "row": "Horizont谩ln铆",
-          "column": "Vertik谩ln铆",
-          "rowDocked": "Vodorovn臎 (ukotven茅)",
-          "rowFloat": "Horizont谩ln铆 (plovouc铆)",
-          "columnFloat": "Vertik谩ln铆 (plovouc铆)"
+          "row": "Horizontal",
+          "column": "Vertical",
+          "rowDocked": "Horizontal (Docked)",
+          "rowFloat": "Horizontal (Floating)",
+          "columnFloat": "Vertical (Floating)"
         }
       },
       "roundness": {
-        "name": "Zaoblen铆",
-        "hint": "Zaoblen铆 portr茅t暖 a popisk暖.",
+        "name": "Roundness",
+        "hint": "The roundness of portraits and tooltips.",
         "choices": {
-          "sharp": "Ostr茅",
-          "soft": "M臎kk茅",
-          "round": "Kulat茅"
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
         }
       },
       "showDispositionColor": {
-        "name": "Zobrazovat postoje?",
-        "hint": "Zobraz铆 v doln铆m ohrani膷en铆 portr茅tu barvu postoje v暖膷i postav臎."
+        "name": "Show Disposition Color",
+        "hint": "Show disposition color in the bottom border of the portrait."
       },
       "hideDefeated": {
-        "name": "Skr媒vat pora啪en茅?",
-        "hint": "Skryje v koloto膷i pora啪en茅 bojovn铆ky. Pro p艡铆pad, 啪e by s nimi bylo pot艡eba interagovat, budou st谩le viditeln铆 ve standardn铆m sledova膷i boje."
+        "name": "Hide Defeated",
+        "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
       "portraitImageBorder": {
-        "name": "Ohrani膷en铆 hr谩膷e",
-        "hint": "Speci谩ln铆 ohrani膷en铆, kter茅 se zobraz铆 u postav hr谩膷暖. Chce拧-li deaktivovat, ponech pr谩zdn茅. Pokud chce拧 vytvo艡it vlastn铆 obr谩zek, doporu膷uje se pro spr谩vn茅 rozm臎ry pou啪铆t jako referenci v媒choz铆."
+        "name": "Player Border",
+        "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
       },
       "attributeColor": {
-        "name": "Barva atributu",
-        "hint": "Barva hlavn铆ho sledovan茅ho atributu (textu a li拧ty) v koloto膷i. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "name": "Attribute Color",
+        "hint": "Color of the main tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColor2": {
-        "name": "Barva sekund谩rn铆ho atributu",
-        "hint": "Barva sekund谩rn铆ho sledovan茅ho atributu (textu a li拧ty) v koloto膷i. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "name": "Secondary Attribute Color",
+        "hint": "Color of the secondary tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColorPortrait": {
-        "name": "Barva atributu portr茅tu",
-        "hint": "Barva p艡ekryvn茅 li拧ty sledovan茅ho atributu na portr茅tu. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.)."
+        "name": "Portrait Attribute Color",
+        "hint": "Color of the portrait overlay resource bar. Any valid CSS color is supported."
       },
       "barsPlacement": {
-        "name": "Um铆st臎n铆 li拧t",
-        "hint": "Um铆st臎n铆 li拧t sledovan媒ch atribut暖 v koloto膷i.",
+        "name": "Bars Placement",
+        "hint": "Placement of tracked attribute bars in the carousel.",
         "choices": {
-          "left": "Vlevo",
-          "right": "Vpravo",
-          "twinned": "Zdvojen茅"
+          "left": "Left",
+          "right": "Right",
+          "twinned": "Twinned"
         }
       },
       "attributeVisibility": {
-        "name": "Viditelnost atribut暖",
-        "hint": "Viditelnost sledovan媒ch atribut暖 v koloto膷i.",
+        "name": "Attribute Visibility",
+        "hint": "How tracked attributes are displayed in the carousel.",
         "choices": {
-          "text": "Pouze text",
-          "bars": "Pouze li拧ty",
-          "both": "Text a li拧ty"
+          "text": "Text Only",
+          "bars": "Bars Only",
+          "both": "Text & Bars"
         }
       },
       "playerPlayerPermission": {
-        "name": "Zobrazovat informace o hr谩膷铆ch?",
-        "hint": "Umo啪n铆 v拧em hr谩膷暖m vid臎t sledovan茅 atributy, informace v popisc铆ch a syst茅mov茅 ikony ostatn铆ch hr谩膷暖."
+        "name": "Always Show Player Info",
+        "hint": "Allow all players to see tracked attributes, tooltip information, and system icons for other players."
       },
       "displayDescriptions": {
-        "name": "Zobrazen铆 popis暖",
-        "hint": "Zobraz铆 popisy aktivn铆ch efekt暖 v popisc铆ch.",
+        "name": "Show Descriptions",
+        "hint": "Show active effect descriptions in the tooltip.",
         "choices": {
-          "none": "沤谩dn茅",
-          "owner": "Vlastn铆k/pozorovatel",
-          "all": "V拧ichni"
+          "none": "None",
+          "owner": "Owner/Observer",
+          "all": "Everyone"
         }
       },
-      "tooltipColor": {
-        "name": "Barva popisk暖",
-        "hint": "Barevn茅 sch茅ma popisk暖. Lze pou啪铆t jakoukoli platnou hodnotu CSS barvy (nap艡. #ff0000, red, rgba(255,0,0,0.5) atd.). V媒choz铆 hodnota: #888888."
-      },
       "portraitImage": {
-        "name": "Obr谩zek portr茅tu",
-        "hint": "Zda jako portr茅t pou啪铆t bu膹 obr谩zek akt茅ra, nebo tokenu.",
+        "name": "Portrait Image",
+        "hint": "Whether to use the Actor image or Token image for the portrait.",
         "choices": {
-          "actor": "Akt茅r",
+          "actor": "Actor",
           "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "Pozad铆 portr茅tu",
-        "hint": "Obr谩zek na pozad铆 za portr茅tem, kter媒 bude viditeln媒, pokud je portr茅t pr暖hledn媒, nebo nevypl艌uje cel媒 prostor."
+        "name": "Portrait Background",
+        "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
       "hideConflictingUIs": {
-        "name": "Skryt铆 konfliktn铆ch u啪ivatelsk媒ch rozhran铆",
-        "hint": "Automatick茅 skr媒v谩n铆 ostatn铆ch u啪ivatelsk媒ch rozhran铆 um铆st臎n媒ch v horn铆 膷谩sti obrazovky, kdy啪 je viditeln媒 dok Combat Tracker, aby se zabr谩nilo nepo艡谩dku v u啪ivatelsk茅m rozhran铆."
+        "name": "Hide Conflicting UIs",
+        "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
       },
       "displayName": {
-        "name": "Zobrazen铆 jm茅na",
-        "hint": "Zda se m谩 zobrazovat jm茅no bojovn铆k暖 v popisc铆ch. 'Podle tokenu' zobraz铆 jm茅no pouze tehdy, pokud hr谩膷 m暖啪e vid臎t jm茅no tokenu.",
+        "name": "Display Name",
+        "hint": "Whether to display the combatant name in the tooltip. 'Based on Token' only shows the name if the player can see the token name.",
         "choices": {
-          "default": "V啪dy",
-          "token": "Podle tokenu",
-          "owner": "Podle vlastnictv铆"
+          "default": "Always",
+          "token": "Based on Token",
+          "owner": "Based on Ownership"
         }
       },
       "hideFirstRound": {
-        "name": "Skr媒vat nep艡谩tele do prvn铆ho tahu?",
-        "hint": "Bude skr媒vat nep艡谩tele, dokud v boji neprovedou sv暖j prvn铆 tah. (Vy啪aduje LibWrapper k jejich skryt铆 i ve standardn铆m sledova膷i boje.)"
+        "name": "Hide Until First Turn",
+        "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
       },
       "attributesMenu": {
-        "name": "Atributy v popisc铆ch",
-        "label": "Nastaven铆 atribut暖",
-        "hint": "Nastaven铆 vlastn铆ch atribut暖 zobrazen媒ch v popisc铆ch.",
-        "reset": "Obnovit v媒choz铆",
-        "resetWarning": "Opravdu chce拧 obnovit atributy na jejich v媒choz铆 hodnoty?",
+        "name": "Tooltip Attributes",
+        "label": "Configure Attributes",
+        "hint": "Configure custom attributes shown in the tooltip.",
+        "reset": "Reset to Default",
+        "resetWarning": "Are you sure you want to reset attributes to their default values?",
         "form": {
           "attr": {
-            "name": "Atribut",
-            "choose": "Vyber atribut"
+            "name": "Attribute",
+            "choose": "Choose Attribute"
           },
           "icon": {
-            "name": "Ikona"
+            "name": "Icon"
           },
           "units": {
-            "name": "Jednotky"
+            "name": "Units"
           },
-          "save": "Ulo啪it a zav艡铆t",
-          "add": "P艡idat atribut",
-          "reset": "Obnovit v媒choz铆",
-          "notes": "Nechat pole atributu pr谩zdn茅 pro jeho odstran臎n铆."
+          "save": "Save & Close",
+          "add": "Add Attribute",
+          "reset": "Reset Defaults",
+          "notes": "Leave the Attribute field blank to remove it."
         }
       },
       "resource": {
-        "name": "Sekund谩rn铆 zdroj",
-        "hint": "Sekund谩rn铆 li拧ta zdroj暖. Tato mo啪nost by m臎la b媒t nastavena v nastaven铆 boje. Tato volba je zde pro n臎kter茅 syst茅my a zku拧en茅 u啪ivatele k ru膷n铆m 煤prav谩m."
+        "name": "Secondary Resource",
+        "hint": "The secondary resource bar. You should usually set this in combat configuration. This setting is here for manual adjustments."
       },
       "portraitResource": {
-        "name": "Zdroj portr茅tu",
-        "hint": "Li拧ta zdroj暖, kter谩 se zobraz铆 jako p艡ekryv na portr茅tu. Tato mo啪nost by m臎la b媒t nastavena v nastaven铆 boje. Tato volba je zde pro n臎kter茅 syst茅my a zku拧en茅 u啪ivatele k ru膷n铆m 煤prav谩m."
+        "name": "Portrait Resource",
+        "hint": "The resource bar shown as an overlay on top of the portrait image. You should usually set this in combat configuration. This setting is here for manual adjustments."
+      }
+    },
+    "tooltip": {
+      "daggerheart": {
+        "spotlight": "Spotlight",
+        "stateActive": "Currently in the spotlight",
+        "stateRequest": "Request queue #{order}",
+        "stateIdle": "Not requesting",
+        "status": "Status",
+        "defeated": "Defeated",
+        "actionTokens": "Action Tokens",
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      }
+    },
+    "daggerheart": {
+      "stats": {
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      },
+      "description": {
+        "level": "Level",
+        "difficulty": "Difficulty",
+        "adversary": "Adversary",
+        "companion": "Companion",
+        "environment": "Environment"
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "P艡edchoz铆 tah"
+        "name": "Previous Turn"
       },
       "combatNext": {
-        "name": "Dal拧铆 tah"
+        "name": "Next Turn"
       }
     },
     "add-event": {
-      "title": "P艡idat ud谩lost",
-      "duration": "Doba trv谩n铆 ud谩losti (kola)",
-      "error": "Chyba: Mus铆拧 zadat n谩zev, obr谩zek a hodnotu iniciativy ud谩losti.",
-      "expired": "Ud谩lost %n vypr拧ela."
+      "title": "Add Event",
+      "duration": "Event Duration (Rounds)",
+      "error": "Error: You must provide a name and an image for the event.",
+      "expired": "Event %n has expired."
     },
-    "deleteEffectTitle": "Odstranit efekt",
-    "deleteEffectContent": "Opravdu chce拧 odstranit efekt "
+    "deleteEffectTitle": "Delete Effect",
+    "deleteEffectContent": "Are you sure you want to delete the effect "
   }
 }

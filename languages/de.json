@@ -1,228 +1,266 @@
-{
-  "combat-tracker-dock": {
-    "configureCarousel": "Karussell konfigurieren",
+﻿{
+  "dh-combat-tracker-dock": {
+    "configureCarousel": "Configure Carousel",
     "combat-dock": {
-      "title": "Kampfverfolgungs-Dock",
-      "close": "Schlie脽en"
+      "title": "Combat Tracker Dock",
+      "close": "Close"
+    },
+    "common": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "controls": {
+      "toggleSpotlight": "Toggle spotlight",
+      "requestSpotlight": "Request spotlight",
+      "actionToken": "Adjust action token",
+      "toggleHidden": "Toggle hidden",
+      "toggleDefeated": "Toggle defeated",
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
-      "setAsCurrent": "Als aktueller K盲mpfer festlegen"
+      "setAsCurrent": "Set as current combatant"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "Portr盲tleiste",
-        "hint": "Ressourcenleiste, die als Overlay 眉ber dem Portr盲tbild angezeigt wird. Zum Deaktivieren auf 鈥濳eine鈥?setzen."
+        "label": "Portrait Bar",
+        "hint": "Resource bar that will be shown as an overlay on top of the portrait image. Set to 'None' to disable."
       }
     },
     "settings": {
       "floatingSize": {
-        "name": "Schwimmende Gr枚脽e",
-        "hint": "Die Gr枚脽e des schwebenden Fensters. Je gr枚脽er der Wert, desto gr枚脽er ist das Fenster. Dies hat keine Auswirkungen auf den horizontalen (gedockten) Modus."
+        "name": "Floating Size",
+        "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
       },
       "portraitSize": {
-        "name": "Portr盲tgr枚脽e",
-        "hint": "Die maximale Gr枚脽e des Portr盲ts im Kampf-Tracker. \nBeachten Sie, dass die Gr枚脽e der Portr盲ts automatisch reduziert wird, wenn zu viele K盲mpfer vorhanden sind, um auf den Bildschirm zu passen.",
+        "name": "Carousel Size",
+        "hint": "The maximum size of portraits in the carousel. Portraits are reduced automatically if too many combatants must fit on screen.",
         "choices": {
-          "30px": "Winzig",
-          "50px": "Klein",
+          "30px": "Tiny",
+          "50px": "Small",
           "70px": "Normal",
-          "90px": "Gro脽",
-          "110px": "Riesig",
-          "150px": "XX-Gro脽",
-          "180px": "XXX-Gro脽"
+          "90px": "Large",
+          "110px": "X-Large",
+          "150px": "XX-Large",
+          "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
-        "name": "Karussell-Stil",
-        "hint": "Die Art und Weise, wie Portr盲ts im Karussell platziert und bewegt werden: Karussell 鈥?zentriert: Der aktive K盲mpfer befindet sich in der Mitte des Karussells, die anderen K盲mpfer drehen sich um ihn herum.\n\n- Karussell 鈥?Links: Der aktive K盲mpfer befindet sich links vom Karussell, die anderen K盲mpfer rotieren um ihn herum.\n\n- Kein Karussell: Die K盲mpfer werden immer in der aktuellen Reihenfolge angezeigt und der aktive K盲mpfer bewegt sich, w盲hrend die K盲mpfer an derselben Position bleiben.",
+        "name": "Carousel Style",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
-          "centerCarousel": "Karussell 鈥?zentriert",
-          "leftCarousel": "Karussell 鈥?Links",
-          "basic": "Kein Karussell"
+          "centerCarousel": "Carousel - Centered",
+          "leftCarousel": "Carousel - Left",
+          "basic": "No Carousel"
         }
       },
       "overflowStyle": {
-        "name": "脺berlaufstil",
-        "hint": "Die Art und Weise, wie sich das Karussell verh盲lt, wenn zu viele K盲mpfer vorhanden sind, um auf den Bildschirm zu passen.",
+        "name": "Overflow Style",
+        "hint": "How the carousel behaves when too many combatants must fit on screen.",
         "choices": {
-          "hidden": "Versteckt",
-          "scroll": "Scrollen",
-          "autofit": "Portr盲ts verkleinern"
+          "hidden": "Hidden",
+          "scroll": "Scroll",
+          "autofit": "Shrink Portraits"
         }
       },
       "portraitAspect": {
-        "name": "Portr盲t-Seitenverh盲ltnis",
-        "hint": "Das Seitenverh盲ltnis des Portr盲ts. \nDas Bild wird zugeschnitten, wenn es nicht dem Seitenverh盲ltnis des Portr盲ts entspricht.",
+        "name": "Portrait Aspect Ratio",
+        "hint": "The portrait aspect ratio. Images are cropped if they do not match the selected ratio.",
         "choices": {
-          "square": "Quadrat",
-          "portrait": "Portr盲t",
-          "long": "Lang"
+          "square": "Square",
+          "portrait": "Portrait",
+          "long": "Long"
         }
       },
       "alignment": {
-        "name": "Ausrichtung",
-        "hint": "Die Ausrichtung des Karussells. \nBeachten Sie, dass das Karussell zentriert sein soll. Sie sollten diese Einstellung nur aus Kompatibilit盲tsgr眉nden mit anderen Modulen verwenden.",
+        "name": "Alignment",
+        "hint": "The alignment of the carousel.",
         "choices": {
-          "left": "Links",
+          "left": "Left",
           "center": "Center",
-          "right": "Rechts"
+          "right": "Right"
         }
       },
       "direction": {
-        "name": "Richtung",
-        "hint": "Die Richtung des Karussells.",
+        "name": "Position",
+        "hint": "The direction of the carousel.",
         "choices": {
           "row": "Horizontal",
-          "column": "Vertikal",
-          "rowDocked": "Horizontal (angedockt)",
-          "rowFloat": "Horizontal (schwimmend)",
-          "columnFloat": "Vertikal (schwimmend)"
+          "column": "Vertical",
+          "rowDocked": "Horizontal (Docked)",
+          "rowFloat": "Horizontal (Floating)",
+          "columnFloat": "Vertical (Floating)"
         }
       },
       "roundness": {
-        "name": "Rundheit",
-        "hint": "Die Rundheit der Portr盲ts und Tooltips.",
+        "name": "Roundness",
+        "hint": "The roundness of portraits and tooltips.",
         "choices": {
-          "sharp": "Scharf",
-          "soft": "Weich",
-          "round": "Runden"
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
         }
       },
       "showDispositionColor": {
-        "name": "Dispositionsfarbe anzeigen",
-        "hint": "Zeigen Sie die Disposition am unteren Rand des Portr盲ts an."
+        "name": "Show Disposition Color",
+        "hint": "Show disposition color in the bottom border of the portrait."
       },
       "hideDefeated": {
-        "name": "Besiegt ausblenden",
-        "hint": "Verstecke besiegte K盲mpfer vor dem Karussell. \nSie werden weiterhin im regul盲ren Kampf-Tracker sichtbar sein, falls Sie mit ihnen interagieren m眉ssen."
+        "name": "Hide Defeated",
+        "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
       "portraitImageBorder": {
-        "name": "Spielergrenze",
-        "hint": "Spezieller Rahmen, der f眉r Spielercharaktere angezeigt wird. \nZum Deaktivieren leer lassen. \nWenn Sie ein benutzerdefiniertes Bild erstellen m枚chten, wird empfohlen, das Standardbild als Referenz f眉r die richtige Gr枚脽e zu verwenden."
+        "name": "Player Border",
+        "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
       },
       "attributeColor": {
-        "name": "Attributfarbe",
-        "hint": "Die Farbe des Hauptattributtextes und der Leiste im Kampf-Tracker. \nSie k枚nnen jeden g眉ltigen CSS-Farbwert verwenden (z. B."
+        "name": "Attribute Color",
+        "hint": "Color of the main tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColor2": {
-        "name": "Sekund盲re Attributfarbe",
-        "hint": "Die Farbe des sekund盲ren verfolgten Attributtexts und der Leiste im Karussell. \nSie k枚nnen jeden g眉ltigen CSS-Farbwert verwenden (z. B."
+        "name": "Secondary Attribute Color",
+        "hint": "Color of the secondary tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColorPortrait": {
-        "name": "Portr盲tattributfarbe",
-        "hint": "Die Farbe der 脺berlagerungsleiste f眉r das Portr盲t des verfolgten Attributs. \nSie k枚nnen jeden g眉ltigen CSS-Farbwert verwenden (z. B."
+        "name": "Portrait Attribute Color",
+        "hint": "Color of the portrait overlay resource bar. Any valid CSS color is supported."
       },
       "barsPlacement": {
-        "name": "Platzierung der St盲be",
-        "hint": "Die Platzierung der verfolgten Attributleisten im Karussell.",
+        "name": "Bars Placement",
+        "hint": "Placement of tracked attribute bars in the carousel.",
         "choices": {
-          "left": "Links",
-          "right": "Rechts",
-          "twinned": "Zwillinge"
+          "left": "Left",
+          "right": "Right",
+          "twinned": "Twinned"
         }
       },
       "attributeVisibility": {
-        "name": "Attributsichtbarkeit",
-        "hint": "Die Sichtbarkeit der verfolgten Attribute im Karussell.",
+        "name": "Attribute Visibility",
+        "hint": "How tracked attributes are displayed in the carousel.",
         "choices": {
-          "text": "Nur Text",
-          "bars": "Nur Bars",
-          "both": "Text"
+          "text": "Text Only",
+          "bars": "Bars Only",
+          "both": "Text & Bars"
         }
       },
       "playerPlayerPermission": {
-        "name": "Spielerinformationen immer anzeigen",
-        "hint": "Erlauben Sie allen Spielern, die verfolgten Attribute, Tooltip-Informationen und Systemsymbole anderer Spieler zu sehen."
+        "name": "Always Show Player Info",
+        "hint": "Allow all players to see tracked attributes, tooltip information, and system icons for other players."
       },
       "displayDescriptions": {
-        "name": "Beschreibungen anzeigen",
-        "hint": "Beschreibungen aktiver Effekte im Tooltip anzeigen.",
+        "name": "Show Descriptions",
+        "hint": "Show active effect descriptions in the tooltip.",
         "choices": {
-          "none": "Keiner",
-          "owner": "Besitzer/Beobachter",
-          "all": "Alle"
+          "none": "None",
+          "owner": "Owner/Observer",
+          "all": "Everyone"
         }
       },
-      "tooltipColor": {
-        "name": "Tooltip-Farbe",
-        "hint": "Das Farbschema des Tooltips. \nSie k枚nnen jeden g眉ltigen CSS-Farbwert verwenden (z. B."
-      },
       "portraitImage": {
-        "name": "Portr盲tbild",
-        "hint": "Ob das Schauspieler- oder Token-Bild als Portr盲t verwendet werden soll.",
+        "name": "Portrait Image",
+        "hint": "Whether to use the Actor image or Token image for the portrait.",
         "choices": {
-          "actor": "Schauspieler",
-          "token": "Zeichen"
+          "actor": "Actor",
+          "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "Portr盲thintergrund",
-        "hint": "Das Hintergrundbild hinter dem Portr盲t, das sichtbar ist, wenn das Portr盲t transparent ist oder den Raum nicht ausf眉llt."
+        "name": "Portrait Background",
+        "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
       "hideConflictingUIs": {
-        "name": "Widerspr眉chliche Benutzeroberfl盲chen ausblenden",
-        "hint": "Automatische Ausblendung anderer UIs, die am oberen Rand des Bildschirms angedockt sind, wenn das Combat Tracker Dock sichtbar ist, um UI-Chaos zu vermeiden."
+        "name": "Hide Conflicting UIs",
+        "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
       },
       "displayName": {
-        "name": "Anzeigename",
-        "hint": "Ob der Name des Kombattanten im Tooltip angezeigt werden soll oder nicht. \n鈥濨asierend auf Token鈥?zeigt den Namen nur an, wenn der Spieler den Namen des Tokens sehen kann.",
+        "name": "Display Name",
+        "hint": "Whether to display the combatant name in the tooltip. 'Based on Token' only shows the name if the player can see the token name.",
         "choices": {
-          "default": "Stets",
-          "token": "Basierend auf Token",
-          "owner": "Basierend auf dem Eigentum"
+          "default": "Always",
+          "token": "Based on Token",
+          "owner": "Based on Ownership"
         }
       },
       "hideFirstRound": {
-        "name": "Bis zur ersten Runde verstecken",
-        "hint": "Verstecke Feinde, bis sie zum ersten Mal im Kampf an der Reihe sind. \n(Erfordert LibWrapper, um sie auch im Kernkampf-Tracker zu verbergen.)"
+        "name": "Hide Until First Turn",
+        "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
       },
       "attributesMenu": {
-        "name": "Tooltip-Attribute",
-        "label": "Attribute konfigurieren",
-        "hint": "Konfigurieren Sie benutzerdefinierte Attribute, die im Tooltip angezeigt werden sollen.",
-        "reset": "Zur眉cksetzen",
-        "resetWarning": "Sind Sie sicher, dass Sie die Attribute auf ihre Standardwerte zur眉cksetzen m枚chten?",
+        "name": "Tooltip Attributes",
+        "label": "Configure Attributes",
+        "hint": "Configure custom attributes shown in the tooltip.",
+        "reset": "Reset to Default",
+        "resetWarning": "Are you sure you want to reset attributes to their default values?",
         "form": {
           "attr": {
-            "name": "Attribut",
-            "choose": "W盲hlen Sie Attribut"
+            "name": "Attribute",
+            "choose": "Choose Attribute"
           },
           "icon": {
-            "name": "Symbol"
+            "name": "Icon"
           },
           "units": {
-            "name": "Einheiten"
+            "name": "Units"
           },
-          "save": "Speichern",
-          "add": "Attribute hinzuf眉gen",
-          "reset": "Standardeinstellungen zur眉ckzusetzen",
-          "notes": "Lassen Sie das Feld 鈥濧ttribut鈥?leer, um es zu entfernen."
+          "save": "Save & Close",
+          "add": "Add Attribute",
+          "reset": "Reset Defaults",
+          "notes": "Leave the Attribute field blank to remove it."
         }
       },
       "resource": {
-        "name": "Sekund盲re Ressource",
-        "hint": "Die sekund盲re Ressourcenleiste. \nSie sollten dies in der Kampfkonfiguration festlegen. \nDiese Option steht einigen Systemen und erfahrenen Benutzern zur manuellen Anpassung zur Verf眉gung."
+        "name": "Secondary Resource",
+        "hint": "The secondary resource bar. You should usually set this in combat configuration. This setting is here for manual adjustments."
       },
       "portraitResource": {
-        "name": "Portr盲tressource",
-        "hint": "Die Ressourcenleiste, die als Overlay 眉ber dem Portr盲tbild angezeigt wird. \nSie sollten dies in der Kampfkonfiguration festlegen. \nDiese Option steht einigen Systemen und erfahrenen Benutzern zur manuellen Anpassung zur Verf眉gung."
+        "name": "Portrait Resource",
+        "hint": "The resource bar shown as an overlay on top of the portrait image. You should usually set this in combat configuration. This setting is here for manual adjustments."
+      }
+    },
+    "tooltip": {
+      "daggerheart": {
+        "spotlight": "Spotlight",
+        "stateActive": "Currently in the spotlight",
+        "stateRequest": "Request queue #{order}",
+        "stateIdle": "Not requesting",
+        "status": "Status",
+        "defeated": "Defeated",
+        "actionTokens": "Action Tokens",
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      }
+    },
+    "daggerheart": {
+      "stats": {
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      },
+      "description": {
+        "level": "Level",
+        "difficulty": "Difficulty",
+        "adversary": "Adversary",
+        "companion": "Companion",
+        "environment": "Environment"
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "Vorheriger Zug"
+        "name": "Previous Turn"
       },
       "combatNext": {
-        "name": "N盲chste Runde"
+        "name": "Next Turn"
       }
     },
     "add-event": {
-      "title": "Ereignis hinzuf眉gen",
-      "duration": "Eventdauer (Runden)",
-      "error": "Fehler: Sie m眉ssen einen Namen, ein Bild und eine Sortierangabe f眉r die Veranstaltung angeben.",
-      "expired": "Ereignis %n ist abgelaufen."
+      "title": "Add Event",
+      "duration": "Event Duration (Rounds)",
+      "error": "Error: You must provide a name and an image for the event.",
+      "expired": "Event %n has expired."
     },
-    "deleteEffectTitle": "Effekt l枚schen",
-    "deleteEffectContent": "Sind Sie sicher, dass Sie den Effekt l枚schen m枚chten?"
+    "deleteEffectTitle": "Delete Effect",
+    "deleteEffectContent": "Are you sure you want to delete the effect "
   }
 }

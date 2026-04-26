@@ -1,5 +1,5 @@
 {
-  "combat-tracker-dock": {
+  "dh-combat-tracker-dock": {
     "configureCarousel": "Konfiguracja karuzeli",
     "combat-dock": {
       "title": "Dock śledzenia walki",
@@ -11,7 +11,7 @@
     "combatConfig": {
       "portraitResource": {
         "label": "Wskaźnik portretu",
-        "hint": "Wskaźnik zasobów, który będzie wyświetlany jako nakładka na obraz portretu, ustaw na „Brak”, aby wyłączyć."
+        "hint": "Wskaźnik zasobów, który będzie wyświetlany jako nakładka na obraz portretu, ustaw na „Brak�? aby wyłączyć."
       }
     },
     "settings": {

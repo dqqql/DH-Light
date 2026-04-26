@@ -1,228 +1,266 @@
-{
-  "combat-tracker-dock": {
-    "configureCarousel": "カルーセルの構成",
+﻿{
+  "dh-combat-tracker-dock": {
+    "configureCarousel": "Configure Carousel",
     "combat-dock": {
-      "title": "戦闘トラッカー・ドック",
-      "close": "閉じる"
+      "title": "Combat Tracker Dock",
+      "close": "Close"
+    },
+    "common": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "controls": {
+      "toggleSpotlight": "Toggle spotlight",
+      "requestSpotlight": "Request spotlight",
+      "actionToken": "Adjust action token",
+      "toggleHidden": "Toggle hidden",
+      "toggleDefeated": "Toggle defeated",
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
-      "setAsCurrent": "現在の戦闘員として設定"
+      "setAsCurrent": "Set as current combatant"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "ポートレートバー",
-        "hint": "ポートレート画像の上にオーバーレイとして表示されるリソース バー。無効にするには「なし」に設定します。"
+        "label": "Portrait Bar",
+        "hint": "Resource bar that will be shown as an overlay on top of the portrait image. Set to 'None' to disable."
       }
     },
     "settings": {
       "floatingSize": {
-        "name": "フローティングサイズ",
-        "hint": "フローティングウィンドウのサイズ。値が大きいほどウィンドウは大きくなります。水平（ドッキング）モードには影響しません。"
+        "name": "Floating Size",
+        "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
       },
       "portraitSize": {
-        "name": "縦長サイズ",
-        "hint": "戦闘トラッカーのポートレートの最大サイズ。\n戦闘員が多すぎて画面に収まらない場合、ポートレートのサイズが自動的に縮小されることに注意してください。",
+        "name": "Carousel Size",
+        "hint": "The maximum size of portraits in the carousel. Portraits are reduced automatically if too many combatants must fit on screen.",
         "choices": {
-          "30px": "小さい",
-          "50px": "小さい",
-          "70px": "普通",
-          "90px": "大きい",
-          "110px": "巨大",
+          "30px": "Tiny",
+          "50px": "Small",
+          "70px": "Normal",
+          "90px": "Large",
+          "110px": "X-Large",
           "150px": "XX-Large",
-          "180px": "XXX-ラージ"
+          "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
-        "name": "カルーセルスタイル",
-        "hint": "カルーセル内で肖像画を配置および移動する方法: カルーセル - 中心: アクティブな戦闘員がカルーセルの中心にあり、他の戦闘員がその周りを回転します。\n\n- カルーセル - 左: アクティブな戦闘員はカルーセルの左側にあり、他の戦闘員はその周りを回転します。\n\n- カルーセルなし: 戦闘員は常にイニシアチブ順に表示され、アクティブな戦闘員は同じ位置に留まりながら動き回ります。",
+        "name": "Carousel Style",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
-          "centerCarousel": "カルーセル - 中央揃え",
-          "leftCarousel": "カルーセル - 左",
-          "basic": "カルーセルなし"
+          "centerCarousel": "Carousel - Centered",
+          "leftCarousel": "Carousel - Left",
+          "basic": "No Carousel"
         }
       },
       "overflowStyle": {
-        "name": "オーバーフロースタイル",
-        "hint": "戦闘員が多すぎて画面に収まらない場合のカルーセルの動作。",
+        "name": "Overflow Style",
+        "hint": "How the carousel behaves when too many combatants must fit on screen.",
         "choices": {
-          "hidden": "隠れた",
-          "scroll": "スクロール",
-          "autofit": "ポートレートを縮小する"
+          "hidden": "Hidden",
+          "scroll": "Scroll",
+          "autofit": "Shrink Portraits"
         }
       },
       "portraitAspect": {
-        "name": "縦横比",
-        "hint": "ポートレートのアスペクト比。\nポートレートのアスペクト比と一致しない場合、画像はトリミングされます。",
+        "name": "Portrait Aspect Ratio",
+        "hint": "The portrait aspect ratio. Images are cropped if they do not match the selected ratio.",
         "choices": {
-          "square": "四角",
-          "portrait": "肖像画",
-          "long": "長さ"
+          "square": "Square",
+          "portrait": "Portrait",
+          "long": "Long"
         }
       },
       "alignment": {
-        "name": "位置合わせ",
-        "hint": "カルーセルの配置。\nカルーセルは中央に配置されることを目的としており、この設定は他のモジュールとの互換性を維持するためにのみ使用する必要があることに注意してください。",
+        "name": "Alignment",
+        "hint": "The alignment of the carousel.",
         "choices": {
-          "left": "左",
-          "center": "中心",
-          "right": "右"
+          "left": "Left",
+          "center": "Center",
+          "right": "Right"
         }
       },
       "direction": {
-        "name": "方向",
-        "hint": "カルーセルの方向。",
+        "name": "Position",
+        "hint": "The direction of the carousel.",
         "choices": {
-          "row": "水平",
-          "column": "垂直",
-          "rowDocked": "水平（ドッキング）",
-          "rowFloat": "水平（フローティング）",
-          "columnFloat": "垂直（フローティング）"
+          "row": "Horizontal",
+          "column": "Vertical",
+          "rowDocked": "Horizontal (Docked)",
+          "rowFloat": "Horizontal (Floating)",
+          "columnFloat": "Vertical (Floating)"
         }
       },
       "roundness": {
-        "name": "真円度",
-        "hint": "ポートレートとツールチップの丸み。",
+        "name": "Roundness",
+        "hint": "The roundness of portraits and tooltips.",
         "choices": {
-          "sharp": "シャープ",
-          "soft": "柔らかい",
-          "round": "ラウンド"
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
         }
       },
       "showDispositionColor": {
-        "name": "配置の色を表示",
-        "hint": "肖像画の下端に気質を示します。"
+        "name": "Show Disposition Color",
+        "hint": "Show disposition color in the bottom border of the portrait."
       },
       "hideDefeated": {
-        "name": "敗北を隠す",
-        "hint": "敗北した戦闘員を回転木馬から隠します。\n彼らと対話する必要がある場合でも、通常の戦闘トラッカーには引き続き表示されます。"
+        "name": "Hide Defeated",
+        "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
       "portraitImageBorder": {
-        "name": "プレイヤーボーダー",
-        "hint": "プレイヤーキャラクターに表示される特別な境界線。\n無効にするには空白のままにします。\nカスタム画像を作成する場合は、正しいサイズを設定するための参照としてデフォルトの画像を使用することをお勧めします。"
+        "name": "Player Border",
+        "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
       },
       "attributeColor": {
-        "name": "属性の色",
-        "hint": "戦闘トラッカーのメインの追跡属性テキストとバーの色。\n任意の有効な CSS カラー値を使用できます (例:"
+        "name": "Attribute Color",
+        "hint": "Color of the main tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColor2": {
-        "name": "二次属性の色",
-        "hint": "カルーセル内の 2 番目の追跡対象属性のテキストとバーの色。\n任意の有効な CSS カラー値を使用できます (例:"
+        "name": "Secondary Attribute Color",
+        "hint": "Color of the secondary tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColorPortrait": {
-        "name": "ポートレート属性の色",
-        "hint": "追跡された属性のポートレート オーバーレイ バーの色。\n任意の有効な CSS カラー値を使用できます (例:"
+        "name": "Portrait Attribute Color",
+        "hint": "Color of the portrait overlay resource bar. Any valid CSS color is supported."
       },
       "barsPlacement": {
-        "name": "バーの配置",
-        "hint": "カルーセル内の追跡された属性バーの配置。",
+        "name": "Bars Placement",
+        "hint": "Placement of tracked attribute bars in the carousel.",
         "choices": {
-          "left": "左",
-          "right": "右",
-          "twinned": "双子"
+          "left": "Left",
+          "right": "Right",
+          "twinned": "Twinned"
         }
       },
       "attributeVisibility": {
-        "name": "属性の可視性",
-        "hint": "カルーセル内の追跡された属性の可視性。",
+        "name": "Attribute Visibility",
+        "hint": "How tracked attributes are displayed in the carousel.",
         "choices": {
-          "text": "テキストのみ",
-          "bars": "バーのみ",
-          "both": "文章"
+          "text": "Text Only",
+          "bars": "Bars Only",
+          "both": "Text & Bars"
         }
       },
       "playerPlayerPermission": {
-        "name": "常にプレイヤー情報を表示",
-        "hint": "すべてのプレイヤーが他のプレイヤーの追跡された属性、ツールチップ情報、システム アイコンを表示できるようにします。"
+        "name": "Always Show Player Info",
+        "hint": "Allow all players to see tracked attributes, tooltip information, and system icons for other players."
       },
       "displayDescriptions": {
-        "name": "説明を表示",
-        "hint": "アクティブなエフェクトの説明をツールチップに表示します。",
+        "name": "Show Descriptions",
+        "hint": "Show active effect descriptions in the tooltip.",
         "choices": {
-          "none": "なし",
-          "owner": "所有者/オブザーバー",
-          "all": "みんな"
+          "none": "None",
+          "owner": "Owner/Observer",
+          "all": "Everyone"
         }
       },
-      "tooltipColor": {
-        "name": "ツールチップの色",
-        "hint": "ツールチップの配色。\n任意の有効な CSS カラー値を使用できます (例:"
-      },
       "portraitImage": {
-        "name": "ポートレート画像",
-        "hint": "アクターまたはトークンの画像をポートレートとして使用するかどうか。",
+        "name": "Portrait Image",
+        "hint": "Whether to use the Actor image or Token image for the portrait.",
         "choices": {
-          "actor": "俳優",
-          "token": "トークン"
+          "actor": "Actor",
+          "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "ポートレートの背景",
-        "hint": "ポートレートが透明な場合、またはスペースを埋めていない場合に表示される、ポートレートの背後にある背景画像。"
+        "name": "Portrait Background",
+        "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
       "hideConflictingUIs": {
-        "name": "競合するUIを隠す",
-        "hint": "Combat Tracker Dockが表示されているときに、画面上部にドッキングされている他のUIを自動的に非表示にし、UIの乱雑さを回避。"
+        "name": "Hide Conflicting UIs",
+        "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
       },
       "displayName": {
-        "name": "表示名",
-        "hint": "ツールチップに戦闘員の名前を表示するかどうか。 \n「トークンに基づく」では、プレイヤーがトークンの名前を確認できる場合にのみ名前が表示されます。",
+        "name": "Display Name",
+        "hint": "Whether to display the combatant name in the tooltip. 'Based on Token' only shows the name if the player can see the token name.",
         "choices": {
-          "default": "いつも",
-          "token": "トークンに基づく",
-          "owner": "所有権に基づく"
+          "default": "Always",
+          "token": "Based on Token",
+          "owner": "Based on Ownership"
         }
       },
       "hideFirstRound": {
-        "name": "最初のターンまで隠れる",
-        "hint": "戦闘で最初のターンが完了するまで敵を隠します。 \n(コア戦闘トラッカーでもそれらを非表示にするには、LibWrapper が必要です。)"
+        "name": "Hide Until First Turn",
+        "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
       },
       "attributesMenu": {
-        "name": "ツールチップの属性",
-        "label": "属性の構成",
-        "hint": "ツールチップに表示されるカスタム属性を構成します。",
-        "reset": "デフォルトにリセット",
-        "resetWarning": "属性をデフォルト値にリセットしてもよろしいですか?",
+        "name": "Tooltip Attributes",
+        "label": "Configure Attributes",
+        "hint": "Configure custom attributes shown in the tooltip.",
+        "reset": "Reset to Default",
+        "resetWarning": "Are you sure you want to reset attributes to their default values?",
         "form": {
           "attr": {
-            "name": "属性",
-            "choose": "属性の選択"
+            "name": "Attribute",
+            "choose": "Choose Attribute"
           },
           "icon": {
-            "name": "アイコン"
+            "name": "Icon"
           },
           "units": {
-            "name": "単位"
+            "name": "Units"
           },
-          "save": "保存",
-          "add": "属性の追加",
-          "reset": "デフォルトにリセット",
-          "notes": "削除するには、「属性」フィールドを空白のままにします。"
+          "save": "Save & Close",
+          "add": "Add Attribute",
+          "reset": "Reset Defaults",
+          "notes": "Leave the Attribute field blank to remove it."
         }
       },
       "resource": {
-        "name": "二次リソース",
-        "hint": "二次リソースバー。\nこれは戦闘設定で設定する必要があります。\nこのオプションは、一部のシステムおよび経験豊富なユーザーが手動で調整できるようにするためにあります。"
+        "name": "Secondary Resource",
+        "hint": "The secondary resource bar. You should usually set this in combat configuration. This setting is here for manual adjustments."
       },
       "portraitResource": {
-        "name": "ポートレートリソース",
-        "hint": "ポートレート画像の上にオーバーレイとして表示されるリソース バー。\nこれは戦闘設定で設定する必要があります。\nこのオプションは、一部のシステムおよび経験豊富なユーザーが手動で調整できるようにするためにあります。"
+        "name": "Portrait Resource",
+        "hint": "The resource bar shown as an overlay on top of the portrait image. You should usually set this in combat configuration. This setting is here for manual adjustments."
+      }
+    },
+    "tooltip": {
+      "daggerheart": {
+        "spotlight": "Spotlight",
+        "stateActive": "Currently in the spotlight",
+        "stateRequest": "Request queue #{order}",
+        "stateIdle": "Not requesting",
+        "status": "Status",
+        "defeated": "Defeated",
+        "actionTokens": "Action Tokens",
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      }
+    },
+    "daggerheart": {
+      "stats": {
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      },
+      "description": {
+        "level": "Level",
+        "difficulty": "Difficulty",
+        "adversary": "Adversary",
+        "companion": "Companion",
+        "environment": "Environment"
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "前のターン"
+        "name": "Previous Turn"
       },
       "combatNext": {
-        "name": "次のターン"
+        "name": "Next Turn"
       }
     },
     "add-event": {
-      "title": "イベントの追加",
-      "duration": "イベント期間 (ラウンド)",
-      "error": "エラー: イベントの名前、イメージ、イニシアチブ値を指定する必要があります。",
-      "expired": "イベント %n の有効期限が切れました。"
+      "title": "Add Event",
+      "duration": "Event Duration (Rounds)",
+      "error": "Error: You must provide a name and an image for the event.",
+      "expired": "Event %n has expired."
     },
-    "deleteEffectTitle": "エフェクトの削除",
-    "deleteEffectContent": "エフェクトを削除してもよろしいですか"
+    "deleteEffectTitle": "Delete Effect",
+    "deleteEffectContent": "Are you sure you want to delete the effect "
   }
 }

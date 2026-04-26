@@ -1,6 +1,6 @@
 :root {
-  --combatant-portrait-size: 168px;
-  --combatant-portrait-aspect: 1.5;
+  --dhctd-combatant-portrait-size: 168px;
+  --dhctd-combatant-portrait-aspect: 1.5;
   --dh-gold: #d9c27a;
   --dh-gold-soft: #f0e2ae;
   --dh-blue: #84c4dd;
@@ -64,8 +64,8 @@ body {
 }
 
 .combatant-portrait {
-  width: var(--combatant-portrait-size);
-  height: calc(var(--combatant-portrait-size) * var(--combatant-portrait-aspect));
+  width: var(--dhctd-combatant-portrait-size);
+  height: calc(var(--dhctd-combatant-portrait-size) * var(--dhctd-combatant-portrait-aspect));
   margin: 0 auto;
   position: relative;
   border: 1px solid rgba(217, 194, 122, 0.18);
@@ -183,17 +183,17 @@ body {
   left: 50%;
   margin: 0;
   transform: translate(-50%, -50%);
-  width: calc(var(--combatant-portrait-size) * 0.42);
-  height: calc(var(--combatant-portrait-size) * 0.42);
-  font-size: calc(var(--combatant-portrait-size) * 0.16);
+  width: calc(var(--dhctd-combatant-portrait-size) * 0.42);
+  height: calc(var(--dhctd-combatant-portrait-size) * 0.42);
+  font-size: calc(var(--dhctd-combatant-portrait-size) * 0.16);
   box-shadow:
     0 12px 24px rgba(0, 0, 0, 0.34),
     0 0 0 1px rgba(240, 226, 174, 0.14);
 }
 
 .approve-spotlight {
-  width: calc(var(--combatant-portrait-size) * 0.26);
-  height: calc(var(--combatant-portrait-size) * 0.26);
+  width: calc(var(--dhctd-combatant-portrait-size) * 0.26);
+  height: calc(var(--dhctd-combatant-portrait-size) * 0.26);
   border-color: rgba(132, 221, 154, 0.45);
   background: linear-gradient(180deg, rgba(30, 43, 33, 0.92), rgba(13, 18, 15, 0.94));
   color: #dcffdf;

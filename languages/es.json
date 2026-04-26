@@ -1,5 +1,5 @@
 {
-  "combat-tracker-dock": {
+  "dh-combat-tracker-dock": {
     "configureCarousel": "Configurar carrusel",
     "combat-dock": {
       "title": "Muelle de seguimiento de combate",
@@ -11,17 +11,17 @@
     "combatConfig": {
       "portraitResource": {
         "label": "Barra retrato",
-        "hint": "Barra de recursos que se mostrar谩 como superposici贸n en la parte superior del retrato, configurar a 'Ninguno' para deshabilitar"
+        "hint": "Barra de recursos que se mostrar�?como superposici贸n en la parte superior del retrato, configurar a 'Ninguno' para deshabilitar"
       }
     },
     "settings": {
       "floatingSize": {
         "name": "Tama帽o flotante",
-        "hint": "El tama帽o de la ventana flotante. Cuanto mayor sea el valor, mayor ser谩 la ventana. Esto no afectar谩 al modo horizontal (acoplado)."
+        "hint": "El tama帽o de la ventana flotante. Cuanto mayor sea el valor, mayor ser�?la ventana. Esto no afectar�?al modo horizontal (acoplado)."
       },
       "portraitSize": {
         "name": "Tama帽o del carrusel",
-        "hint": "El tama帽o m谩ximo del retrato en el carrusel. Tenga en cuenta que el tama帽o de los retratos se reducir谩 autom谩ticamente si no caben todos los contendientes en la pantalla",
+        "hint": "El tama帽o m谩ximo del retrato en el carrusel. Tenga en cuenta que el tama帽o de los retratos se reducir�?autom谩ticamente si no caben todos los contendientes en la pantalla",
         "choices": {
           "30px": "Diminuto",
           "50px": "Peque帽o",
@@ -34,7 +34,7 @@
       },
       "carouselStyle": {
         "name": "Estilo del carrusel",
-        "hint": "La forma en que se colocan los retratos y se mueven en el carrusel: Carrusel - Centrado: El contendiente activo est谩 en el centro del carrusel, los otros contendientes giran a su alrededor.\n- Carrusel - Izquierda: El contendiente activo est谩 a la izquierda del carrusel, los otros contendientes rotan a su alrededor.\n- Sin carrusel: los contendientes siempre se muestran en orden de iniciativa y el contendiente activo se mueve mientras los contendientes permanecen en la misma posici贸n",
+        "hint": "La forma en que se colocan los retratos y se mueven en el carrusel: Carrusel - Centrado: El contendiente activo est�?en el centro del carrusel, los otros contendientes giran a su alrededor.\n- Carrusel - Izquierda: El contendiente activo est�?a la izquierda del carrusel, los otros contendientes rotan a su alrededor.\n- Sin carrusel: los contendientes siempre se muestran en orden de iniciativa y el contendiente activo se mueve mientras los contendientes permanecen en la misma posici贸n",
         "choices": {
           "centerCarousel": "Carrusel - Centrado",
           "leftCarousel": "Carrusel - Izquierda",
@@ -52,7 +52,7 @@
       },
       "portraitAspect": {
         "name": "Relaci贸n de aspecto del retrato",
-        "hint": "La relaci贸n de aspecto del retrato. La imagen se recortar谩 si no coincide con la relaci贸n de aspecto del retrato",
+        "hint": "La relaci贸n de aspecto del retrato. La imagen se recortar�?si no coincide con la relaci贸n de aspecto del retrato",
         "choices": {
           "square": "Cuadrado",
           "portrait": "Retrato",
@@ -98,7 +98,7 @@
       },
       "portraitImageBorder": {
         "name": "Borde de los jugadores",
-        "hint": "Borde especial que se mostrar谩 para los personajes jugadores. Dejar en blanco para deshabilitar. Si desea crear una imagen propia, le sugiero que use la imagen predeterminada como plantilla para que el tama帽o sea el correcto"
+        "hint": "Borde especial que se mostrar�?para los personajes jugadores. Dejar en blanco para deshabilitar. Si desea crear una imagen propia, le sugiero que use la imagen predeterminada como plantilla para que el tama帽o sea el correcto"
       },
       "attributeColor": {
         "name": "Color de atributo",
@@ -157,15 +157,15 @@
       },
       "portraitImageBackground": {
         "name": "Fondo de retrato",
-        "hint": "La imagen de fondo detr谩s del retrato que ser谩 visible si el retrato es transparente o no llena todo el espacio"
+        "hint": "La imagen de fondo detr谩s del retrato que ser�?visible si el retrato es transparente o no llena todo el espacio"
       },
       "hideConflictingUIs": {
         "name": "Ocultar interfaces de usuario conflictivas",
-        "hint": "Ocultar autom谩ticamente otras interfaces de usuario ancladas en la parte superior de la pantalla cuando el Dock del Rastreador de Combate est谩 visible para evitar el desorden de la interfaz de usuario."
+        "hint": "Ocultar autom谩ticamente otras interfaces de usuario ancladas en la parte superior de la pantalla cuando el Dock del Rastreador de Combate est�?visible para evitar el desorden de la interfaz de usuario."
       },
       "displayName": {
         "name": "Nombre a mostrar",
-        "hint": "Mostrar o no el nombre del contendiente en el globo de informaci贸n. 'Basado en el icono' mostrar谩 el nombre solo si el jugador puede ver el nombre del icono",
+        "hint": "Mostrar o no el nombre del contendiente en el globo de informaci贸n. 'Basado en el icono' mostrar�?el nombre solo si el jugador puede ver el nombre del icono",
         "choices": {
           "default": "Siempre",
           "token": "Basado en el icono",
@@ -181,7 +181,7 @@
         "label": "Configurar atributos",
         "hint": "Configure atributos personalizados a mostrar en el globo de informaci贸n",
         "reset": "Restablecer valores predeterminados",
-        "resetWarning": "驴Est谩 seguro de que desea restablecer los atributos a sus valores predeterminados?",
+        "resetWarning": "驴Est�?seguro de que desea restablecer los atributos a sus valores predeterminados?",
         "form": {
           "attr": {
             "name": "Atributo",
@@ -201,11 +201,11 @@
       },
       "resource": {
         "name": "Recurso secundario",
-        "hint": "La barra de recursos secundaria. \nDeber铆as configurar esto en la configuraci贸n de combate. \nEsta opci贸n est谩 aqu铆 para que algunos sistemas y usuarios experimentados la modifiquen manualmente."
+        "hint": "La barra de recursos secundaria. \nDeber铆as configurar esto en la configuraci贸n de combate. \nEsta opci贸n est�?aqu�?para que algunos sistemas y usuarios experimentados la modifiquen manualmente."
       },
       "portraitResource": {
         "name": "Recurso de retrato",
-        "hint": "La barra de recursos que se mostrar谩 superpuesta encima de la imagen vertical. \nDeber铆as configurar esto en la configuraci贸n de combate. \nEsta opci贸n est谩 aqu铆 para que algunos sistemas y usuarios experimentados la modifiquen manualmente."
+        "hint": "La barra de recursos que se mostrar�?superpuesta encima de la imagen vertical. \nDeber铆as configurar esto en la configuraci贸n de combate. \nEsta opci贸n est�?aqu�?para que algunos sistemas y usuarios experimentados la modifiquen manualmente."
       }
     },
     "hotkeys": {

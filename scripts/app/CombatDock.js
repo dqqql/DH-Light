@@ -8,18 +8,19 @@ export class CombatDock extends HandlebarsApplication {
     constructor(combat) {
         super();
         logger.info("CombatDock constructor", { combatId: combat?.id ?? game.combat?.id ?? null });
-        ui.combatDock?.close();
-        ui.combatDock = this;
+        ui.dhCombatDock?.close();
+        ui.dhCombatDock = this;
         this.portraits = [];
         this.combat = combat ?? game.combat;
         this.hooks = [];
         this._playAnimation = true;
+        this._boundAutosize = this.autosize.bind(this);
         this._currentPortraitSize = {
             max: parseInt(game.settings.get(MODULE_ID, "portraitSize")),
             aspect: game.settings.get(MODULE_ID, "portraitAspect"),
         };
         this.setHooks();
-        window.addEventListener("resize", this.autosize.bind(this));
+        window.addEventListener("resize", this._boundAutosize);
         this._combatTrackerRefreshed = false;
     }
 
@@ -171,7 +172,7 @@ export class CombatDock extends HandlebarsApplication {
             combatantCount: this.sortedCombatants.length,
         });
         this.portraits = [];
-        this.sortedCombatants.forEach((combatant) => this.portraits.push(new CONFIG.combatTrackerDock.CombatantPortrait(combatant)));
+        this.sortedCombatants.forEach((combatant) => this.portraits.push(new CONFIG.dhCombatTrackerDock.CombatantPortrait(combatant)));
         const combatantsContainer = this.element.querySelector("#combatants");
         combatantsContainer.innerHTML = "";
         this.portraits.forEach((p) => combatantsContainer.appendChild(p.element));
@@ -222,10 +223,10 @@ export class CombatDock extends HandlebarsApplication {
 
     playIntroAnimation(easing = "cubic-bezier(0.22, 1, 0.36, 1)") {
         logger.info("CombatDock playIntroAnimation", { combatId: this.combat?.id ?? null, combatants: this.sortedCombatants.length });
-        Hooks.callAll("combatDock:playIntroAnimation", this);
+        Hooks.callAll("dhCombatDock:playIntroAnimation", this);
 
-        const duration = CONFIG.combatTrackerDock.INTRO_ANIMATION_DURATION;
-        const delayMultiplier = CONFIG.combatTrackerDock.INTRO_ANIMATION_DELAY;
+        const duration = CONFIG.dhCombatTrackerDock.INTRO_ANIMATION_DURATION;
+        const delayMultiplier = CONFIG.dhCombatTrackerDock.INTRO_ANIMATION_DELAY;
 
         const isVertical = this.isVertical;
         const alignment = game.settings.get(MODULE_ID, "alignment");
@@ -244,7 +245,7 @@ export class CombatDock extends HandlebarsApplication {
 
             anim.finished.then(() => {
                 el.style.transform = "";
-                Hooks.callAll("combatDock:playIntroAnimation:finished", this, el);
+                Hooks.callAll("dhCombatDock:playIntroAnimation:finished", this, el);
             });
         };
         let totalAnimationTime = 0;
@@ -273,7 +274,7 @@ export class CombatDock extends HandlebarsApplication {
             aspect: aspect,
         };
         const verticalSize = max * aspect;
-        if (!this.autoFit) return document.documentElement.style.setProperty("--combatant-portrait-size", max + "px");
+        if (!this.autoFit) return document.documentElement.style.setProperty("--dhctd-combatant-portrait-size", max + "px");
 
         const sizeModifier = game.settings.get(MODULE_ID, "floatingSize");
         const combatantCount = this.sortedCombatants.length;
@@ -295,7 +296,7 @@ export class CombatDock extends HandlebarsApplication {
             portraitSize,
             autoFit: this.autoFit,
         });
-        document.documentElement.style.setProperty("--combatant-portrait-size", portraitSize / (this.isVertical ? 1 : 1.2) + "px");
+        document.documentElement.style.setProperty("--dhctd-combatant-portrait-size", portraitSize / (this.isVertical ? 1 : 1.2) + "px");
     }
 
     updateCombatant(combatant, updates = {}) {
@@ -548,8 +549,8 @@ export class CombatDock extends HandlebarsApplication {
                     currentRound,
                 });
                 ChatMessage.create({
-                    speaker: { alias: "Combat Tracker Dock" },
-                    content: game.i18n.localize("combat-tracker-dock.add-event.expired").replace("%n", `<strong>${combatant.name}</strong>`),
+                    speaker: { alias: "DH-Light" },
+                    content: game.i18n.localize("dh-combat-tracker-dock.add-event.expired").replace("%n", `<strong>${combatant.name}</strong>`),
                     type: CONST.CHAT_MESSAGE_TYPES.OTHER,
                     whisper: [game.user.id],
                 });
@@ -653,8 +654,9 @@ export class CombatDock extends HandlebarsApplication {
     async close(...args) {
         logger.info("CombatDock close", { combatId: this.combat?.id ?? null });
         this.removeHooks();
-        window.removeEventListener("resize", this.autosize.bind(this));
+        window.removeEventListener("resize", this._boundAutosize);
         if (this.element) this.element.remove();
+        if (ui.dhCombatDock === this) ui.dhCombatDock = null;
         this._closed = true;
         return super.close(...args);
     }

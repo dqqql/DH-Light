@@ -1,228 +1,266 @@
-{
-  "combat-tracker-dock": {
-    "configureCarousel": "Configura carosello",
+﻿{
+  "dh-combat-tracker-dock": {
+    "configureCarousel": "Configure Carousel",
     "combat-dock": {
-      "title": "Dock per tracciatore di combattimento",
-      "close": "Chiudi"
+      "title": "Combat Tracker Dock",
+      "close": "Close"
+    },
+    "common": {
+      "yes": "Yes",
+      "no": "No"
+    },
+    "controls": {
+      "toggleSpotlight": "Toggle spotlight",
+      "requestSpotlight": "Request spotlight",
+      "actionToken": "Adjust action token",
+      "toggleHidden": "Toggle hidden",
+      "toggleDefeated": "Toggle defeated",
+      "ping": "Ping token",
+      "approveSpotlight": "Approve spotlight",
+      "requestSpotlightPending": "Request pending"
     },
     "contextMenu": {
-      "setAsCurrent": "Imposta come combattente attuale"
+      "setAsCurrent": "Set as current combatant"
     },
     "combatConfig": {
       "portraitResource": {
-        "label": "Barra dei ritratti",
-        "hint": "Barra delle risorse che verr脿 mostrata come sovrapposizione sopra l'immagine verticale, imposta su \"Nessuno\" per disabilitare."
+        "label": "Portrait Bar",
+        "hint": "Resource bar that will be shown as an overlay on top of the portrait image. Set to 'None' to disable."
       }
     },
     "settings": {
       "floatingSize": {
-        "name": "Dimensione fluttuante",
-        "hint": "La dimensione della finestra mobile. Maggiore 猫 il valore, maggiore sar脿 la finestra. Ci貌 non influir脿 sulla modalit脿 Orizzontale (ancorata)."
+        "name": "Floating Size",
+        "hint": "The size of the floating window. Larger values create a larger window. This does not affect Horizontal (Docked) mode."
       },
       "portraitSize": {
-        "name": "Dimensione verticale",
-        "hint": "La dimensione massima del ritratto nell'indicatore di combattimento. \nTieni presente che le dimensioni dei ritratti verranno automaticamente ridotte se ci sono troppi combattenti per adattarsi allo schermo.",
+        "name": "Carousel Size",
+        "hint": "The maximum size of portraits in the carousel. Portraits are reduced automatically if too many combatants must fit on screen.",
         "choices": {
-          "30px": "Minuscolo",
-          "50px": "Piccolo",
-          "70px": "Normale",
-          "90px": "Grande",
-          "110px": "Enorme",
-          "150px": "Gigantesco",
-          "180px": "Colossale"
+          "30px": "Tiny",
+          "50px": "Small",
+          "70px": "Normal",
+          "90px": "Large",
+          "110px": "X-Large",
+          "150px": "XX-Large",
+          "180px": "XXX-Large"
         }
       },
       "carouselStyle": {
-        "name": "Stile carosello",
-        "hint": "Il modo in cui i ritratti sono posizionati e si muovono nel carosello: Carosello - Centrato: Il Combattente Attivo 猫 al centro del carosello, gli altri combattenti ruotano attorno ad esso.\n\n- Carosello - Sinistra: Il Combattente Attivo 猫 a sinistra del carosello, gli altri combattenti ruotano attorno ad esso.\n\n- Nessun carosello: i combattenti sono sempre visualizzati in ordine di iniziativa e il combattente attivo si sposta mentre i combattenti rimangono nella stessa posizione.",
+        "name": "Carousel Style",
+        "hint": "How portraits are arranged and move in the carousel: Carousel - Centered: the active combatant stays in the center and others rotate around it.\n- Carousel - Left: the active combatant stays on the left and others rotate around it.\n- No Carousel: combatants stay in dock order and only the active combatant moves.",
         "choices": {
-          "centerCarousel": "Carosello - Centrato",
-          "leftCarousel": "Carosello - Sinistra",
-          "basic": "Nessun carosello"
+          "centerCarousel": "Carousel - Centered",
+          "leftCarousel": "Carousel - Left",
+          "basic": "No Carousel"
         }
       },
       "overflowStyle": {
-        "name": "Stile overflow",
-        "hint": "Il modo in cui si comporta il carosello quando ci sono troppi combattenti per stare sullo schermo.",
+        "name": "Overflow Style",
+        "hint": "How the carousel behaves when too many combatants must fit on screen.",
         "choices": {
-          "hidden": "Nascosto",
-          "scroll": "Scorrimento",
-          "autofit": "Riduci i ritratti"
+          "hidden": "Hidden",
+          "scroll": "Scroll",
+          "autofit": "Shrink Portraits"
         }
       },
       "portraitAspect": {
-        "name": "Proporzioni ritratto",
-        "hint": "Le proporzioni del ritratto. \nL'immagine verr脿 ritagliata se non corrisponde alle proporzioni del ritratto.",
+        "name": "Portrait Aspect Ratio",
+        "hint": "The portrait aspect ratio. Images are cropped if they do not match the selected ratio.",
         "choices": {
-          "square": "Quadrato",
-          "portrait": "Ritratto",
-          "long": "Lungo"
+          "square": "Square",
+          "portrait": "Portrait",
+          "long": "Long"
         }
       },
       "alignment": {
-        "name": "Allineamento",
-        "hint": "L'allineamento della giostra. \nSi noti che il carosello deve essere centrato, 猫 necessario utilizzare questa impostazione solo per compatibilit脿 con altri moduli.",
+        "name": "Alignment",
+        "hint": "The alignment of the carousel.",
         "choices": {
-          "left": "Sinistra",
-          "center": "Centro",
-          "right": "Destra"
+          "left": "Left",
+          "center": "Center",
+          "right": "Right"
         }
       },
       "direction": {
-        "name": "Direzione",
-        "hint": "La direzione della giostra.",
+        "name": "Position",
+        "hint": "The direction of the carousel.",
         "choices": {
-          "row": "Orizzontale",
-          "column": "Verticale",
-          "rowDocked": "Orizzontale (ancorato)",
-          "rowFloat": "Orizzontale (flottante)",
-          "columnFloat": "Verticale (fluttuante)"
+          "row": "Horizontal",
+          "column": "Vertical",
+          "rowDocked": "Horizontal (Docked)",
+          "rowFloat": "Horizontal (Floating)",
+          "columnFloat": "Vertical (Floating)"
         }
       },
       "roundness": {
-        "name": "Rotondit脿",
-        "hint": "La rotondit脿 dei ritratti e dei tooltip.",
+        "name": "Roundness",
+        "hint": "The roundness of portraits and tooltips.",
         "choices": {
-          "sharp": "Squadrato",
-          "soft": "Morbido",
-          "round": "Arrotondato"
+          "sharp": "Sharp",
+          "soft": "Soft",
+          "round": "Round"
         }
       },
       "showDispositionColor": {
-        "name": "Mostra colore disposizione",
-        "hint": "Mostra la disposizione nel bordo inferiore del ritratto."
+        "name": "Show Disposition Color",
+        "hint": "Show disposition color in the bottom border of the portrait."
       },
       "hideDefeated": {
-        "name": "Nascondi sconfitto",
-        "hint": "Nascondi i combattenti sconfitti dalla giostra. \nSaranno comunque visibili nel normale tracker di combattimento nel caso in cui tu abbia bisogno di interagire con loro."
+        "name": "Hide Defeated",
+        "hint": "Hide defeated combatants from the carousel. They remain visible in the regular combat tracker if you still need to interact with them."
       },
       "portraitImageBorder": {
-        "name": "Bordo del giocatore",
-        "hint": "Bordo speciale che verr脿 mostrato per i personaggi dei giocatori. \nLascia vuoto per disabilitare. \nSe desideri creare un'immagine personalizzata, ti suggeriamo di utilizzare quella predefinita come riferimento per il corretto dimensionamento."
+        "name": "Player Border",
+        "hint": "Special border shown for player characters. Leave blank to disable. If you want a custom image, the default one is a good size reference."
       },
       "attributeColor": {
-        "name": "Colore attributo",
-        "hint": "Il colore del testo e della barra dell'attributo tracciato principale nel tracciatore di combattimento. \nPuoi utilizzare qualsiasi valore di colore CSS valido (ad es."
+        "name": "Attribute Color",
+        "hint": "Color of the main tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColor2": {
-        "name": "Colore attributo secondario",
-        "hint": "Il colore del testo e della barra dell'attributo tracciato secondario nel carosello. \nPuoi utilizzare qualsiasi valore di colore CSS valido (ad es."
+        "name": "Secondary Attribute Color",
+        "hint": "Color of the secondary tracked attribute text and bar in the carousel. Any valid CSS color is supported."
       },
       "attributeColorPortrait": {
-        "name": "Colore attributo ritratto",
-        "hint": "Il colore della barra di sovrapposizione verticale dell'attributo monitorato. \nPuoi utilizzare qualsiasi valore di colore CSS valido (ad es."
+        "name": "Portrait Attribute Color",
+        "hint": "Color of the portrait overlay resource bar. Any valid CSS color is supported."
       },
       "barsPlacement": {
-        "name": "Posizionamento delle barre",
-        "hint": "Il posizionamento delle barre degli attributi tracciati nel carosello.",
+        "name": "Bars Placement",
+        "hint": "Placement of tracked attribute bars in the carousel.",
         "choices": {
-          "left": "Sinistra",
-          "right": "Destra",
-          "twinned": "Gemellata"
+          "left": "Left",
+          "right": "Right",
+          "twinned": "Twinned"
         }
       },
       "attributeVisibility": {
-        "name": "Attributo Visibilit脿",
-        "hint": "La visibilit脿 degli attributi tracciati nel carosello.",
+        "name": "Attribute Visibility",
+        "hint": "How tracked attributes are displayed in the carousel.",
         "choices": {
-          "text": "Solo testo",
-          "bars": "Solo barre",
-          "both": "Entrambi"
+          "text": "Text Only",
+          "bars": "Bars Only",
+          "both": "Text & Bars"
         }
       },
       "playerPlayerPermission": {
-        "name": "Mostra sempre informazioni sul giocatore",
-        "hint": "Consenti a tutti i giocatori di vedere gli attributi tracciati, le informazioni sui suggerimenti e le icone di sistema degli altri giocatori."
+        "name": "Always Show Player Info",
+        "hint": "Allow all players to see tracked attributes, tooltip information, and system icons for other players."
       },
       "displayDescriptions": {
-        "name": "Mostra descrizioni",
-        "hint": "Mostra le descrizioni degli effetti attivi nel tooltip.",
+        "name": "Show Descriptions",
+        "hint": "Show active effect descriptions in the tooltip.",
         "choices": {
-          "none": "Nessuno",
-          "owner": "Proprietario/Osservatore",
-          "all": "Tutti"
+          "none": "None",
+          "owner": "Owner/Observer",
+          "all": "Everyone"
         }
       },
-      "tooltipColor": {
-        "name": "Colore descrizione comandi",
-        "hint": "La combinazione di colori della descrizione comandi. \nPuoi utilizzare qualsiasi valore di colore CSS valido (ad es."
-      },
       "portraitImage": {
-        "name": "Immagine ritratto",
-        "hint": "Se utilizzare l'immagine del personaggio o del token come ritratto.",
+        "name": "Portrait Image",
+        "hint": "Whether to use the Actor image or Token image for the portrait.",
         "choices": {
-          "actor": "Personaggio",
+          "actor": "Actor",
           "token": "Token"
         }
       },
       "portraitImageBackground": {
-        "name": "Sfondo ritratto",
-        "hint": "L'immagine di sfondo dietro il ritratto che sar脿 visibile se il ritratto 猫 trasparente o non riempie lo spazio."
+        "name": "Portrait Background",
+        "hint": "Background image shown behind the portrait if the portrait is transparent or does not fill the frame."
       },
       "hideConflictingUIs": {
-        "name": "Nascondere le interfacce utente in conflitto",
-        "hint": "Nascondere automaticamente le altre UI agganciate alla parte superiore dello schermo quando il Dock di Combat Tracker 猫 visibile per evitare l'ingombro dell'UI."
+        "name": "Hide Conflicting UIs",
+        "hint": "Automatically hide other UIs docked at the top of the screen when the dock is visible."
       },
       "displayName": {
-        "name": "Nome da visualizzare",
-        "hint": "Se visualizzare o meno il nome del combattente nel tooltip. \n'Basato sul token' visualizzer脿 il nome solo se il giocatore pu貌 vedere il nome del token.",
+        "name": "Display Name",
+        "hint": "Whether to display the combatant name in the tooltip. 'Based on Token' only shows the name if the player can see the token name.",
         "choices": {
-          "default": "Sempre",
-          "token": "Basato sul Token",
-          "owner": "Basato sulla propriet脿"
+          "default": "Always",
+          "token": "Based on Token",
+          "owner": "Based on Ownership"
         }
       },
       "hideFirstRound": {
-        "name": "Nasconditi fino al primo turno",
-        "hint": "Nascondi i nemici finch茅 non hanno svolto il loro primo turno in combattimento. \n(Richiede LibWrapper per nasconderli anche nel tracker di combattimento principale.)"
+        "name": "Hide Until First Turn",
+        "hint": "Hide enemies until they take their first turn in combat. LibWrapper is required to also hide them in the core tracker."
       },
       "attributesMenu": {
-        "name": "Attributi descrizione comando",
-        "label": "Configura attributi",
-        "hint": "Configura gli attributi personalizzati da mostrare nella descrizione comando.",
-        "reset": "Riportare alle condizioni originali",
-        "resetWarning": "Sei sicuro di voler reimpostare gli attributi sui loro valori predefiniti?",
+        "name": "Tooltip Attributes",
+        "label": "Configure Attributes",
+        "hint": "Configure custom attributes shown in the tooltip.",
+        "reset": "Reset to Default",
+        "resetWarning": "Are you sure you want to reset attributes to their default values?",
         "form": {
           "attr": {
-            "name": "Attributo",
-            "choose": "Scegli Attributo"
+            "name": "Attribute",
+            "choose": "Choose Attribute"
           },
           "icon": {
-            "name": "Icona"
+            "name": "Icon"
           },
           "units": {
-            "name": "Unit脿"
+            "name": "Units"
           },
-          "save": "Salva",
-          "add": "Aggiungi attributo",
-          "reset": "Reimpostazione dei valori iniziali",
-          "notes": "Lascia vuoto il campo Attributo per rimuoverlo."
+          "save": "Save & Close",
+          "add": "Add Attribute",
+          "reset": "Reset Defaults",
+          "notes": "Leave the Attribute field blank to remove it."
         }
       },
       "resource": {
-        "name": "Risorsa secondaria",
-        "hint": "La barra delle risorse secondaria. \nDovresti impostarlo nella configurazione di combattimento. \nQuesta opzione 猫 disponibile per alcuni sistemi e utenti esperti per la modifica manuale."
+        "name": "Secondary Resource",
+        "hint": "The secondary resource bar. You should usually set this in combat configuration. This setting is here for manual adjustments."
       },
       "portraitResource": {
-        "name": "Risorsa per i ritratti",
-        "hint": "La barra delle risorse che verr脿 visualizzata in sovrapposizione sopra l'immagine del ritratto. \nDovresti impostarlo nella configurazione di combattimento. \nQuesta opzione 猫 disponibile per alcuni sistemi e utenti esperti per la modifica manuale."
+        "name": "Portrait Resource",
+        "hint": "The resource bar shown as an overlay on top of the portrait image. You should usually set this in combat configuration. This setting is here for manual adjustments."
+      }
+    },
+    "tooltip": {
+      "daggerheart": {
+        "spotlight": "Spotlight",
+        "stateActive": "Currently in the spotlight",
+        "stateRequest": "Request queue #{order}",
+        "stateIdle": "Not requesting",
+        "status": "Status",
+        "defeated": "Defeated",
+        "actionTokens": "Action Tokens",
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      }
+    },
+    "daggerheart": {
+      "stats": {
+        "hitPoints": "Hit Points",
+        "stress": "Stress",
+        "evasion": "Evasion"
+      },
+      "description": {
+        "level": "Level",
+        "difficulty": "Difficulty",
+        "adversary": "Adversary",
+        "companion": "Companion",
+        "environment": "Environment"
       }
     },
     "hotkeys": {
       "combatPrev": {
-        "name": "Turno precedente"
+        "name": "Previous Turn"
       },
       "combatNext": {
-        "name": "Prossimo Turno"
+        "name": "Next Turn"
       }
     },
     "add-event": {
-      "title": "Aggiungi evento",
-      "duration": "Durata dell'evento (round)",
-      "error": "Errore: devi fornire un nome, un'immagine e un valore di iniziativa per l'evento.",
-      "expired": "L'evento %n 猫 scaduto."
+      "title": "Add Event",
+      "duration": "Event Duration (Rounds)",
+      "error": "Error: You must provide a name and an image for the event.",
+      "expired": "Event %n has expired."
     },
-    "deleteEffectTitle": "Elimina effetto",
-    "deleteEffectContent": "Sei sicuro di voler eliminare l'effetto?"
+    "deleteEffectTitle": "Delete Effect",
+    "deleteEffectContent": "Are you sure you want to delete the effect "
   }
 }

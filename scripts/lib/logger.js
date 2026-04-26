@@ -1,4 +1,4 @@
-const LOG_PREFIX = "[combat-tracker-dock]";
+const LOG_PREFIX = "[dh-combat-tracker-dock]";
 
 function emit(level, message, data) {
     if (data === undefined) {

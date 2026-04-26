@@ -10,8 +10,8 @@ export class AddEvent extends HandlebarsApplication {
 
     static get defaultOptions() {
         return foundry.utils.mergeObject(super.defaultOptions, {
-            id: "combat-dock-add-event",
-            title: `combat-tracker-dock.add-event.title`,
+            id: "dh-combat-dock-add-event",
+            title: `dh-combat-tracker-dock.add-event.title`,
             template: `${getModulePath()}/templates/add-event.hbs`,
             width: 400,
             height: "auto",
@@ -22,9 +22,9 @@ export class AddEvent extends HandlebarsApplication {
     static get DEFAULT_OPTIONS() {
         return {
             tag: "form",
-            id: "combat-dock-add-event",
+            id: "dh-combat-dock-add-event",
             window: {
-                title: `combat-tracker-dock.add-event.title`,
+                title: `dh-combat-tracker-dock.add-event.title`,
             },
             actions: {},
             form: {
@@ -53,7 +53,7 @@ export class AddEvent extends HandlebarsApplication {
             type: "submit",
             action: "submit",
             icon: "fas fa-plus",
-            label: "combat-tracker-dock.add-event.title",
+            label: "dh-combat-tracker-dock.add-event.title",
         };
         const recentEvents = game.settings.get(MODULE_ID, "events");
         return { recentEvents, buttons: [submitButton] };
@@ -63,7 +63,7 @@ export class AddEvent extends HandlebarsApplication {
         super._onRender(context, options);
         logger.debug("AddEvent render", { combatId: this.combat?.id ?? null, recentEvents: game.settings.get(MODULE_ID, "events").length });
         const html = this.element;
-        html.querySelectorAll(".cct-event").forEach((eventButton) => {
+        html.querySelectorAll(".dhctd-event").forEach((eventButton) => {
             eventButton.addEventListener("click", (e) => {
                 const eventIndex = e.currentTarget.dataset.index;
                 const recentEvents = game.settings.get(MODULE_ID, "events");
@@ -81,7 +81,7 @@ export class AddEvent extends HandlebarsApplication {
         const formData = new foundry.applications.ux.FormDataExtended(form).object;
         if (!formData.name || !formData.img) {
             logger.warn("AddEvent validation failed", { combatId: this.combat?.id ?? null, formData });
-            return ui.notifications.error(game.i18n.localize("combat-tracker-dock.add-event.error"));
+            return ui.notifications.error(game.i18n.localize("dh-combat-tracker-dock.add-event.error"));
         }
         logger.info("AddEvent submit", {
             combatId: this.combat?.id ?? null,
@@ -111,7 +111,7 @@ export class AddEvent extends HandlebarsApplication {
             await game.settings.set(MODULE_ID, "events", recentEvents);
         } catch (error) {
             logger.error("AddEvent submit failed", { combatId: this.combat?.id ?? null, error });
-            ui.notifications.error(game.i18n.localize("combat-tracker-dock.add-event.error"));
+            ui.notifications.error(game.i18n.localize("dh-combat-tracker-dock.add-event.error"));
         }
     }
 }
